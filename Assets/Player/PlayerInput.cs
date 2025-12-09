@@ -109,6 +109,33 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveToneLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""ea18d7bf-91a5-4396-b768-2c22d7613e8c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveToneRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""02305ce4-28ac-4e5c-a4cc-29fa4bb7c113"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MoveTone"",
+                    ""type"": ""Value"",
+                    ""id"": ""760c2eee-2315-49af-9a1b-743c1a11707e"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -276,6 +303,61 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b878cb7-c539-41f3-a64f-01f6fb5684d3"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveToneLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""56dac656-33bd-4536-98af-7e6afbec9e19"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveToneRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""6245ae42-6dc5-46bb-9557-42c6b59cb50d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTone"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""Negative"",
+                    ""id"": ""eafe6480-fde6-4fea-bff9-e2fa9086daeb"",
+                    ""path"": ""<Keyboard>/j"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""Positive"",
+                    ""id"": ""408b7f33-30d7-4d7f-813c-ab15131de182"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveTone"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         },
@@ -863,6 +945,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        m_Player_MoveToneLeft = m_Player.FindAction("MoveToneLeft", throwIfNotFound: true);
+        m_Player_MoveToneRight = m_Player.FindAction("MoveToneRight", throwIfNotFound: true);
+        m_Player_MoveTone = m_Player.FindAction("MoveTone", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -958,6 +1043,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
+    private readonly InputAction m_Player_MoveToneLeft;
+    private readonly InputAction m_Player_MoveToneRight;
+    private readonly InputAction m_Player_MoveTone;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -977,6 +1065,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MoveToneLeft".
+        /// </summary>
+        public InputAction @MoveToneLeft => m_Wrapper.m_Player_MoveToneLeft;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MoveToneRight".
+        /// </summary>
+        public InputAction @MoveToneRight => m_Wrapper.m_Player_MoveToneRight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/MoveTone".
+        /// </summary>
+        public InputAction @MoveTone => m_Wrapper.m_Player_MoveTone;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1009,6 +1109,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @MoveToneLeft.started += instance.OnMoveToneLeft;
+            @MoveToneLeft.performed += instance.OnMoveToneLeft;
+            @MoveToneLeft.canceled += instance.OnMoveToneLeft;
+            @MoveToneRight.started += instance.OnMoveToneRight;
+            @MoveToneRight.performed += instance.OnMoveToneRight;
+            @MoveToneRight.canceled += instance.OnMoveToneRight;
+            @MoveTone.started += instance.OnMoveTone;
+            @MoveTone.performed += instance.OnMoveTone;
+            @MoveTone.canceled += instance.OnMoveTone;
         }
 
         /// <summary>
@@ -1026,6 +1135,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @MoveToneLeft.started -= instance.OnMoveToneLeft;
+            @MoveToneLeft.performed -= instance.OnMoveToneLeft;
+            @MoveToneLeft.canceled -= instance.OnMoveToneLeft;
+            @MoveToneRight.started -= instance.OnMoveToneRight;
+            @MoveToneRight.performed -= instance.OnMoveToneRight;
+            @MoveToneRight.canceled -= instance.OnMoveToneRight;
+            @MoveTone.started -= instance.OnMoveTone;
+            @MoveTone.performed -= instance.OnMoveTone;
+            @MoveTone.canceled -= instance.OnMoveTone;
         }
 
         /// <summary>
@@ -1340,6 +1458,27 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveToneLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveToneLeft(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveToneRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveToneRight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "MoveTone" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnMoveTone(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

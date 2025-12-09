@@ -46,10 +46,12 @@ public class PlayerControls : MonoBehaviour
     }
 
 
-    private bool isGrounded
+    internal bool isGrounded
     {
         get
         {
+            // moving up, definitely not grounded
+            if (rb.linearVelocityY > .001f) return false;
 
             RaycastHit2D hit2 = Physics2D.Raycast(transform.TransformPoint(rightGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
             if (hit2.collider != null)
