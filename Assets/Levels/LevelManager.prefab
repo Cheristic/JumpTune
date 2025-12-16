@@ -48,6 +48,9 @@ MonoBehaviour:
   tilePrefab: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
   tilesParent: {fileID: 0}
   wallPrefab: {fileID: 1221154995072733883, guid: 453562c469ff0854d99987cee979b784, type: 3}
+  startTilePrefab: {fileID: 595870521080791388, guid: 5fa0cae6707278049ae2c66466b37791, type: 3}
+  endTilePrefab: {fileID: 5070083502451570407, guid: e36ea8249dd05b04fb248042d895f146, type: 3}
+  breakTilePrefab: {fileID: 5070083502451570407, guid: 622fc2dba40d6d14c9efd15b161b6772, type: 3}
   groundOffsetY: 2
-  tileOffsetY: 2
-  levelLimitHorizontal: {x: -8, y: 8}
+  tileOffsetY: 2.5
+  tileWidth: 2
