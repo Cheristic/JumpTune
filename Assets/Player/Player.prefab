@@ -62,11 +62,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControls
   MOVE_SPEED: 5
-  JUMP_HEIGHT: 7.44
+  JUMP_HEIGHT: 20
   IS_GROUNDED_CHECK_DISTANCE: 0.78
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  jumpForce: 5
+  dampForce: 75
+  timeApplyUpForce: 0.5
 --- !u!212 &8416159377272722660
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -140,8 +143,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_GravityScale: 6
+  m_Material: {fileID: 6200000, guid: 1de48abd56400a048b94a269d221899a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -150,7 +153,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &7694134961929012044
 BoxCollider2D:
@@ -162,7 +165,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1de48abd56400a048b94a269d221899a, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
