@@ -20,13 +20,15 @@ public class PlayerControls : MonoBehaviour
     BoxCollider2D _collider;
 
     [Header("Jump Physics")]
-    [SerializeField] float jumpForce;
-    [SerializeField] float dampForce;
-    [SerializeField] float timeApplyUpForce = 0.3f;
-    float jumpTimer;
+    [SerializeField] float JUMP_FORCE;
+    [SerializeField] float STRONG_DAMP_FORCE;
+    [SerializeField] float WEAK_DAMP_FORCE;
     float vy;
     float fy;
     bool jumpHeld;
+
+    // Coyote time
+    float coyoteTimer;
 
     Vector3 leftGroundedChecker = Vector3.zero;
     Vector3 rightGroundedChecker = Vector3.zero;
@@ -46,32 +48,28 @@ public class PlayerControls : MonoBehaviour
     {
         input?.Disable();
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (rb.linearVelocityY < 0)
-        {
-            float gY = collision.gameObject.GetComponent<BoxCollider2D>().bounds.max.y;
-            float gYCenter = collision.gameObject.transform.position.y;
-            if (_collider.bounds.min.y < gY && transform.position.y > gYCenter)
-            {
-                float yDelta = gY - _collider.bounds.min.y;
-                rb.MovePosition(rb.position + new Vector2(0, yDelta));
-                rb.linearVelocityY = 0.0f;
-                Debug.Log(yDelta);
-            }
-        }
-    }
-
     void FixedUpdate()
     {
         float x_dir = input.Player.Move.ReadValue<Vector2>().x;
         rb.linearVelocityX = x_dir * MOVE_SPEED;
 
-        if (jumpTimer > 0.0f) jumpTimer = Mathf.Max(jumpTimer - Time.deltaTime, 0.0f);
-        else fy = 0.0f;
+        if (isGrounded)
+        {
+            fy = 0;
+            rb.gravityScale = 6;
+        }
+        else if (jumpHeld) fy = JUMP_FORCE;
+        else if (rb.linearVelocityY > 0) fy = -STRONG_DAMP_FORCE;
+        else if (coyoteTimer <= 0)
+        {
+            fy = -WEAK_DAMP_FORCE;
+            rb.gravityScale = 3;
+        }
 
-        if (rb.linearVelocityY > 0 && !jumpHeld) fy -= dampForce;
+
+        // Update coyote timer
+        if (isGrounded) coyoteTimer = 0.1f;
+        else coyoteTimer = Mathf.Max(coyoteTimer - Time.deltaTime, 0.0f); 
 
         // Simulate floatiness during player jump for the first timeApplyUpForce or dampen jump if !jumpHeld
         rb.AddForceY(fy);
@@ -84,10 +82,11 @@ public class PlayerControls : MonoBehaviour
 
     void StartJump(InputAction.CallbackContext ctx)
     {
-        if (!isGrounded) return;
-        // Start timer during which upwards force will be applied
-        jumpTimer = timeApplyUpForce;
-        fy = jumpForce;
+        if (coyoteTimer <= 0) return;
+
+        // Set coyote timer to 0 to avoid double jumps
+        coyoteTimer = 0.0f;
+
         rb.linearVelocityY = CalculateJumpHeight(JUMP_HEIGHT);
         jumpHeld = true;   
     }
@@ -95,7 +94,6 @@ public class PlayerControls : MonoBehaviour
     void ReleasedJump(InputAction.CallbackContext ctx)
     {
         jumpHeld = false;
-        jumpTimer = 0;
     }
 
     internal bool isGrounded

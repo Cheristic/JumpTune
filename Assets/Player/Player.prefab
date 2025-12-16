@@ -61,15 +61,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa7ef09e8d43b042b7b5bd5c8cbc4f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControls
-  MOVE_SPEED: 5
-  JUMP_HEIGHT: 20
+  MOVE_SPEED: 6
+  JUMP_HEIGHT: 10
   IS_GROUNDED_CHECK_DISTANCE: 0.78
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  jumpForce: 5
-  dampForce: 75
-  timeApplyUpForce: 0.5
+  JUMP_FORCE: 30
+  STRONG_DAMP_FORCE: 75
+  WEAK_DAMP_FORCE: 30
 --- !u!212 &8416159377272722660
 SpriteRenderer:
   m_ObjectHideFlags: 0
