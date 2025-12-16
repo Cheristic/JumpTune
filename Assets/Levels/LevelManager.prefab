@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d78eaa7ac4b9cb944a24e9fe5da36776, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelBuilder
+  levelData: {fileID: 11400000, guid: cfcef3941f1697d4c8ae75745c8c8cc1, type: 2}
+  tilePrefab: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+  tilesParent: {fileID: 0}
+  wallPrefab: {fileID: 1221154995072733883, guid: 453562c469ff0854d99987cee979b784, type: 3}
+  groundOffsetY: 2
+  tileOffsetY: 2
+  levelLimitHorizontal: {x: -8, y: 8}
