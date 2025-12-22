@@ -334,6 +334,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 380139480}
     m_Modifications:
+    - target: {fileID: 4739550068171127379, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: LeftMostFrequency
+      value: 350
+      objectReference: {fileID: 0}
     - target: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
       propertyPath: m_Name
       value: TonePlatform (1)
@@ -690,6 +694,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: LevelManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.Decay
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.Attack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.DecayT
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.AttackT
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.Sustain
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.ReleaseT
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2392197673023663206, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: keysADSR.SustainT
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 4076792042766326431, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -810,6 +846,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 380139480}
     m_Modifications:
+    - target: {fileID: 4739550068171127379, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: LeftMostFrequency
+      value: 440
+      objectReference: {fileID: 0}
     - target: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
       propertyPath: m_Name
       value: TonePlatform

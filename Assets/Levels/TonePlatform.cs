@@ -53,9 +53,11 @@ public class TonePlatform : MonoBehaviour
         while (true)
         {
             int dir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());
-            Debug.Log(currLagTime);
             if ( dir != 0 && ((dir < 0 && currNotch > 0) || (dir > 0 && currNotch < NotchCount - 1)))
             {
+                int claimedActiveNote = ToneManager.Instance.ClaimActiveNote();
+                ToneManager.Instance.PlayNote(claimedActiveNote, LeftMostFrequency * Mathf.Pow(2, 10.0f * currNotch / 1200.0f));
+
                 int currDir = dir;
                 do
                 {
@@ -66,7 +68,7 @@ public class TonePlatform : MonoBehaviour
                     currLagTime = Mathf.Max(currLagTime * HoldLagSpeedUp, MinLagTime);
                     currDir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());
                 }
-                while (dir == currDir &&
+                while (dir == currDir && 
                         ((currDir < 0 && currNotch > 0) ||
                         (currDir > 0 && currNotch < NotchCount - 1)));
                 // while continuing direction, if moving left, isn't at leftmost, or if moving right, isn't at rightmost
