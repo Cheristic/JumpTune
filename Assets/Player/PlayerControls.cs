@@ -1,5 +1,9 @@
+using System.Collections;
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
+using System.Net;
 
 public class PlayerControls : MonoBehaviour
 {
@@ -15,6 +19,17 @@ public class PlayerControls : MonoBehaviour
     Rigidbody2D rb;
     BoxCollider2D _collider;
 
+    [Header("Jump Physics")]
+    [SerializeField] float JUMP_FORCE;
+    [SerializeField] float STRONG_DAMP_FORCE;
+    [SerializeField] float WEAK_DAMP_FORCE;
+    float vy;
+    float fy;
+    bool jumpHeld;
+
+    // Coyote time
+    float coyoteTimer;
+
     Vector3 leftGroundedChecker = Vector3.zero;
     Vector3 rightGroundedChecker = Vector3.zero;
     public void Init()
@@ -24,6 +39,7 @@ public class PlayerControls : MonoBehaviour
         _collider = GetComponent<BoxCollider2D>();
         input.Enable();
         input.Player.Jump.started += StartJump;
+        input.Player.Jump.canceled += ReleasedJump;
         rightGroundedChecker = transform.InverseTransformPoint(new Vector3(_collider.bounds.max.x, _collider.bounds.center.y, 0));
         leftGroundedChecker = transform.InverseTransformPoint(new Vector3(_collider.bounds.min.x, _collider.bounds.center.y, 0));
     }
@@ -32,26 +48,60 @@ public class PlayerControls : MonoBehaviour
     {
         input?.Disable();
     }
-
     void FixedUpdate()
     {
         float x_dir = input.Player.Move.ReadValue<Vector2>().x;
         rb.linearVelocityX = x_dir * MOVE_SPEED;
+
+        if (isGrounded)
+        {
+            fy = 0;
+            rb.gravityScale = 6;
+        }
+        else if (jumpHeld) fy = JUMP_FORCE;
+        else if (rb.linearVelocityY > 0) fy = -STRONG_DAMP_FORCE;
+        else if (coyoteTimer <= 0)
+        {
+            fy = -WEAK_DAMP_FORCE;
+            rb.gravityScale = 3;
+        }
+
+
+        // Update coyote timer
+        if (isGrounded) coyoteTimer = 0.1f;
+        else coyoteTimer = Mathf.Max(coyoteTimer - Time.deltaTime, 0.0f); 
+
+        // Simulate floatiness during player jump for the first timeApplyUpForce or dampen jump if !jumpHeld
+        rb.AddForceY(fy);
+    }
+
+    float CalculateJumpHeight(float height)
+    {
+        return Mathf.Sqrt(-2.0f * Physics2D.gravity.y * height);
     }
 
     void StartJump(InputAction.CallbackContext ctx)
     {
-        if (!isGrounded) return;
-        rb.linearVelocityY = JUMP_HEIGHT;
+        if (coyoteTimer <= 0) return;
+
+        // Set coyote timer to 0 to avoid double jumps
+        coyoteTimer = 0.0f;
+
+        rb.linearVelocityY = CalculateJumpHeight(JUMP_HEIGHT);
+        jumpHeld = true;   
     }
 
+    void ReleasedJump(InputAction.CallbackContext ctx)
+    {
+        jumpHeld = false;
+    }
 
     internal bool isGrounded
     {
         get
         {
             // moving up, definitely not grounded
-            if (rb.linearVelocityY > .001f) return false;
+            if (Math.Abs(rb.linearVelocityY) > .001f) return false;
 
             RaycastHit2D hit2 = Physics2D.Raycast(transform.TransformPoint(rightGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
             if (hit2.collider != null)

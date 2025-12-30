@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4076792042766326431}
   - component: {fileID: 5541999623512060742}
+  - component: {fileID: 2392197673023663206}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -54,3 +55,54 @@ MonoBehaviour:
   groundOffsetY: 2
   tileOffsetY: 2.5
   tileWidth: 2
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 636214229090520741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c03adbc48b886e84d83955c350d2f79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ToneManager
+  gain: 4.57
+  harmonicStrengths:
+  - 1
+  - 0.5
+  - 0.25
+  - 0.124
+  - 0.07
+  - 0.03
+  - 0.015
+  - 0.0075
+  - 0.003
+  - 0.0015
+  - 0.0007
+  - 0.0003
+  SampleRate: 44100
+  ADSR:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  ADSRtime: 1
+--- !u!114 &2392197673023663206
