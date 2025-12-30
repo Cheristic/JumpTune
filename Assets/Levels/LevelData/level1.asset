@@ -14,20 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   tiles:
   - isFixed: 0
-    correctFrequency: 0
+    correctFrequency: 250
     hasBreak: 0
   - isFixed: 0
-    correctFrequency: 0
+    correctFrequency: 300
     hasBreak: 0
   - isFixed: 1
-    correctFrequency: 0
+    correctFrequency: 350
     hasBreak: 1
   - isFixed: 1
-    correctFrequency: 0
+    correctFrequency: 400
     hasBreak: 1
   - isFixed: 0
-    correctFrequency: 0
+    correctFrequency: 450
     hasBreak: 0
   playerStartPosition: {x: 0, y: 1}
   notchCount: 10
   levelWidth: 20
+  centSpacing: 10

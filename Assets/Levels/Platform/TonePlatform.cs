@@ -19,13 +19,20 @@ public class TonePlatform : MonoBehaviour
 
     internal int currNotch;
     internal bool isFixed;
+    internal float leftMostFrequency;
 
-    public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld) 
+    internal float centSpacing;
+
+    public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing) 
     { 
         currNotch = _StartingNotch;
         isFixed = _Fixed;
         notchCount = _NotchCount;
         notchSpacingInWorldCoords = _NotchSpacingWorld;
+
+        centSpacing = _CentSpacing;
+
+        leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
 
         if(isFixed)
         {
@@ -58,10 +65,10 @@ public class TonePlatform : MonoBehaviour
         while (true)
         {
             int dir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());
-            if ( dir != 0 && ((dir < 0 && currNotch > 0) || (dir > 0 && currNotch < NotchCount - 1)))
+            if ( dir != 0 && ((dir < 0 && currNotch > 0) || (dir > 0 && currNotch < notchCount - 1)))
             {
                 int claimedActiveNote = ToneManager.Instance.ClaimActiveNote();
-                ToneManager.Instance.PlayNote(claimedActiveNote, LeftMostFrequency * Mathf.Pow(2, 10.0f * currNotch / 1200.0f));
+                ToneManager.Instance.PlayNote(claimedActiveNote, leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f));
 
                 int currDir = dir;
                 do

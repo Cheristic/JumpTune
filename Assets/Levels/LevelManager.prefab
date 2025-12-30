@@ -55,6 +55,8 @@ MonoBehaviour:
   groundOffsetY: 2
   tileOffsetY: 2.5
   tileWidth: 2
+--- !u!114 &2392197673023663206
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -64,7 +66,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c03adbc48b886e84d83955c350d2f79c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ToneManager
+  m_EditorClassIdentifier: 
   gain: 4.57
   harmonicStrengths:
   - 1
@@ -105,4 +107,3 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   ADSRtime: 1
---- !u!114 &2392197673023663206

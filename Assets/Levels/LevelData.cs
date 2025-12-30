@@ -8,4 +8,5 @@ public class LevelData : ScriptableObject
     public Vector2 playerStartPosition;
     public int notchCount;
     public float levelWidth;
+    public float centSpacing;
 }

@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
             GameObject obj = Instantiate(tilePrefab, tilesParent);
             obj.transform.position = pos;
 
-            obj.GetComponent<TonePlatform>().Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing);
+            obj.GetComponent<TonePlatform>().Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, tile.correctFrequency, levelData.centSpacing);
 
             if (tile.hasBreak)
             {

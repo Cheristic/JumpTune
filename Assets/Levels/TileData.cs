@@ -4,6 +4,6 @@ using UnityEngine;
 public class TileData
 {
     public bool isFixed;
-    public int correctFrequency;
+    public float correctFrequency;
     public bool hasBreak;
 }
