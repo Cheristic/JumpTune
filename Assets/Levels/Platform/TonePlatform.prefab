@@ -211,7 +211,7 @@ Transform:
   m_GameObject: {fileID: 6923691663616482365}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.39, y: -1.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -232,15 +232,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
-  NotchCount: 22
-  NotchSpacingInWorldCoords: 0.5
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
   FrequencyMult: 0
-  StartingNotch: 0
-  LeftMostFrequency: 0
 --- !u!50 &2107554421607690036
 Rigidbody2D:
   serializedVersion: 5
