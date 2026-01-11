@@ -94,9 +94,17 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
-    public void Start()
+    public void LoadFromManager(LevelData levelData)
     {
+        this.levelData = levelData;
+
         for (int i = tilesParent.childCount - 1; i >= 0; i--) Destroy(tilesParent.GetChild(i).gameObject);
         LoadLevel();
     }
+
+    //public void Start()
+    //{
+    //    for (int i = tilesParent.childCount - 1; i >= 0; i--) Destroy(tilesParent.GetChild(i).gameObject);
+    //    LoadLevel();
+    //}
 }
