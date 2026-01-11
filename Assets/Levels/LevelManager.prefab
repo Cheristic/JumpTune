@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03adbc48b886e84d83955c350d2f79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gain: 4.57
+  gain: 0.6
   harmonicStrengths:
   - 1
   - 0.5
