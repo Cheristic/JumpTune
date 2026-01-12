@@ -60,19 +60,17 @@ public class TonePlatform : MonoBehaviour
     IEnumerator HandleMoveInput()
     { 
         yield return new WaitUntil(() => PlayerManager.Instance.controls.isGrounded);
-
         float currLagTime = InitialHoldLagTime;
         while (true)
         {
             int dir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());
             if ( dir != 0 && ((dir < 0 && currNotch > 0) || (dir > 0 && currNotch < notchCount - 1)))
             {
-                int claimedActiveNote = ToneManager.Instance.ClaimActiveNote();
-                ToneManager.Instance.PlayNote(claimedActiveNote, leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f));
 
                 int currDir = dir;
                 do
                 {
+                    ToneManager.Instance.PlayNote(CurrFrequency);
                     transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
                     PlayerManager.Instance.transform.position = new Vector2(PlayerManager.Instance.transform.position.x + currDir * notchSpacingInWorldCoords, PlayerManager.Instance.transform.position.y);
                     currNotch += currDir;
@@ -92,4 +90,6 @@ public class TonePlatform : MonoBehaviour
         }
         
     }
+
+    float CurrFrequency { get => leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f); }
 }

@@ -1,4 +1,5 @@
-﻿﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -7,11 +8,46 @@ using UnityEngine.UIElements;
 
 public struct ActiveNote
 {
-    public float startPlayTime;
-    public float fundementalFrequency;
-    public float percentageProgresssed;
+    public float timeProgressedInPhase;
+    public ADSR.ADSR_Phase phase;
+
+    public float frequency;
     public AudioSource AudioSource;
-    public int position;
+    public int bufferPosition;
+    public int totalSamples;
+    public double startTime;
+
+    public float Evaluate()
+    {
+        return 1;
+    }
+    internal readonly bool IsPlaying => phase != ADSR.ADSR_Phase.NotPlaying;
+}
+
+[Serializable]
+public struct ADSR
+{
+    public float Attack_MS;
+    public static float ATTACK_DB_Percent = 1;
+    public float Decay_MS;
+    public float Sustain_MS;
+    public float Sustain_DB_Percent;
+    public float Release_MS;
+
+    internal readonly float Attack_S => Attack_MS / 1000f;
+    internal readonly float Decay_S => Decay_MS / 1000f;
+    internal readonly float Sustain_S => Sustain_MS / 1000f;
+    internal readonly float Release_S => Release_MS / 1000f;
+    public enum ADSR_Phase
+    {
+        NotPlaying,
+        Attack,
+        Decay,
+        Sustain,
+        Release,
+        QueueToStop
+    }
+    internal readonly float ADSR_Time => Attack_S + Decay_S + Sustain_S + Release_S;
 }
 
 public class ToneManager : MonoBehaviour
@@ -21,121 +57,149 @@ public class ToneManager : MonoBehaviour
     // --------------------------------------
     // Public
     public float gain;
+    public float frequencyTransitionRate = .001f;
 
     public float[] harmonicStrengths = new float[12];
 
     public int SampleRate = 44100;     // this is the number of samples we use per second,to construct the sound waveforms.
-                                         // default is 48,000 samples. This means if your frame rate is 60 fps, in each frame you need to provide 48k/60 samples. 
+                                       // default is 48,000 samples. This means if your frame rate is 60 fps, in each frame you need to provide 48k/60 samples. 
 
-    int BufferedSamples { get => Mathf.CeilToInt(SampleRate * ADSRtime); }
-    private float fundementalToneFrequency;
+    public ADSR ADSR;
+    int BufferedSamples { get => Mathf.CeilToInt(ADSR.ADSR_Time * SampleRate); } // this is the max each OnAudioRead's data[] will store
 
-    private ActiveNote[] currentlyBeingPlayed = new ActiveNote[12];
+    private ActiveNote[] notes = new ActiveNote[12];
 
-    [SerializeField] AnimationCurve ADSR;
-    [SerializeField] float ADSRtime;
 
     void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
 
-        for (int i = 0; i < currentlyBeingPlayed.Length; i++)
+        for (int i = 0; i < notes.Length; i++)
         {
-            currentlyBeingPlayed[i].AudioSource = gameObject.AddComponent<AudioSource>();
+            notes[i].AudioSource = gameObject.AddComponent<AudioSource>();
+            notes[i].phase = ADSR.ADSR_Phase.NotPlaying;
         }
-
     }
-    
 
-    public int ClaimActiveNote()
+    private void Update()
     {
-        for (int i = 0; i < currentlyBeingPlayed.Length; i++)
+        for (int i = 0; i < notes.Length; i++)
         {
-            if ((float)AudioSettings.dspTime - currentlyBeingPlayed[i].startPlayTime > ADSRtime)
+            if (notes[i].phase == ADSR.ADSR_Phase.QueueToStop)
             {
+                double progress = AudioSettings.dspTime - notes[i].startTime;
+                double goal = 1.0f * BufferedSamples / SampleRate;
+                if (progress >= goal)
+                {
+                    Debug.Log("stopping " + i);
+                    notes[i].AudioSource.Stop();
+                    notes[i].phase = ADSR.ADSR_Phase.NotPlaying;
+                }
+            }
+        }
+    }
+
+
+    public int PlayNote(float frequency)
+    {
+        for (int i = 0; i < notes.Length; i++)
+        {
+            if (!notes[i].IsPlaying)
+            {
+                notes[i].frequency = frequency;
+                notes[i].phase = ADSR.ADSR_Phase.Attack;
+                notes[i].totalSamples = 0;
+                AudioClip ac = AudioClip.Create("", BufferedSamples, 1, SampleRate, false, (data) => OnAudioRead(data, i), (pos) => OnAudioSetPosition(pos, i));
+                notes[i].AudioSource.Stop();
+                notes[i].AudioSource.clip = ac;
+                notes[i].AudioSource.time = 0.0f;
+                notes[i].startTime = AudioSettings.dspTime;
+                notes[i].AudioSource.Play();
+
                 return i;
             }
         }
         return -1;
     }
 
-    public void PlayNote(int index, float frequency)
+    void OnAudioRead(float[] data, int i)
     {
-        currentlyBeingPlayed[index].fundementalFrequency = frequency;
-        currentlyBeingPlayed[index].startPlayTime = (float)AudioSettings.dspTime;
-        AudioClip ac = AudioClip.Create("", BufferedSamples, 1, SampleRate, false, OnAudioRead, OnAudioSetPosition);
-        currentlyBeingPlayed[index].AudioSource.Stop();
-        currentlyBeingPlayed[index].AudioSource.clip = ac;
-        currentlyBeingPlayed[index].AudioSource.time = 0.0f;
-        currentlyBeingPlayed[index].AudioSource.Play();
+        //if (!notes[i].IsPlaying) return;
+        Debug.Log(i + " " + notes[i].phase + ": " + notes[i].bufferPosition + " - " + notes[i].totalSamples);
 
-        //float tau = Mathf.PI * 2.0f;
+        for (int j = 0; j < data.Length; j++)
+        {
+            //float volumeModifier = ADSR.Evaluate(1.0f * activeNotes[j].bufferPosition / BufferedSamples);
+            float adsrVolumeModifier = EvaluateADSR(i);
+            //if (j % 1000 == 0) Debug.Log("playing " + i + " " + notes[i].bufferPosition + " " + notes[i].timeProgressedInPhase + " " + notes[i].phase + " vol=" + adsrVolumeModifier);
 
-        //float[] ret = new float[SampleRate];
+            data[j] = CreateSineOscillator(notes[i].frequency, notes[i].totalSamples) * gain * adsrVolumeModifier;
 
-        //for (int i = 0; i < SampleRate; ++i)
-        //    ret[i] = Mathf.Sin((float)i / (float)SampleRate * frequency * tau) * gain;
 
-        //ac.SetData(ret, 0);
+            notes[i].bufferPosition++;
+            notes[i].totalSamples++;
+        }
 
-        //this.audioSource.Stop();
-        //this.audioSource.clip = ac;
-        //this.audioSource.time = 0.0f;
-        //this.audioSource.Play();
-        //float timeSinceNoteStartedPlaying = (float)AudioSettings.dspTime - currentlyBeingPlayed[index].startPlayTime;
-
-        //if (timeSinceNoteStartedPlaying < keysADSR.DecayT)
-        //{
-        //    // nothing
-        //}
-        //else if (timeSinceNoteStartedPlaying < keysADSR.SustainT)
-        //{
-        //    currentlyBeingPlayed[index].startPlayTime = (float)AudioSettings.dspTime - keysADSR.DecayT;
-        //}
-        //else if (timeSinceNoteStartedPlaying < keysADSR.ReleaseT)
-        //{
-        //    float between = Mathf.InverseLerp(keysADSR.SustainT, keysADSR.ReleaseT, timeSinceNoteStartedPlaying);
-        //    float volumeModifier = Mathf.Lerp(keysADSR.Sustain, 0.0f, between);
-        //    currentlyBeingPlayed[index].startPlayTime = (float)AudioSettings.dspTime - Mathf.InverseLerp(0, keysADSR.Decay, volumeModifier);
-        //}
-        //else
-        //{
-        //    currentlyBeingPlayed[index].startPlayTime = (float)AudioSettings.dspTime;
-
-        //}
-        //currentlyBeingPlayed[index].startPlayTime = (float)AudioSettings.dspTime;
-        //Debug.Log("Playing " + frequency + " at " + currentlyBeingPlayed[index].startPlayTime);
-
+       // Debug.Log("first " + data[0] + ", last " + data[data.Length - 1] + " - " + notes[i].totalSamples);
     }
 
-    void OnAudioRead(float[] data)
+    float CreateSineOscillator(float frequency, int position)
     {
-        for (int j = 0; j < currentlyBeingPlayed.Length; j++)
-        {
-            if ((float)AudioSettings.dspTime - currentlyBeingPlayed[j].startPlayTime > ADSRtime) continue;
+        return Mathf.Sin(2 * Mathf.PI * frequency * position / SampleRate);
+    }
 
-            fundementalToneFrequency = currentlyBeingPlayed[j].fundementalFrequency;
-            //Debug.Log("START " + currentlyBeingPlayed[j].position);
-            for (int i = 0; i < data.Length; i++)
+    float EvaluateADSR(int i)
+    {
+        ActiveNote n = notes[i];
+        float nTime = n.timeProgressedInPhase + 1.0f / SampleRate;
+        float vol = 0;
+        if (n.phase == ADSR.ADSR_Phase.Attack)
+        {
+            vol = Mathf.Lerp(0, ADSR.ATTACK_DB_Percent, nTime / ADSR.Attack_S);
+            if (nTime >= ADSR.Attack_S)
             {
-                float volumeModifier = ADSR.Evaluate(currentlyBeingPlayed[j].position / BufferedSamples);
-
-                data[i] = Mathf.Sin(2 * Mathf.PI * fundementalToneFrequency * currentlyBeingPlayed[j].position / SampleRate) * gain * volumeModifier;
-                currentlyBeingPlayed[j].position++;
+                n.timeProgressedInPhase = nTime % ADSR.Attack_S;
+                n.phase = ADSR.ADSR_Phase.Decay;
             }
-           // Debug.Log("END " + currentlyBeingPlayed[j].position);
+            else n.timeProgressedInPhase = nTime;
+        } else if (n.phase == ADSR.ADSR_Phase.Decay)
+        {
+            vol = Mathf.Lerp(ADSR.ATTACK_DB_Percent, ADSR.Sustain_DB_Percent, nTime / ADSR.Decay_S);
+            if (nTime >= ADSR.Decay_S)
+            {
+                n.timeProgressedInPhase = nTime % ADSR.Decay_S; ;
+                n.phase = ADSR.ADSR_Phase.Sustain;
+            }
+            else n.timeProgressedInPhase = nTime;
+        } else if (n.phase == ADSR.ADSR_Phase.Sustain)
+        {
+            vol = ADSR.Sustain_DB_Percent;
+            if (nTime >= ADSR.Sustain_S)
+            {
+                n.timeProgressedInPhase = nTime % ADSR.Sustain_S;
+                n.phase = ADSR.ADSR_Phase.Release;
+            }
+            else n.timeProgressedInPhase = nTime;
+        } else if (n.phase == ADSR.ADSR_Phase.Release)
+        {
+            vol = Mathf.Lerp(ADSR.Sustain_DB_Percent, 0, nTime / ADSR.Release_S);
+            if (nTime >= ADSR.Release_S)
+            {
+                n.phase = ADSR.ADSR_Phase.QueueToStop;
+                n.timeProgressedInPhase = 0;
+                vol = 0;
+            }
+            else n.timeProgressedInPhase = nTime;
         }
-            
+        notes[i] = n;
+        return vol;
     }
 
-    void OnAudioSetPosition(int newPosition)
+    void OnAudioSetPosition(int newPosition, int i)
     {
-        for (int j = 0; j < currentlyBeingPlayed.Length; j++)
-        {
-            if ((float)AudioSettings.dspTime - currentlyBeingPlayed[j].startPlayTime > ADSRtime) continue;
-            currentlyBeingPlayed[j].position = newPosition;
-        }
+        if (notes[i].phase == ADSR.ADSR_Phase.NotPlaying) return;
+        notes[i].bufferPosition = newPosition;
     }
 
 
@@ -143,16 +207,16 @@ public class ToneManager : MonoBehaviour
     {
         float superImposed = 0.0f;
 
-        for (int i = 1; i <= 12; i++)
-        {
-            float harmonicFrequency = fundementalToneFrequency * i;
+        //for (int i = 1; i <= 12; i++)
+        //{
+        //    float harmonicFrequency = fundementalToneFrequency * i;
 
-            float timeAtTheBeginig = (float)(AudioSettings.dspTime % (1.0 / (double)harmonicFrequency)); // very important to deal with percision issue as dspTime gets large
+        //    float timeAtTheBeginig = (float)(AudioSettings.dspTime % (1.0 / (double)harmonicFrequency)); // very important to deal with percision issue as dspTime gets large
 
-            float exactTime = timeAtTheBeginig + (float)dataIndex / SampleRate;
+        //    float exactTime = timeAtTheBeginig + (float)dataIndex / SampleRate;
 
-            superImposed += Mathf.Sin(exactTime * harmonicFrequency * 2f * Mathf.PI) * harmonicStrengths[i - 1];
-        }
+        //    superImposed += Mathf.Sin(exactTime * harmonicFrequency * 2f * Mathf.PI) * harmonicStrengths[i - 1];
+        //}
 
         return superImposed;
     }
