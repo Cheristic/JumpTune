@@ -14,9 +14,6 @@ public class TonePlatform : MonoBehaviour
     [SerializeField] float MinLagTime;
     [SerializeField] float HoldLagSlowDown;
 
-    [Header("Tone")]
-    [SerializeField] float FrequencyMult;
-
     internal int currNotch;
     internal bool isFixed;
     internal float leftMostFrequency;
@@ -60,6 +57,7 @@ public class TonePlatform : MonoBehaviour
     IEnumerator HandleMoveInput()
     { 
         yield return new WaitUntil(() => PlayerManager.Instance.controls.isGrounded);
+        ToneManager.Instance.PlayNote(CurrFrequency);
         float currLagTime = InitialHoldLagTime;
         while (true)
         {

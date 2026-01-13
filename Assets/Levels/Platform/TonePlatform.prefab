@@ -200,7 +200,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &9177426608753402574
 Transform:
@@ -236,7 +236,6 @@ MonoBehaviour:
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  FrequencyMult: 0
 --- !u!50 &2107554421607690036
 Rigidbody2D:
   serializedVersion: 5

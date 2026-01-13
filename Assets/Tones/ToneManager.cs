@@ -33,11 +33,13 @@ public struct ADSR
     public float Sustain_MS;
     public float Sustain_DB_Percent;
     public float Release_MS;
+    public float Silence_MS;
 
     internal readonly float Attack_S => Attack_MS / 1000f;
     internal readonly float Decay_S => Decay_MS / 1000f;
     internal readonly float Sustain_S => Sustain_MS / 1000f;
     internal readonly float Release_S => Release_MS / 1000f;
+    internal readonly float Silence_S => Silence_MS / 1000f;
     public enum ADSR_Phase
     {
         NotPlaying,
@@ -47,7 +49,7 @@ public struct ADSR
         Release,
         QueueToStop
     }
-    internal readonly float ADSR_Time => Attack_S + Decay_S + Sustain_S + Release_S;
+    internal readonly float ADSR_Time => Attack_S + Decay_S + Sustain_S + Release_S + Silence_S;
 }
 
 public class ToneManager : MonoBehaviour
@@ -57,7 +59,6 @@ public class ToneManager : MonoBehaviour
     // --------------------------------------
     // Public
     public float gain;
-    public float frequencyTransitionRate = .001f;
 
     public float[] harmonicStrengths = new float[12];
 
@@ -89,10 +90,9 @@ public class ToneManager : MonoBehaviour
             if (notes[i].phase == ADSR.ADSR_Phase.QueueToStop)
             {
                 double progress = AudioSettings.dspTime - notes[i].startTime;
-                double goal = 1.0f * BufferedSamples / SampleRate;
+                double goal = ADSR.ADSR_Time;
                 if (progress >= goal)
                 {
-                    Debug.Log("stopping " + i);
                     notes[i].AudioSource.Stop();
                     notes[i].phase = ADSR.ADSR_Phase.NotPlaying;
                 }
@@ -130,18 +130,17 @@ public class ToneManager : MonoBehaviour
 
         for (int j = 0; j < data.Length; j++)
         {
-            //float volumeModifier = ADSR.Evaluate(1.0f * activeNotes[j].bufferPosition / BufferedSamples);
             float adsrVolumeModifier = EvaluateADSR(i);
             //if (j % 1000 == 0) Debug.Log("playing " + i + " " + notes[i].bufferPosition + " " + notes[i].timeProgressedInPhase + " " + notes[i].phase + " vol=" + adsrVolumeModifier);
 
-            data[j] = CreateSineOscillator(notes[i].frequency, notes[i].totalSamples) * gain * adsrVolumeModifier;
-
+            //data[j] = CreateSineOscillator(notes[i].frequency, notes[i].totalSamples) * gain * adsrVolumeModifier;
+            data[j] = ReturnSuperimposedHarmonicsSeries(i, notes[i].totalSamples) * gain * adsrVolumeModifier;
 
             notes[i].bufferPosition++;
             notes[i].totalSamples++;
         }
 
-       // Debug.Log("first " + data[0] + ", last " + data[data.Length - 1] + " - " + notes[i].totalSamples);
+        //Debug.Log(notes[i].phase);
     }
 
     float CreateSineOscillator(float frequency, int position)
@@ -191,6 +190,9 @@ public class ToneManager : MonoBehaviour
                 vol = 0;
             }
             else n.timeProgressedInPhase = nTime;
+        } else
+        {
+            n.phase = ADSR.ADSR_Phase.QueueToStop;
         }
         notes[i] = n;
         return vol;
@@ -202,21 +204,16 @@ public class ToneManager : MonoBehaviour
         notes[i].bufferPosition = newPosition;
     }
 
-
-    public float ReturnSuperimposedHarmonicsSeries(int dataIndex)
+    public float ReturnSuperimposedHarmonicsSeries(int i, int position)
     {
         float superImposed = 0.0f;
 
-        //for (int i = 1; i <= 12; i++)
-        //{
-        //    float harmonicFrequency = fundementalToneFrequency * i;
+        for (int j = 1; j <= 12; j++)
+        {
+            float harmonicFrequency = notes[i].frequency * j;
 
-        //    float timeAtTheBeginig = (float)(AudioSettings.dspTime % (1.0 / (double)harmonicFrequency)); // very important to deal with percision issue as dspTime gets large
-
-        //    float exactTime = timeAtTheBeginig + (float)dataIndex / SampleRate;
-
-        //    superImposed += Mathf.Sin(exactTime * harmonicFrequency * 2f * Mathf.PI) * harmonicStrengths[i - 1];
-        //}
+            superImposed += Mathf.Sin(harmonicFrequency * 2f * Mathf.PI * position / SampleRate) * harmonicStrengths[j - 1];
+        }
 
         return superImposed;
     }
