@@ -17,6 +17,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float tileOffsetY;
     [SerializeField] float tileWidth;
 
+    internal float bottomY;
+    internal float topY;
+
     public void LoadLevel()
     {
         int nrBreaks = 0;
@@ -80,6 +83,9 @@ public class LevelManager : MonoBehaviour
         endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
 
         FindFirstObjectByType<PlayerControls>().transform.position = new Vector3(levelData.playerStartPosition.x, levelData.playerStartPosition.y, 0);
+
+        bottomY = levelData.playerStartPosition.y;
+        topY = totalHeight;
     }
 
     public void LoadFromEditor()
@@ -88,9 +94,17 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
-    public void Start()
+    public void LoadFromManager(LevelData levelData)
     {
+        this.levelData = levelData;
+
         for (int i = tilesParent.childCount - 1; i >= 0; i--) Destroy(tilesParent.GetChild(i).gameObject);
         LoadLevel();
     }
+
+    //public void Start()
+    //{
+    //    for (int i = tilesParent.childCount - 1; i >= 0; i--) Destroy(tilesParent.GetChild(i).gameObject);
+    //    LoadLevel();
+    //}
 }
