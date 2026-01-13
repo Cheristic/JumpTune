@@ -70,6 +70,10 @@ public class ToneManager : MonoBehaviour
 
     private ActiveNote[] notes = new ActiveNote[12];
 
+    public float VibratoBuildUpTime;
+    public float VibratoFrequency;
+    public float VibratoAmplitude;
+
 
     void Awake()
     {
@@ -134,7 +138,7 @@ public class ToneManager : MonoBehaviour
             //if (j % 1000 == 0) Debug.Log("playing " + i + " " + notes[i].bufferPosition + " " + notes[i].timeProgressedInPhase + " " + notes[i].phase + " vol=" + adsrVolumeModifier);
 
             //data[j] = CreateSineOscillator(notes[i].frequency, notes[i].totalSamples) * gain * adsrVolumeModifier;
-            data[j] = ReturnSuperimposedHarmonicsSeries(i, notes[i].totalSamples) * gain * adsrVolumeModifier;
+            data[j] = ReturnSuperimposedHarmonicsSeries(i, notes[i].totalSamples, Vibrato(i)) * gain * adsrVolumeModifier;
 
             notes[i].bufferPosition++;
             notes[i].totalSamples++;
@@ -146,6 +150,14 @@ public class ToneManager : MonoBehaviour
     float CreateSineOscillator(float frequency, int position)
     {
         return Mathf.Sin(2 * Mathf.PI * frequency * position / SampleRate);
+    }
+
+    float Vibrato(int i)
+    {
+        ActiveNote n = notes[i];
+        float time = (float)n.totalSamples / SampleRate;
+        float amplitude = Mathf.Lerp(0, VibratoAmplitude, time / VibratoBuildUpTime);
+        return notes[i].frequency + (Mathf.Sin(2f * Mathf.PI * VibratoFrequency * time) + 1) * amplitude;
     }
 
     float EvaluateADSR(int i)
@@ -204,13 +216,13 @@ public class ToneManager : MonoBehaviour
         notes[i].bufferPosition = newPosition;
     }
 
-    public float ReturnSuperimposedHarmonicsSeries(int i, int position)
+    public float ReturnSuperimposedHarmonicsSeries(int i, int position, float frequency)
     {
         float superImposed = 0.0f;
 
         for (int j = 1; j <= 12; j++)
         {
-            float harmonicFrequency = notes[i].frequency * j;
+            float harmonicFrequency = frequency * j;
 
             superImposed += Mathf.Sin(harmonicFrequency * 2f * Mathf.PI * position / SampleRate) * harmonicStrengths[j - 1];
         }

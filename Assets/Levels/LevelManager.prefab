@@ -67,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c03adbc48b886e84d83955c350d2f79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gain: 0.17
+  gain: 0.6
   harmonicStrengths:
   - 0.5
   - 0.5
@@ -85,7 +85,10 @@ MonoBehaviour:
   ADSR:
     Attack_MS: 20
     Decay_MS: 100
-    Sustain_MS: 120
+    Sustain_MS: 200
     Sustain_DB_Percent: 0.35
     Release_MS: 80
     Silence_MS: 20
+  VibratoBuildUpTime: 0.08
+  VibratoFrequency: 6.53
+  VibratoAmplitude: 0.05
