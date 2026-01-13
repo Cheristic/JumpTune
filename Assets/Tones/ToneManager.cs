@@ -130,7 +130,7 @@ public class ToneManager : MonoBehaviour
     void OnAudioRead(float[] data, int i)
     {
         //if (!notes[i].IsPlaying) return;
-        Debug.Log(i + " " + notes[i].phase + ": " + notes[i].bufferPosition + " - " + notes[i].totalSamples);
+        //Debug.Log(i + " " + notes[i].phase + ": " + notes[i].bufferPosition + " - " + notes[i].totalSamples);
 
         for (int j = 0; j < data.Length; j++)
         {
