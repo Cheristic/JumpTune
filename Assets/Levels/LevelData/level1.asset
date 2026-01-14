@@ -21,7 +21,7 @@ MonoBehaviour:
     hasBreak: 0
   - isFixed: 1
     correctFrequency: 350
-    hasBreak: 1
+    hasBreak: 0
   - isFixed: 1
     correctFrequency: 400
     hasBreak: 1
@@ -52,7 +52,6 @@ MonoBehaviour:
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
-  playerStartPosition: {x: 0, y: 1}
   notchCount: 10
   levelWidth: 20
   centSpacing: 10

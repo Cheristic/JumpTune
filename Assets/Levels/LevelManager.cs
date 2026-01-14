@@ -12,13 +12,17 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject endTilePrefab;
     [SerializeField] GameObject breakTilePrefab;
 
-    // These two could also be level-specifici if necessary
+    // These two could also be level-specific if necessary
     [SerializeField] float groundOffsetY;
     [SerializeField] float tileOffsetY;
     [SerializeField] float tileWidth;
 
     internal float bottomY;
     internal float topY;
+
+    [SerializeField] float sizeFactor;
+    [SerializeField] Vector2 playerStartPosition;
+    [SerializeField] Color tileDisabledColor;
 
     public void LoadLevel()
     {
@@ -53,13 +57,14 @@ public class LevelManager : MonoBehaviour
             GameObject obj = Instantiate(tilePrefab, tilesParent);
             obj.transform.position = pos;
 
-            obj.GetComponent<TonePlatform>().Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, tile.correctFrequency, levelData.centSpacing);
+            obj.GetComponent<TonePlatform>().Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, tile.correctFrequency, levelData.centSpacing, tileDisabledColor);
 
             if (tile.hasBreak)
             {
                 GameObject breakObj = Instantiate(breakTilePrefab, tilesParent);
                 breakObj.transform.position = new Vector3(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks, 0);
                 breakObj.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+                breakObj.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
                 nrBreaks++;
             }
         }
@@ -81,10 +86,11 @@ public class LevelManager : MonoBehaviour
         GameObject endTile = Instantiate(endTilePrefab, tilesParent);
         endTile.transform.position = new Vector3(0, totalHeight, 0);
         endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+        endTile.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
 
-        FindFirstObjectByType<PlayerControls>().transform.position = new Vector3(levelData.playerStartPosition.x, levelData.playerStartPosition.y, 0);
+        FindFirstObjectByType<PlayerControls>().transform.position = new Vector3(playerStartPosition.x, playerStartPosition.y, 0);
 
-        bottomY = levelData.playerStartPosition.y;
+        bottomY = playerStartPosition.y;
         topY = totalHeight;
     }
 
