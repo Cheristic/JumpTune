@@ -109,6 +109,7 @@ public class LevelManager : MonoBehaviour
         {
             if (tilesParent.GetChild(i).GetComponent<TonePlatform>() is TonePlatform tonePlatform)
             {
+                if (tonePlatform.isFixed) continue;
                 int error = (int)tonePlatform.Error();
                 score += System.Math.Max(10 - error, 0);
             }
