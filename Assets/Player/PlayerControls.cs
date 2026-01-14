@@ -32,6 +32,10 @@ public class PlayerControls : MonoBehaviour
 
     Vector3 leftGroundedChecker = Vector3.zero;
     Vector3 rightGroundedChecker = Vector3.zero;
+
+    // player anim
+    Animator animator;
+
     public void Init()
     {
         input = new();
@@ -42,6 +46,7 @@ public class PlayerControls : MonoBehaviour
         input.Player.Jump.canceled += ReleasedJump;
         rightGroundedChecker = transform.InverseTransformPoint(new Vector3(_collider.bounds.max.x, _collider.bounds.center.y, 0));
         leftGroundedChecker = transform.InverseTransformPoint(new Vector3(_collider.bounds.min.x, _collider.bounds.center.y, 0));
+        animator = GetComponent<Animator>();
     }
 
     private void OnDisable()
@@ -52,6 +57,9 @@ public class PlayerControls : MonoBehaviour
     {
         float x_dir = input.Player.Move.ReadValue<Vector2>().x;
         rb.linearVelocityX = x_dir * MOVE_SPEED;
+
+        animator.SetFloat("speed", Mathf.Abs(rb.linearVelocityX));
+        if(x_dir != 0) transform.localScale = new Vector3(x_dir, 1, 1);
 
         if (isGrounded)
         {
@@ -88,12 +96,16 @@ public class PlayerControls : MonoBehaviour
         coyoteTimer = 0.0f;
 
         rb.linearVelocityY = CalculateJumpHeight(JUMP_HEIGHT);
-        jumpHeld = true;   
+        jumpHeld = true;
+
+        animator.SetBool("isJumping", true);
     }
 
     void ReleasedJump(InputAction.CallbackContext ctx)
     {
         jumpHeld = false;
+
+        animator.SetBool("isJumping", false);
     }
 
     internal bool isGrounded
