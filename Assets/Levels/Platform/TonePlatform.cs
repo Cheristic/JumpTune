@@ -14,9 +14,6 @@ public class TonePlatform : MonoBehaviour
     [SerializeField] float MinLagTime;
     [SerializeField] float HoldLagSlowDown;
 
-    [Header("Tone")]
-    [SerializeField] float FrequencyMult;
-
     internal int currNotch;
     internal bool isFixed;
     internal float leftMostFrequency;
@@ -64,7 +61,7 @@ public class TonePlatform : MonoBehaviour
     IEnumerator HandleMoveInput()
     { 
         yield return new WaitUntil(() => PlayerManager.Instance.controls.isGrounded);
-
+        ToneManager.Instance.PlayNote(CurrFrequency);
         float currLagTime = InitialHoldLagTime;
         while (true)
         {
@@ -72,12 +69,13 @@ public class TonePlatform : MonoBehaviour
             if ( dir != 0 && ((dir < 0 && currNotch > 0) || (dir > 0 && currNotch < notchCount - 1)))
             {
                 playerAnimator?.SetBool("isSinging", true);
-                int claimedActiveNote = ToneManager.Instance.ClaimActiveNote();
-                ToneManager.Instance.PlayNote(claimedActiveNote, leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f));
+                //int claimedActiveNote = ToneManager.Instance.ClaimActiveNote();
+                //ToneManager.Instance.PlayNote(claimedActiveNote, leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f));
 
                 int currDir = dir;
                 do
                 {
+                    ToneManager.Instance.PlayNote(CurrFrequency);
                     transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
                     PlayerManager.Instance.transform.position = new Vector2(PlayerManager.Instance.transform.position.x + currDir * notchSpacingInWorldCoords, PlayerManager.Instance.transform.position.y);
                     currNotch += currDir;
@@ -98,4 +96,6 @@ public class TonePlatform : MonoBehaviour
         }
         
     }
+
+    float CurrFrequency { get => leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f); }
 }
