@@ -3,7 +3,13 @@ using UnityEngine;
 using System.Collections;
 public class ChunkTracker : MonoBehaviour
 {
+    public static ChunkTracker Instance { get; private set; }
     List<Chunk> Chunks;
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+    }
     public void CreateChunks(List<Chunk> chunks)
     {
         Chunks = chunks;
@@ -27,9 +33,9 @@ public class ChunkTracker : MonoBehaviour
         }
     }
 
+    int currChunkIndex = 0;
     IEnumerator TrackChunksLoop()
     {
-        int currChunkIndex = 0;
         while (true)
         {
             Vector2 currBounds = Chunks[currChunkIndex].ChunkBounds;
@@ -49,5 +55,12 @@ public class ChunkTracker : MonoBehaviour
 
 
         // TRIGGER ENDING
+    }
+
+    public float GetChunkXChange()
+    {
+        if (currChunkIndex >= Chunks.Count) return 0;
+
+        return Chunks[currChunkIndex].framePosXChange;
     }
 }

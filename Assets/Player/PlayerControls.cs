@@ -65,6 +65,11 @@ public class PlayerControls : MonoBehaviour
         {
             fy = 0;
             rb.gravityScale = 6;
+            if (lastGroundType == GroundType.Moving)
+            {
+                Debug.Log(ChunkTracker.Instance.GetChunkXChange());
+                transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange() + transform.position.x, transform.position.y);
+            }
         }
         else if (jumpHeld) fy = JUMP_FORCE;
         else if (rb.linearVelocityY > 0) fy = -STRONG_DAMP_FORCE;
@@ -108,6 +113,12 @@ public class PlayerControls : MonoBehaviour
         animator.SetBool("isJumping", false);
     }
 
+    public enum GroundType 
+    { 
+        Stable,
+        Moving
+    }
+    GroundType lastGroundType;
     internal bool isGrounded
     {
         get
@@ -118,11 +129,14 @@ public class PlayerControls : MonoBehaviour
             RaycastHit2D hit2 = Physics2D.Raycast(transform.TransformPoint(rightGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
             if (hit2.collider != null)
             {
+                lastGroundType = hit2.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving : GroundType.Stable;
+                Debug.Log(hit2.collider.gameObject.tag);
                 return true;
             }
             RaycastHit2D hit1 = Physics2D.Raycast(transform.TransformPoint(leftGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
             if (hit1.collider != null)
             {
+                lastGroundType = hit1.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving : GroundType.Stable;
                 return true;
             }
             return false;

@@ -11,6 +11,7 @@ public class Chunk : MonoBehaviour
     [SerializeField] float shakeMult;
     [SerializeField] float shakeExp;
     [SerializeField] float finalSpeedMult;
+    [SerializeField] float shakeChangeRate;
 
     List<TonePlatform> platforms;
 
@@ -55,18 +56,29 @@ public class Chunk : MonoBehaviour
         return score;
     }
 
+    float targetShakeSpeed;
     public void SetChunkShake(int totalError)
     {
         //Debug.Log(chunkIndex + ": " + totalError);
-        currShakeSpeed = totalError;
+        targetShakeSpeed = totalError;
     }
     public float currShakeSpeed = 0; // public purely for testing in the inspector
-    private void Update()
+    internal float framePosXChange = 0;
+    private void FixedUpdate()
     {
         if (_man == null) return;
+
+        if (targetShakeSpeed != currShakeSpeed)
+        {
+            currShakeSpeed = targetShakeSpeed < currShakeSpeed ? Mathf.Clamp(currShakeSpeed - shakeChangeRate, targetShakeSpeed, currShakeSpeed)
+                : Mathf.Clamp(currShakeSpeed + shakeChangeRate, currShakeSpeed, targetShakeSpeed);
+        }
+
+        float prevX = Shaker.position.x;
         Shaker.position = new Vector2(Mathf.Sin(2f * Mathf.PI * shakeFrequency * Time.time) *
             Mathf.Clamp(shakeMult * Mathf.Pow(currShakeSpeed, shakeExp),
-            -_man.levelData.levelWidth + _man.levelData.towerWidth, _man.levelData.levelWidth - _man.levelData.towerWidth) * finalSpeedMult
+            (-_man.levelData.levelWidth + _man.levelData.towerWidth)/2, (_man.levelData.levelWidth - _man.levelData.towerWidth)/2) * finalSpeedMult
             , Shaker.position.y);
+        framePosXChange = Shaker.position.x - prevX;
     }
 }

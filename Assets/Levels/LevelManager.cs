@@ -74,7 +74,7 @@ public class LevelManager : MonoBehaviour
             if (tile.endsChunk || tile.hasBreak)
             {
                 float divideLine = tile.hasBreak ? groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks + tileHeight / 2 : //  touches bottom of break
-                    groundOffsetY + tileOffsetY * i + tileOffsetY / 2 + tileOffsetY * nrBreaks; // halfway between this tile and next
+                    groundOffsetY + tileOffsetY * (i+1) + tileOffsetY * nrBreaks; // halfway between this tile and next
 
                 currChunk.FinishChunk(divideLine, tile.hasBreak); 
 
@@ -122,7 +122,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadFromEditor()
     {
-        for (int i = tilesParent.childCount - 1; i >= 0; i--) DestroyImmediate(tilesParent.GetChild(i).gameObject);
+        ClearLoadedLevel();
         LoadLevel();
     }
 
@@ -130,7 +130,12 @@ public class LevelManager : MonoBehaviour
     {
         this.levelData = levelData;
 
-        for (int i = tilesParent.childCount - 1; i >= 0; i--) Destroy(tilesParent.GetChild(i).gameObject);
+        ClearLoadedLevel();
         LoadLevel();
+    }
+
+    public void ClearLoadedLevel()
+    {
+        for (int i = tilesParent.childCount - 1; i >= 0; i--) DestroyImmediate(tilesParent.GetChild(i).gameObject);
     }
 }

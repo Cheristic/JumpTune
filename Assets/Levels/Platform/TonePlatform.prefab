@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5033367567820624105}
   m_Layer: 6
   m_Name: TonePlatformMover
-  m_TagString: Untagged
+  m_TagString: Tone Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: 6528092828515714270}
   m_Layer: 6
   m_Name: TonePlatform
-  m_TagString: Untagged
+  m_TagString: Tone Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -236,8 +236,6 @@ MonoBehaviour:
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  FrequencyMult: 0
-  playerAnimator: {fileID: 7657886338754973144, guid: 0cc53a5c3464b7b4d97a5fdbc534e93d, type: 3}
 --- !u!50 &2107554421607690036
 Rigidbody2D:
   serializedVersion: 5

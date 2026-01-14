@@ -14,5 +14,11 @@ public class LevelEditor : Editor
         {
             levelManager.LoadFromEditor();
         }
+
+        if (GUILayout.Button("Clear level"))
+        {
+            if (Application.isPlaying) return;
+            levelManager.ClearLoadedLevel();
+        }
     }
 }
