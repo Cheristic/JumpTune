@@ -5,7 +5,6 @@ using UnityEngine;
 public class LevelData : ScriptableObject
 {
     public List<TileData> tiles;
-    public Vector2 playerStartPosition;
     public int notchCount;
     public float levelWidth;
     public float centSpacing;

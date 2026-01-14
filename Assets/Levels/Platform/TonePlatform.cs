@@ -23,8 +23,9 @@ public class TonePlatform : MonoBehaviour
 
     internal float centSpacing;
 
-    public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing) 
     Animator playerAnimator;
+
+    public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor) 
     { 
         currNotch = _StartingNotch;
         isFixed = _Fixed;
@@ -42,7 +43,7 @@ public class TonePlatform : MonoBehaviour
 
             foreach (SpriteRenderer s in this.transform.GetComponentsInChildren<SpriteRenderer>())
             {
-                s.color = new Color(s.color.r - 0.2f, s.color.g - 0.2f, s.color.b - 0.2f, 1f);
+                s.color = _tileDisabledColor;
             }
         }
 
