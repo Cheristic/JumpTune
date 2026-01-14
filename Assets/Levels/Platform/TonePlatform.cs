@@ -17,6 +17,7 @@ public class TonePlatform : MonoBehaviour
     internal int currNotch;
     internal bool isFixed;
     internal float leftMostFrequency;
+    internal float correctFrequency;
 
     internal float centSpacing;
 
@@ -29,6 +30,7 @@ public class TonePlatform : MonoBehaviour
 
         centSpacing = _CentSpacing;
 
+        correctFrequency = _CorrectFrequency;
         leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
 
         if(isFixed)
@@ -41,6 +43,14 @@ public class TonePlatform : MonoBehaviour
                 s.color = new Color(s.color.r - 0.2f, s.color.g - 0.2f, s.color.b - 0.2f, 1f);
             }
         }
+    }
+
+    public double Error()
+    {
+        if (isFixed) return 0.0f;
+
+        double notchDiff = Math.Round(1200 * Math.Log(CurrFrequency / correctFrequency, 2) / centSpacing);
+        return notchDiff * notchDiff;
     }
 
     private void OnDisable() => DisableMovement();

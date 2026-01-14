@@ -102,6 +102,20 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
+    public int Score()
+    {
+        int score = 0;
+        for (int i = 0; i < tilesParent.childCount; i++)
+        {
+            if (tilesParent.GetChild(i).GetComponent<TonePlatform>() is TonePlatform tonePlatform)
+            {
+                int error = (int)tonePlatform.Error();
+                score += System.Math.Max(10 - error, 0);
+            }
+        }
+        return score;
+    }
+
     //public void Start()
     //{
     //    for (int i = tilesParent.childCount - 1; i >= 0; i--) Destroy(tilesParent.GetChild(i).gameObject);
