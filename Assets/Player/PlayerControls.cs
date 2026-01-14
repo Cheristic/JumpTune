@@ -67,7 +67,6 @@ public class PlayerControls : MonoBehaviour
             rb.gravityScale = 6;
             if (lastGroundType == GroundType.Moving)
             {
-                Debug.Log(ChunkTracker.Instance.GetChunkXChange());
                 transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange() + transform.position.x, transform.position.y);
             }
         }
@@ -130,7 +129,6 @@ public class PlayerControls : MonoBehaviour
             if (hit2.collider != null)
             {
                 lastGroundType = hit2.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving : GroundType.Stable;
-                Debug.Log(hit2.collider.gameObject.tag);
                 return true;
             }
             RaycastHit2D hit1 = Physics2D.Raycast(transform.TransformPoint(leftGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
