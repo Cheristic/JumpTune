@@ -16,42 +16,56 @@ MonoBehaviour:
   - isFixed: 0
     correctFrequency: 250
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 300
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 1
     correctFrequency: 350
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 1
     correctFrequency: 400
     hasBreak: 1
+    endsChunk: 1
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 1
+    endsChunk: 1
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   - isFixed: 0
     correctFrequency: 450
     hasBreak: 0
+    endsChunk: 0
   notchCount: 10
   levelWidth: 20
+  towerWidth: 16
   centSpacing: 10

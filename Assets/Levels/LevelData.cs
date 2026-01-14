@@ -7,5 +7,6 @@ public class LevelData : ScriptableObject
     public List<TileData> tiles;
     public int notchCount;
     public float levelWidth;
+    public float towerWidth;
     public float centSpacing;
 }
