@@ -67,5 +67,5 @@ MonoBehaviour:
     endsChunk: 0
   notchCount: 10
   levelWidth: 20
-  towerWidth: 16
+  towerWidth: 12
   centSpacing: 10

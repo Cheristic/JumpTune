@@ -87,7 +87,7 @@ public class TonePlatform : MonoBehaviour
                 {
                     ToneManager.Instance.PlayNote(CurrFrequency);
                     transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
-                    PlayerManager.Instance.transform.position = new Vector2(PlayerManager.Instance.transform.position.x + currDir * notchSpacingInWorldCoords, PlayerManager.Instance.transform.position.y);
+                    PlayerManager.Instance.TryMoveByPlatform(currDir * notchSpacingInWorldCoords);
                     currNotch += currDir;
                     yield return new WaitForSeconds(currLagTime);
                     currLagTime = Mathf.Max(currLagTime * HoldLagSpeedUp, MinLagTime);

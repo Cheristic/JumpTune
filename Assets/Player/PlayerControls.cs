@@ -17,7 +17,6 @@ public class PlayerControls : MonoBehaviour
 
     internal PlayerInput input;
     Rigidbody2D rb;
-    BoxCollider2D _collider;
 
     [Header("Jump Physics")]
     [SerializeField] float JUMP_FORCE;
@@ -40,12 +39,11 @@ public class PlayerControls : MonoBehaviour
     {
         input = new();
         rb = GetComponent<Rigidbody2D>();
-        _collider = GetComponent<BoxCollider2D>();
         input.Enable();
         input.Player.Jump.started += StartJump;
         input.Player.Jump.canceled += ReleasedJump;
-        rightGroundedChecker = transform.InverseTransformPoint(new Vector3(_collider.bounds.max.x, _collider.bounds.center.y, 0));
-        leftGroundedChecker = transform.InverseTransformPoint(new Vector3(_collider.bounds.min.x, _collider.bounds.center.y, 0));
+        rightGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.max.x, PlayerManager.Instance._collider.bounds.center.y, 0));
+        leftGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.min.x, PlayerManager.Instance._collider.bounds.center.y, 0));
         animator = GetComponent<Animator>();
     }
 

@@ -53,6 +53,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerManager
   controls: {fileID: 3895695216177182274}
   ChunkCheckerPoint: {fileID: 732737991378949156}
+  WallLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!114 &3895695216177182274
 MonoBehaviour:
   m_ObjectHideFlags: 0
