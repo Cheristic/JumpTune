@@ -75,10 +75,11 @@ public class Chunk : MonoBehaviour
         }
 
         float prevX = Shaker.position.x;
-        Shaker.position = new Vector2(Mathf.Sin(2f * Mathf.PI * shakeFrequency * Time.time) *
+        float newX = Mathf.Sin(2f * Mathf.PI * shakeFrequency * Time.time) *
             Mathf.Clamp(shakeMult * Mathf.Pow(currShakeSpeed, shakeExp),
-            (-_man.levelData.levelWidth + _man.levelData.towerWidth)/2, (_man.levelData.levelWidth - _man.levelData.towerWidth)/2) * finalSpeedMult
-            , Shaker.position.y);
+            (-_man.levelData.levelWidth + _man.levelData.towerWidth)/2, (_man.levelData.levelWidth - _man.levelData.towerWidth)/2) * finalSpeedMult;
+            
+        Shaker.position = new Vector2(newX, Shaker.position.y);
         framePosXChange = Shaker.position.x - prevX;
     }
 }
