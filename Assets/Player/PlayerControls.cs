@@ -60,7 +60,7 @@ public class PlayerControls : MonoBehaviour
         rb.linearVelocityX = x_dir * MOVE_SPEED;
 
         animator.SetFloat("speed", Mathf.Abs(rb.linearVelocityX));
-        if(x_dir != 0) transform.localScale = new Vector3(x_dir, 1, 1);
+        if(x_dir != 0) transform.localScale = new Vector3(Mathf.Sign(x_dir), 1, 1);
 
         if (isGrounded)
         {
