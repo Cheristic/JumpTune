@@ -34,6 +34,7 @@ public class PlayerControls : MonoBehaviour
 
     // player anim
     Animator animator;
+    BoxCollider2D playerCollider;
 
     public void Init()
     {
@@ -42,9 +43,11 @@ public class PlayerControls : MonoBehaviour
         input.Enable();
         input.Player.Jump.started += StartJump;
         input.Player.Jump.canceled += ReleasedJump;
+        input.Player.Drop.started += StartDrop;
         rightGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.max.x, PlayerManager.Instance._collider.bounds.center.y, 0));
         leftGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.min.x, PlayerManager.Instance._collider.bounds.center.y, 0));
         animator = GetComponent<Animator>();
+        playerCollider = GetComponent<BoxCollider2D>();
     }
 
     private void OnDisable()
@@ -88,6 +91,21 @@ public class PlayerControls : MonoBehaviour
     float CalculateJumpHeight(float height)
     {
         return Mathf.Sqrt(-2.0f * Physics2D.gravity.y * height);
+    }
+
+    void StartDrop(InputAction.CallbackContext ctx)
+    {
+        if (isGrounded && lastGroundType == GroundType.Moving && playerCollider.enabled)
+        {
+            StartCoroutine(DisableCollision(0.25f));
+        }
+    }
+
+    private IEnumerator DisableCollision(float disableSeconds)
+    {
+        playerCollider.enabled = false;
+        yield return new WaitForSeconds(disableSeconds);
+        playerCollider.enabled = true;
     }
 
     void StartJump(InputAction.CallbackContext ctx)
