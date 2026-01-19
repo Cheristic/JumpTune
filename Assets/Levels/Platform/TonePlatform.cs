@@ -23,6 +23,11 @@ public class TonePlatform : MonoBehaviour
 
     Animator playerAnimator;
 
+    [Header("Outline")]
+    [SerializeField] Material outlineMaterial;
+    [SerializeField] Material noOutlineMaterial;
+    Renderer rend;
+
     public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor) 
     { 
         currNotch = _StartingNotch;
@@ -108,4 +113,25 @@ public class TonePlatform : MonoBehaviour
     }
 
     float CurrFrequency { get => leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f); }
+
+    private void Start()
+    {
+        rend = this.transform.GetComponentInChildren<Renderer>();
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!isFixed && PlayerManager.Instance.controls.isGrounded)
+        {
+            SetOutline();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        SetNoOutline(); 
+    }
+
+    private void SetOutline() { rend.material = outlineMaterial; }
+    private void SetNoOutline() { rend.material = noOutlineMaterial; }
 }

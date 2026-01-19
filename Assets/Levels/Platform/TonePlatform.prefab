@@ -236,6 +236,8 @@ MonoBehaviour:
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
+  outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
+  noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
 --- !u!50 &2107554421607690036
 Rigidbody2D:
   serializedVersion: 5
