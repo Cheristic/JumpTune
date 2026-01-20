@@ -78,11 +78,12 @@ public class LevelManager : MonoBehaviour
 
             tileObj.Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, FindFrequency(tile.correctFrequencyIdx, levelData.tuningSystem), levelData.centSpacing, tileDisabledColor);
 
-            
-            if(tile.isFixed) Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
-            else Instantiate(bgWallPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+            GameObject bgWall;
+            if(tile.isFixed) bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+            else bgWall = Instantiate(bgWallPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
 
-            currChunk.AppendPlatform(tileObj);
+            currChunk.AppendPlatform(tileObj.gameObject);
+            currChunk.AppendPlatform(bgWall);
 
             if (tile.endsChunk || tile.hasBreak)
             {
@@ -103,7 +104,8 @@ public class LevelManager : MonoBehaviour
                 breakObj.transform.localScale = new Vector3(levelData.levelWidth, 1, 1);
                 breakObj.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
 
-                Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+                bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+                currChunk.AppendPlatform(bgWall);
 
                 nrBreaks++;
             }
@@ -112,14 +114,16 @@ public class LevelManager : MonoBehaviour
         float totalHeight = groundOffsetY + tileOffsetY * (levelData.tiles.Count) + tileOffsetY * nrBreaks;
 
         GameObject wallLeft = Instantiate(wallPrefab, tilesParent);
-        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth, totalHeight / 2, 0);
-        wallLeft.transform.localScale = new Vector3(2, 1, 1);
+        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth, totalHeight / 2 - tileOffsetY, 0);
+        wallLeft.transform.localScale = new Vector3(3, 1, 1);
         wallLeft.GetComponent<SpriteRenderer>().size = new Vector3(2, totalHeight, 1);
+        wallLeft.GetComponent<BoxCollider2D>().size = new Vector3(2, totalHeight, 1);
 
         GameObject wallRight = Instantiate(wallPrefab, tilesParent);
-        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth, totalHeight / 2, 0);
-        wallRight.transform.localScale = new Vector3(2, 1, 1);
+        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth, totalHeight / 2 - tileOffsetY, 0);
+        wallRight.transform.localScale = new Vector3(3, 1, 1);
         wallRight.GetComponent<SpriteRenderer>().size = new Vector3(2, totalHeight, 1);
+        wallRight.GetComponent<BoxCollider2D>().size = new Vector3(2, totalHeight, 1);
 
         GameObject endTile = Instantiate(endTilePrefab, tilesParent);
         endTile.transform.position = new Vector3(0, totalHeight + justOneMoreOffsetBroISwear/2, 0);
