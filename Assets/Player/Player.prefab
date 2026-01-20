@@ -70,11 +70,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerControls
   MOVE_SPEED: 6
   JUMP_HEIGHT: 10
-  IS_GROUNDED_CHECK_DISTANCE: 1.1
+  IS_GROUNDED_CHECK_DISTANCE: 2.1
   GroundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  JUMP_FORCE: 30
+  JUMP_FORCE: 38
   STRONG_DAMP_FORCE: 75
   WEAK_DAMP_FORCE: 30
 --- !u!212 &8416159377272722660
@@ -196,11 +196,11 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: -0.15}
+  m_Offset: {x: 0, y: -1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.42, y: 3.26}
+    oldSize: {x: 6.84, y: 6.52}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -246,7 +246,7 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.42, y: 3.26}
+    oldSize: {x: 6.84, y: 6.52}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

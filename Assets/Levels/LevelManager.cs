@@ -11,6 +11,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject wallPrefab;
     [SerializeField] GameObject startTilePrefab;
     [SerializeField] GameObject endTilePrefab;
+    [SerializeField] GameObject bgWallPrefab;
+    [SerializeField] GameObject bgWallFixedPrefab;
     [SerializeField] GameObject breakTilePrefab;
     [SerializeField] GameObject chunkPrefab;
     [SerializeField] ChunkTracker chunkTracker;
@@ -20,6 +22,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float tileOffsetY;
     [SerializeField] float tileWidth;
     [SerializeField] float tileHeight;
+    [SerializeField] float justOneMoreOffsetBroISwear;
 
     internal float bottomY;
     internal float topY;
@@ -36,8 +39,9 @@ public class LevelManager : MonoBehaviour
         float offset = notchSpacing / 2;
 
         GameObject startTile = Instantiate(startTilePrefab, tilesParent);
-        startTile.transform.position = new Vector3(0, 0, 0);
+        startTile.transform.position = new Vector3(0, -tileOffsetY, 0);
         startTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+        //startTile.GetComponent<SpriteRenderer>().size = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
 
         Chunk currChunk = Instantiate(chunkPrefab, new Vector2(0, .65f), Quaternion.identity, tilesParent).GetComponent<Chunk>();
         currChunk.Init(this, 0);
@@ -47,7 +51,10 @@ public class LevelManager : MonoBehaviour
         {
             TileData tile = levelData.tiles[i];
 
-            int xCorrect = Random.Range(1, levelData.notchCount + 1) - 1;
+            int xCorrect;
+            if(tile.isFixed) xCorrect = (levelData.notchCount + 1) / 2;
+            else xCorrect = Random.Range(1, levelData.notchCount + 1) - 1;
+
             float posCorrectX = -levelData.towerWidth / 2 + xCorrect * notchSpacing;
 
             float posX = posCorrectX;
@@ -64,10 +71,16 @@ public class LevelManager : MonoBehaviour
 
             //Debug.Log("tile " + i + " fixed: " + tile.isFixed + " x correct " + xCorrect + " pos correct " + posCorrectX + " pos final " + posX);
 
-            TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks),
+            TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear),
                  Quaternion.identity, tilesParent).GetComponent<TonePlatform>();
 
-            tileObj.Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, tile.correctFrequency, levelData.centSpacing, tileDisabledColor);
+            tileObj.transform.localScale = new Vector3(tileWidth, tileHeight,  1);
+
+            tileObj.Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, FindFrequency(tile.correctFrequencyIdx, levelData.tuningSystem), levelData.centSpacing, tileDisabledColor);
+
+            
+            if(tile.isFixed) Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+            else Instantiate(bgWallPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
 
             currChunk.AppendPlatform(tileObj);
 
@@ -86,9 +99,12 @@ public class LevelManager : MonoBehaviour
             if (tile.hasBreak)
             {
                 GameObject breakObj = Instantiate(breakTilePrefab, tilesParent);
-                breakObj.transform.position = new Vector3(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks, 0);
-                breakObj.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+                breakObj.transform.position = new Vector3(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear/2, 0);
+                breakObj.transform.localScale = new Vector3(levelData.levelWidth, 1, 1);
                 breakObj.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
+
+                Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+
                 nrBreaks++;
             }
         }
@@ -96,17 +112,21 @@ public class LevelManager : MonoBehaviour
         float totalHeight = groundOffsetY + tileOffsetY * (levelData.tiles.Count) + tileOffsetY * nrBreaks;
 
         GameObject wallLeft = Instantiate(wallPrefab, tilesParent);
-        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth / 2, totalHeight / 2, 0);
-        wallLeft.transform.localScale = new Vector3(1, totalHeight, 1);
+        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth, totalHeight / 2, 0);
+        wallLeft.transform.localScale = new Vector3(2, 1, 1);
+        wallLeft.GetComponent<SpriteRenderer>().size = new Vector3(2, totalHeight, 1);
 
         GameObject wallRight = Instantiate(wallPrefab, tilesParent);
-        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth / 2, totalHeight / 2, 0);
-        wallRight.transform.localScale = new Vector3(1, totalHeight, 1);
+        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth, totalHeight / 2, 0);
+        wallRight.transform.localScale = new Vector3(2, 1, 1);
+        wallRight.GetComponent<SpriteRenderer>().size = new Vector3(2, totalHeight, 1);
 
         GameObject endTile = Instantiate(endTilePrefab, tilesParent);
-        endTile.transform.position = new Vector3(0, totalHeight, 0);
+        endTile.transform.position = new Vector3(0, totalHeight + justOneMoreOffsetBroISwear/2, 0);
         endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
         endTile.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
+
+        Instantiate(bgWallFixedPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent);
 
         currChunk.FinishChunk(totalHeight + tileHeight/2, true);
 
@@ -137,5 +157,10 @@ public class LevelManager : MonoBehaviour
     public void ClearLoadedLevel()
     {
         for (int i = tilesParent.childCount - 1; i >= 0; i--) DestroyImmediate(tilesParent.GetChild(i).gameObject);
+    }
+
+    public float FindFrequency(int n, int N, float refFrequency=130.81f) {
+        // ref note is C3
+        return refFrequency * Mathf.Pow(2f, n * 1.0f / N);
     }
 }

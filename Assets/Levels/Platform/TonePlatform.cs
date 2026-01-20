@@ -21,6 +21,8 @@ public class TonePlatform : MonoBehaviour
 
     internal float centSpacing;
 
+    [SerializeField] Sprite fixedTileSprite;
+
     Animator playerAnimator;
 
     public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor) 
@@ -37,8 +39,10 @@ public class TonePlatform : MonoBehaviour
 
         if(isFixed)
         {
-            TonePlatformTrigger tonePlatformTrigger = this.transform.GetComponentInChildren<TonePlatformTrigger>();
-            tonePlatformTrigger.gameObject.SetActive(false);
+            transform.localScale *= new Vector2(2, 2);
+            SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
+            sr.sprite = fixedTileSprite;
+            GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 0.1f); // top ten moments in coding history
 
             foreach (SpriteRenderer s in this.transform.GetComponentsInChildren<SpriteRenderer>())
             {
@@ -86,9 +90,13 @@ public class TonePlatform : MonoBehaviour
                 do
                 {
                     ToneManager.Instance.PlayNote(CurrFrequency);
-                    transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
-                    PlayerManager.Instance.TryMoveByPlatform(currDir * notchSpacingInWorldCoords);
-                    currNotch += currDir;
+
+                    if(!isFixed) {
+                        transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
+                        PlayerManager.Instance.TryMoveByPlatform(currDir * notchSpacingInWorldCoords);    
+                        currNotch += currDir;
+                    }
+                
                     yield return new WaitForSeconds(currLagTime);
                     currLagTime = Mathf.Max(currLagTime * HoldLagSpeedUp, MinLagTime);
                     currDir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());
