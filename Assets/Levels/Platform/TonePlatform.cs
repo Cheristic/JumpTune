@@ -52,6 +52,8 @@ public class TonePlatform : MonoBehaviour
         }
 
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
+
+        rend = this.transform.GetComponentInChildren<Renderer>();
     }
 
     public double Error()
@@ -71,11 +73,13 @@ public class TonePlatform : MonoBehaviour
     public void DisableMovement()
     {
         StopAllCoroutines();
+        SetNoOutline();
     }
 
     IEnumerator HandleMoveInput()
     { 
         yield return new WaitUntil(() => PlayerManager.Instance.controls.isGrounded);
+        SetOutline();
         ToneManager.Instance.PlayNote(CurrFrequency);
         float currLagTime = InitialHoldLagTime;
         while (true)
@@ -113,24 +117,6 @@ public class TonePlatform : MonoBehaviour
     }
 
     float CurrFrequency { get => leftMostFrequency * Mathf.Pow(2, centSpacing * currNotch / 1200.0f); }
-
-    private void Start()
-    {
-        rend = this.transform.GetComponentInChildren<Renderer>();
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!isFixed && PlayerManager.Instance.controls.isGrounded)
-        {
-            SetOutline();
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        SetNoOutline(); 
-    }
 
     private void SetOutline() { rend.material = outlineMaterial; }
     private void SetNoOutline() { rend.material = noOutlineMaterial; }
