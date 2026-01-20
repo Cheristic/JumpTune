@@ -47,7 +47,6 @@ public class LevelSelectMenu : MonoBehaviour
         while (true)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            Debug.Log(Input.mousePosition);
             for (int i = 0; i <  buttons.Count; i++) 
             {
                 // AABB detection
@@ -66,7 +65,6 @@ public class LevelSelectMenu : MonoBehaviour
 
             while (inBounds(buttonHovering))
             {
-                Debug.Log("Showing " + buttonHovering);
                 yield return null;
             }
 
