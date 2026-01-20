@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 22144f5f2d8541a49af09ac1609f5f61
+guid: b93c2c966507e99729009e45607be8e3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8239004401821957934
-    second: SillyTweet_0
-  - first:
-      213: -5842203852732180837
-    second: SillyTweet_1
-  - first:
-      213: 1325530784961336612
-    second: SillyTweet_2
+      213: 3079020704936782432
+    second: LevelButtonBrick_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,9 +40,9 @@ TextureImporter:
     filterMode: 0
     aniso: 1
     mipBias: 0
-    wrapU: 1
-    wrapV: 1
-    wrapW: 1
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 1000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SillyTweet_0
+      name: LevelButtonBrick_0
       rect:
         serializedVersion: 2
-        x: 953
-        y: 964
-        width: 143
-        height: 186
+        x: 724
+        y: 720
+        width: 1040
+        height: 1040
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2f3a71f9d2d65270800000000000000
-      internalID: 8239004401821957934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SillyTweet_1
-      rect:
-        serializedVersion: 2
-        x: 1078
-        y: 862
-        width: 73
-        height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b96da7c9c825ceea0800000000000000
-      internalID: -5842203852732180837
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SillyTweet_2
-      rect:
-        serializedVersion: 2
-        x: 315
-        y: 142
-        width: 719
-        height: 807
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4251778d93b356210800000000000000
-      internalID: 1325530784961336612
+      spriteID: 06a64dd8401eaba20800000000000000
+      internalID: 3079020704936782432
       vertices: []
       indices: 
       edges: []
@@ -198,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SillyTweet_0: 8239004401821957934
-      SillyTweet_1: -5842203852732180837
-      SillyTweet_2: 1325530784961336612
+      LevelButtonBrick_0: 3079020704936782432
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

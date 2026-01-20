@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Chunk
   Shaker: {fileID: 7609297753458646061}
   shakeFrequency: 0.5
-  shakeMult: 0.68
+  shakeMult: 0.2
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
@@ -135,14 +135,14 @@ SpriteRenderer:
   m_SortingLayerID: 491447517
   m_SortingLayer: 1
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: ad7303d82d8063d4a90b5f6871501bb5, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4392157}
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
   m_Size: {x: 4, y: 4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

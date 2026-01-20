@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 22144f5f2d8541a49af09ac1609f5f61
+guid: e7d40bf50c6627d5ab2bb65ccc4d52e2
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8239004401821957934
-    second: SillyTweet_0
-  - first:
-      213: -5842203852732180837
-    second: SillyTweet_1
-  - first:
-      213: 1325530784961336612
-    second: SillyTweet_2
+      213: -2470232956860136036
+    second: PlatformFixed2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -57,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 1300
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,30 +96,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SillyTweet_0
+      name: PlatformFixed2_0
       rect:
         serializedVersion: 2
-        x: 953
-        y: 964
-        width: 143
-        height: 186
+        x: 714
+        y: 1019
+        width: 1077
+        height: 345
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,52 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e2f3a71f9d2d65270800000000000000
-      internalID: 8239004401821957934
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SillyTweet_1
-      rect:
-        serializedVersion: 2
-        x: 1078
-        y: 862
-        width: 73
-        height: 168
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b96da7c9c825ceea0800000000000000
-      internalID: -5842203852732180837
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: SillyTweet_2
-      rect:
-        serializedVersion: 2
-        x: 315
-        y: 142
-        width: 719
-        height: 807
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4251778d93b356210800000000000000
-      internalID: 1325530784961336612
+      spriteID: c9583eda638f7bdd0800000000000000
+      internalID: -2470232956860136036
       vertices: []
       indices: 
       edges: []
@@ -198,9 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      SillyTweet_0: 8239004401821957934
-      SillyTweet_1: -5842203852732180837
-      SillyTweet_2: 1325530784961336612
+      PlatformFixed2_0: -2470232956860136036
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

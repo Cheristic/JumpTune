@@ -13,7 +13,7 @@ public class Chunk : MonoBehaviour
     [SerializeField] float finalSpeedMult;
     [SerializeField] float shakeChangeRate;
 
-    List<TonePlatform> platforms;
+    List<GameObject> platforms;
 
     LevelManager _man;
     internal int chunkIndex;
@@ -28,7 +28,7 @@ public class Chunk : MonoBehaviour
         currShakeSpeed = 0;
     }
 
-    public void AppendPlatform(TonePlatform platform)
+    public void AppendPlatform(GameObject platform)
     {
         platforms.Add(platform);
     }
@@ -49,9 +49,16 @@ public class Chunk : MonoBehaviour
         int score = 0;
         foreach (var platform in platforms)
         {
-                if (platform.isFixed) continue;
-                int error = (int)platform.Error();
-                score += System.Math.Max(10 - error, 0);        
+            try { 
+                TonePlatform tp = platform.GetComponent<TonePlatform>();
+                if (tp.isFixed) continue;
+                int error = (int)tp.Error();
+                score += System.Math.Max(10 - error, 0);
+            }
+            catch
+            {
+                Debug.Log("not a tp");
+            }
         }
         return score;
     }
