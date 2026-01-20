@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     public LevelData[] levels;
     int selectedLevel = -1;
+    public int levelProgress = 1;
 
     private void Awake()
     {
