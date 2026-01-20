@@ -5,14 +5,18 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
+    internal SaveManager SaveManager;
     public LevelData[] levels;
     int selectedLevel = -1;
+    public int levelProgress = 1;
 
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
         DontDestroyOnLoad(this);
+
+        SaveManager = new(levels);
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
@@ -45,5 +49,10 @@ public class GameManager : MonoBehaviour
     public void SwapToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+    }
+
+    public void ResetSaveData()
+    {
+        SaveManager.ResetData();
     }
 }

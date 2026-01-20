@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
@@ -7,11 +8,36 @@ public class MainMenu : MonoBehaviour
     public GameObject levelSelectScreen;
     public GameObject settingsScreen;
 
+    public GameObject levelButtons;
+
     private void Start()
     {
         levelSelectScreen.SetActive(false);
         settingsScreen.SetActive(false);
         menuScreen.SetActive(true);
+
+        DisableButtons();
+    }
+
+    void DisableButtons()
+    {
+        int levelProgress = FindFirstObjectByType<GameManager>().levelProgress;
+
+        if(levelButtons == null) return;
+
+        Button[] buttons = levelButtons.GetComponentsInChildren<Button>();
+
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            if (i < levelProgress)
+            {
+                buttons[i].interactable = true;
+            }
+            else
+            {
+                buttons[i].interactable = false;
+            }
+        }
     }
 
     //public void PlayGame()

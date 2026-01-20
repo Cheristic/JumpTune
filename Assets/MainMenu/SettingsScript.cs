@@ -10,4 +10,9 @@ public class SettingsScript : MonoBehaviour
         Debug.Log(volume);
         audioMixer.SetFloat("masterVolume", volume);
     }
+
+    public void ResetData()
+    {
+        GameManager.Instance.ResetSaveData();
+    }
 }

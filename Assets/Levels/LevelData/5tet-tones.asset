@@ -10,46 +10,51 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a667b1475732604cabeb33d790f3ddc, type: 3}
-  m_Name: level2
+  m_Name: 5tet-tones
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   tiles:
   - isFixed: 0
-    correctFrequency: 250
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequency: 400
-    hasBreak: 1
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 0
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 1
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 2
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 3
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 4
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 5
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequency: 450
+    correctFrequencyIdx: 6
     hasBreak: 0
     endsChunk: 0
-  notchCount: 10
+  - isFixed: 0
+    correctFrequencyIdx: 7
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 8
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 9
+    hasBreak: 0
+    endsChunk: 0
+  notchCount: 7
   levelWidth: 20
-  towerWidth: 12
+  towerWidth: 15
   centSpacing: 10
+  tuningSystem: 5

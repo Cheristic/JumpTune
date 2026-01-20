@@ -44,3 +44,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7962df21abed694695822901b3fbf09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneManager
+  levels:
+  - {fileID: 11400000, guid: c17b5078e8b7eac648bd9ec0bf66ea1a, type: 2}
+  - {fileID: 11400000, guid: d67d32a0c0cc55b78b57323f1f58481b, type: 2}
+  - {fileID: 11400000, guid: d2f573574d0c65f0b8f583a1de41fcc5, type: 2}
+  - {fileID: 11400000, guid: ae100b1c6617dd71eaadfd6148e26e4b, type: 2}
+  - {fileID: 11400000, guid: 58fb86db3fad0927eb6a3122d2abca76, type: 2}
+  - {fileID: 11400000, guid: cfcef3941f1697d4c8ae75745c8c8cc1, type: 2}
+  - {fileID: 11400000, guid: 58e030ca1e9aca24988002c6ccca21e3, type: 2}
+  - {fileID: 11400000, guid: 19df6541393caa54cab9eb452ba9ffe1, type: 2}
+  - {fileID: 11400000, guid: af75ce84104b46a19b805b4f2a7516f3, type: 2}
+  - {fileID: 11400000, guid: 5f52b30ca43c320b8b8c19006bc6a1fa, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  levelProgress: 15
