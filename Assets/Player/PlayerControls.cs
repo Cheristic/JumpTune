@@ -48,11 +48,22 @@ public class PlayerControls : MonoBehaviour
         leftGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.min.x, PlayerManager.Instance._collider.bounds.center.y, 0));
         animator = GetComponent<Animator>();
         playerCollider = GetComponent<BoxCollider2D>();
+        GameManager.EndGame += OnEndGame;
+        FinalScoreCounter.CompletedEndSequence += OnCompletedEndSequence;
     }
-
+    void OnEndGame()
+    {
+        input?.Disable();
+    }
+    void OnCompletedEndSequence()
+    {
+        input?.Enable();
+    }
     private void OnDisable()
     {
         input?.Disable();
+        GameManager.EndGame -= OnEndGame;
+        FinalScoreCounter.CompletedEndSequence -= OnCompletedEndSequence;
     }
     void FixedUpdate()
     {

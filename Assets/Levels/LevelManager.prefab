@@ -53,9 +53,11 @@ MonoBehaviour:
   endTilePrefab: {fileID: 5070083502451570407, guid: e36ea8249dd05b04fb248042d895f146, type: 3}
   bgWallPrefab: {fileID: 5070083502451570407, guid: 47f5b081186ce0a08a8687b4fad421d9, type: 3}
   bgWallFixedPrefab: {fileID: 5070083502451570407, guid: 5999060057df8f66bae665c86fcc5ac0, type: 3}
+  bgWallEndPrefab: {fileID: 5070083502451570407, guid: 2390106a36c892f4a80e0825b0e95cab, type: 3}
   breakTilePrefab: {fileID: 5070083502451570407, guid: 622fc2dba40d6d14c9efd15b161b6772, type: 3}
   chunkPrefab: {fileID: 6004301583541442596, guid: ea6d22f2d223dde4e8e0cb1638e5c763, type: 3}
   chunkTracker: {fileID: 6550615766674888743}
+  extendableBG: {fileID: 0}
   groundOffsetY: 4
   tileOffsetY: 3.5
   tileWidth: 4

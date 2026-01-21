@@ -14,9 +14,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] GameObject endTilePrefab;
     [SerializeField] GameObject bgWallPrefab;
     [SerializeField] GameObject bgWallFixedPrefab;
+    [SerializeField] GameObject bgWallEndPrefab;
+
     [SerializeField] GameObject breakTilePrefab;
     [SerializeField] GameObject chunkPrefab;
     [SerializeField] ChunkTracker chunkTracker;
+    [SerializeField] SpriteRenderer extendableBG;
 
     // These two could also be level-specific if necessary
     [SerializeField] float groundOffsetY;
@@ -108,7 +111,7 @@ public class LevelManager : MonoBehaviour
             {
                 GameObject breakObj = Instantiate(breakTilePrefab, tilesParent);
                 breakObj.transform.position = new Vector3(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear/2, 0);
-                breakObj.transform.localScale = new Vector3(levelData.levelWidth, 1, 1);
+                breakObj.transform.localScale = new Vector3(levelData.levelWidth-4, 1, 1);
                 breakObj.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
 
                 bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
@@ -118,26 +121,29 @@ public class LevelManager : MonoBehaviour
             }
         }
 
+        bottomY = playerStartPosition.y;
+
         float totalHeight = groundOffsetY + tileOffsetY * (levelData.tiles.Count) + tileOffsetY * nrBreaks;
+        topY = totalHeight;
 
         GameObject wallLeft = Instantiate(wallPrefab, tilesParent);
-        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth, totalHeight / 2 - tileOffsetY, 0);
-        wallLeft.transform.localScale = new Vector3(3, 1, 1);
-        wallLeft.GetComponent<SpriteRenderer>().size = new Vector3(2, totalHeight, 1);
-        wallLeft.GetComponent<BoxCollider2D>().size = new Vector3(2, totalHeight, 1);
+        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth*3/2, bottomY, 0);
+        wallLeft.transform.GetChild(0).localScale = new Vector3(4, totalHeight * 2, 1);
+        wallLeft.GetComponent<SpriteRenderer>().size = new Vector3(4, totalHeight * 2, 1);
 
         GameObject wallRight = Instantiate(wallPrefab, tilesParent);
-        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth, totalHeight / 2 - tileOffsetY, 0);
-        wallRight.transform.localScale = new Vector3(3, 1, 1);
-        wallRight.GetComponent<SpriteRenderer>().size = new Vector3(2, totalHeight, 1);
-        wallRight.GetComponent<BoxCollider2D>().size = new Vector3(2, totalHeight, 1);
+        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth * 3 / 2, bottomY, 0);
+        wallRight.transform.GetChild(0).localScale = new Vector3(4, totalHeight * 2, 1);
+        wallRight.GetComponent<SpriteRenderer>().size = new Vector3(4, totalHeight*2, 1);
 
         GameObject endTile = Instantiate(endTilePrefab, tilesParent);
         endTile.transform.position = new Vector3(0, totalHeight + justOneMoreOffsetBroISwear/2, 0);
         endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
         endTile.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
 
-        Instantiate(bgWallFixedPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent);
+        Instantiate(bgWallEndPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent);
+
+        extendableBG.size = new Vector2(extendableBG.size.x, totalHeight*2);
 
         currChunk.FinishChunk(totalHeight, true);
 
@@ -147,8 +153,6 @@ public class LevelManager : MonoBehaviour
             PlayerManager.Instance.controls.transform.position = new Vector3(playerStartPosition.x, playerStartPosition.y, 0);
         else FindFirstObjectByType<PlayerControls>().transform.position = new Vector3(playerStartPosition.x, playerStartPosition.y, 0);
 
-        bottomY = playerStartPosition.y;
-        topY = totalHeight;
     }
 
     public void LoadFromEditor()

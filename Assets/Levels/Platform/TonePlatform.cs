@@ -11,6 +11,7 @@ public class TonePlatform : MonoBehaviour
     [Header("Links")]
     [SerializeField] Sprite fixedTileSprite;
     [SerializeField] TonePlatformErrorAnim errorAnim;
+    [SerializeField] TonePlatformTrigger trigger;
 
     [Header("Movement")]
     [SerializeField] float InitialHoldLagTime;
@@ -50,7 +51,10 @@ public class TonePlatform : MonoBehaviour
             transform.localScale *= new Vector2(2, 2);
             SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
             sr.sprite = fixedTileSprite;
-            GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 0.1f); // top ten moments in coding history
+            var col = GetComponent<BoxCollider2D>();
+            col.size = new Vector2(1.5f, 0.04f); // top ten moments in coding history
+            col.offset = new Vector2(0, -.008f);
+            trigger.GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 0.1f); // but wait, it gets worse
 
             foreach (SpriteRenderer s in this.transform.GetComponentsInChildren<SpriteRenderer>())
             {
