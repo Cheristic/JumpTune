@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class TonePlatform : MonoBehaviour
 {
@@ -37,21 +38,20 @@ public class TonePlatform : MonoBehaviour
 
     public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor) 
     { 
-        currNotch = _StartingNotch;
         isFixed = _Fixed;
         notchCount = _NotchCount;
         notchSpacingInWorldCoords = _NotchSpacingWorld;
+        currNotch = _StartingNotch;
 
         centSpacing = _CentSpacing;
 
         correctFrequency = _CorrectFrequency;
-        leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
-        float diff = 1200 * Mathf.Log(leftMostFrequency / correctFrequency, 2) / centSpacing;
 
-        //Debug.Log(leftMostFrequency + " " + correctFrequency + " " + diff + " " + CurrFrequency);
 
         if(isFixed)
         {
+            leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
+
             transform.localScale *= new Vector2(2, 2);
             SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
             sr.sprite = fixedTileSprite;
@@ -65,7 +65,10 @@ public class TonePlatform : MonoBehaviour
                 s.color = _tileDisabledColor;
             }
         }
-
+        else
+        {
+            leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * Random.Range(0, notchCount) / 1200f);
+        }
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
@@ -73,7 +76,7 @@ public class TonePlatform : MonoBehaviour
     {
         if (isFixed) return 0;
 
-        int notchDiff = Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing);
+        int notchDiff = Mathf.Abs(Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing));
         return _Conversions.ScoreFromError(notchDiff);
     }
 
@@ -88,7 +91,11 @@ public class TonePlatform : MonoBehaviour
         StopAllCoroutines();
     }
 
-    public void PlayPlatformTone() => ToneManager.Instance.PlayNote(CurrFrequency);
+    public void PlayPlatformTone()
+    {
+        //Debug.Log(Score() + " " + currNotch);
+        ToneManager.Instance.PlayNote(CurrFrequency);
+    }
 
     IEnumerator HandleMoveInput()
     { 
@@ -107,14 +114,13 @@ public class TonePlatform : MonoBehaviour
                 int currDir = dir;
                 do
                 {
-                    PlayPlatformTone();
 
                     if (!isFixed) {
                         transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
                         PlayerManager.Instance.TryMoveByPlatform(currDir * notchSpacingInWorldCoords);    
                         currNotch += currDir;
                     }
-                
+                    PlayPlatformTone();
                     yield return new WaitForSeconds(currLagTime);
                     currLagTime = Mathf.Max(currLagTime * HoldLagSpeedUp, MinLagTime);
                     currDir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());

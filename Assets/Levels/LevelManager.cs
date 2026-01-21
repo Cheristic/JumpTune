@@ -67,6 +67,7 @@ public class LevelManager : MonoBehaviour
 
             float posX = -levelData.towerWidth / 2 + startNotch * notchSpacing;
 
+            //Debug.Log(startNotch + " " + posX + " " + FindFrequency(tile.correctFrequencyIdx, levelData.tuningSystem));
             //Debug.Log("tile " + i + " fixed: " + tile.isFixed + " x correct " + xCorrect + " pos correct " + posCorrectX + " pos final " + posX);
 
             TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear),
