@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class Chunk : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class Chunk : MonoBehaviour
     [SerializeField] float shakeExp;
     [SerializeField] float finalSpeedMult;
     [SerializeField] float shakeChangeRate;
+
+    [Header("Chunk Playing")]
+    [SerializeField] float timeBetweenNotes;
 
     List<GameObject> platforms;
 
@@ -49,18 +53,32 @@ public class Chunk : MonoBehaviour
         int score = 0;
         foreach (var platform in platforms)
         {
-            try { 
-                TonePlatform tp = platform.GetComponent<TonePlatform>();
+            if (platform.TryGetComponent<TonePlatform>(out var tp))
+            { 
                 if (tp.isFixed) continue;
                 int error = (int)tp.Error();
                 score += System.Math.Max(10 - error, 0);
             }
-            catch
-            {
-                Debug.Log("not a tp");
-            }
         }
         return score;
+    }
+
+    public void PlayChunkTones(bool showError = false)
+    {
+        StartCoroutine(Player());
+
+        IEnumerator Player() 
+        {
+            foreach (var platform in platforms)
+            {
+                if (platform.TryGetComponent<TonePlatform>(out var tp))
+                {
+                    if (showError && !tp.isFixed) tp.ShowError();
+                    tp.PlayPlatformTone();
+                    yield return new WaitForSeconds(timeBetweenNotes);
+                }
+            }
+        }
     }
 
     float targetShakeSpeed;

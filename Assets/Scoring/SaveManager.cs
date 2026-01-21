@@ -11,18 +11,23 @@ public class SaveManager
     [Serializable]
     public class LevelScore
     {
-        int rank;
-        int score;
-        float time;
+        public int rank;
+        public int score;
+        public float time;
     }
     [Serializable]
     public class SaveData
     {
-        List<LevelScore> levels;
+        public List<LevelScore> levels;
+        [JsonConstructor]
         public SaveData(int count)
         {
-            levels = new List<LevelScore>();
-            for (int i = 0; i < count; i++) { levels.Add(new LevelScore()); }
+            if (count > 0 )
+            {
+                levels = new List<LevelScore>();
+                for (int i = 0; i < count; i++) { levels.Add(new LevelScore()); }
+            }
+
         }
         public void Reset()
         {
@@ -30,11 +35,10 @@ public class SaveManager
             levels = new List<LevelScore>();
             for (int i = 0; i < count; i++) { levels.Add(new LevelScore()); }
         }
+
     }
 
     string dataFileName = "NONONO";
-
-    public static SaveManager Instance { get; private set; }
 
     internal SaveData CurrData;
     public SaveManager(LevelData[] levels)
@@ -62,9 +66,6 @@ public class SaveManager
         {
             CurrData = new(levels.Length);
         }
-
-        Debug.Log(CurrData);
-
     }
     [DllImport("__Internal")]
     private static extern void JS_FileSystem_Sync();
@@ -77,7 +78,6 @@ public class SaveManager
             Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
             string gameDataJSON = JsonConvert.SerializeObject(CurrData);
-
             using (FileStream stream = new FileStream(fullPath, FileMode.Create))
             {
                 using (StreamWriter writer = new StreamWriter(stream))
@@ -98,6 +98,18 @@ public class SaveManager
     public void ResetData()
     {
         CurrData.Reset();
+        Save();
+    }
+
+    public void CompleteLevel(int rank, int score, float time)
+    {
+        if (score > CurrData.levels[GameManager.Instance.selectedLevel].score)
+        {
+            CurrData.levels[GameManager.Instance.selectedLevel].rank = rank;
+            CurrData.levels[GameManager.Instance.selectedLevel].score = score;
+            CurrData.levels[GameManager.Instance.selectedLevel].time = time;
+        }
+
         Save();
     }
 }

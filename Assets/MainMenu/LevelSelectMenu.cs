@@ -2,6 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 public class LevelSelectMenu : MonoBehaviour
 {
     [Header("Links")]
@@ -10,6 +11,7 @@ public class LevelSelectMenu : MonoBehaviour
     [SerializeField] TMP_Text _Score;
     [SerializeField] TMP_Text _Time;
     [SerializeField] Transform ButtonsHolder;
+    [SerializeField] ScoreConversions _Conversions;
 
     [Header("Anim Vals")]
     [SerializeField] AnimationCurve FadeCurve;
@@ -61,6 +63,7 @@ public class LevelSelectMenu : MonoBehaviour
 
             if (IFadeAnim != null) StopCoroutine(IFadeAnim);
             StartCoroutine(IFadeAnim = FadeAnim(true));
+            DisplayButton();
             yield return null;
 
             while (inBounds(buttonHovering))
@@ -87,5 +90,23 @@ public class LevelSelectMenu : MonoBehaviour
         }
 
         timeProgressed = fadeIn ? AnimTime : 0;
+    }
+
+    void DisplayButton()
+    {
+        var data = GameManager.Instance.SaveManager.CurrData.levels[buttonHovering];
+
+        if (data.rank == 0) // empty
+        {
+            _Rank.text = "-";
+            _Score.text = "-";
+            _Time.text = "-";
+        } else
+        {
+            _Rank.text = _Conversions.GetRankTextFromRank(data.rank);
+            _Score.text = data.score.ToString();
+            TimeSpan t = TimeSpan.FromSeconds(data.time);
+            _Time.text = t.ToString("mm':'ss'.'ff");
+        }
     }
 }

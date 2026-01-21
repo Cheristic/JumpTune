@@ -27,26 +27,26 @@ MonoBehaviour:
     Color: {r: 0.8509804, g: 0.59889317, b: 0.16470587, a: 0}
   - MaxError: 200
     Score: 0
-    Color: {r: 0.8509804, g: 0.21587017, b: 0.16470587, a: 0}
+    Color: {r: 1, g: 1, b: 1, a: 0}
   ScorePercentToRank:
   - ScorePercentThreshold: 1
-    Rank: 0
+    Rank: 1
     RankText: SSS
   - ScorePercentThreshold: 0.99
-    Rank: 1
+    Rank: 2
     RankText: SS
   - ScorePercentThreshold: 0.95
-    Rank: 2
+    Rank: 3
     RankText: S
   - ScorePercentThreshold: 0.9
-    Rank: 3
+    Rank: 4
     RankText: A
   - ScorePercentThreshold: 0.8
-    Rank: 4
+    Rank: 5
     RankText: B
   - ScorePercentThreshold: 0.7
-    Rank: 5
+    Rank: 6
     RankText: C
   - ScorePercentThreshold: 0.5
-    Rank: 6
+    Rank: 7
     RankText: F

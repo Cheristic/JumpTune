@@ -51,6 +51,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0.15
   currShakeSpeed: 0
 --- !u!1 &9151766152212698601
 GameObject:

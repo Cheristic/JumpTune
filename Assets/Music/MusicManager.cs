@@ -23,9 +23,6 @@ public class MusicManager : MonoBehaviour
     int previousIdx;
     bool playedEnd;
 
-    internal LevelManager levelManager;
-    internal PlayerControls player;
-
     public float fadeLength;
 
     void Start()
@@ -51,9 +48,6 @@ public class MusicManager : MonoBehaviour
         previousIdx = -1;
         playedEnd = false;
 
-        levelManager = FindFirstObjectByType<LevelManager>();
-        player = FindFirstObjectByType<PlayerControls>();
-
         //increment = (levelManager.topY - levelManager.bottomY) / (stems.Length-1);
     }
 
@@ -61,7 +55,7 @@ public class MusicManager : MonoBehaviour
     {
         if (playedEnd) return;
 
-        if (!playedEnd && player.transform.position.y >= levelManager.topY)
+        if (!playedEnd && PlayerManager.Instance.ChunkCheckerPoint.position.y >= LevelManager.Instance.topY)
         {
             // play end sound
             // could also be triggered from the scoring logic?
@@ -81,7 +75,7 @@ public class MusicManager : MonoBehaviour
         }
 
         // progress is between 0 and 1
-        float progress = Mathf.InverseLerp(levelManager.bottomY, levelManager.topY, player.transform.position.y);
+        float progress = Mathf.InverseLerp(LevelManager.Instance.bottomY, LevelManager.Instance.topY, PlayerManager.Instance.ChunkCheckerPoint.position.y);
 
         // map progress to index
         int progressIdx = Mathf.Clamp(Mathf.FloorToInt(progress * stems.Length), 0, stems.Length - 1);
