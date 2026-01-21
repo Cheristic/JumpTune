@@ -12,6 +12,7 @@ public class TonePlatform : MonoBehaviour
     [SerializeField] Sprite fixedTileSprite;
     [SerializeField] TonePlatformErrorAnim errorAnim;
     [SerializeField] TonePlatformTrigger trigger;
+    [SerializeField] ScoreConversions _Conversions;
 
     [Header("Movement")]
     [SerializeField] float InitialHoldLagTime;
@@ -45,6 +46,9 @@ public class TonePlatform : MonoBehaviour
 
         correctFrequency = _CorrectFrequency;
         leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
+        float diff = 1200 * Mathf.Log(leftMostFrequency / correctFrequency, 2) / centSpacing;
+
+        //Debug.Log(leftMostFrequency + " " + correctFrequency + " " + diff + " " + CurrFrequency);
 
         if(isFixed)
         {
@@ -65,12 +69,12 @@ public class TonePlatform : MonoBehaviour
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
-    public int Error()
+    public int Score()
     {
         if (isFixed) return 0;
 
         int notchDiff = Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing);
-        return notchDiff;
+        return _Conversions.ScoreFromError(notchDiff);
     }
 
     private void OnDisable() => DisableMovement();
@@ -154,7 +158,7 @@ public class TonePlatform : MonoBehaviour
 
     public void ShowError()
     {
-        StartCoroutine(errorAnim.ErrorAnim(Error()));
+        StartCoroutine(errorAnim.ErrorAnim(Score()));
     }
 
 }

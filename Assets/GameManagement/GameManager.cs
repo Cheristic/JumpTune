@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) Destroy(this);
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         else Instance = this;
         DontDestroyOnLoad(this);
 
@@ -41,11 +41,6 @@ public class GameManager : MonoBehaviour
         {
             LevelManager.Instance.LoadFromManager(levels[selectedLevel]);
         }
-    }
-
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void SwapToMainMenu()

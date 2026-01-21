@@ -61,23 +61,11 @@ public class LevelManager : MonoBehaviour
         {
             TileData tile = levelData.tiles[i];
 
-            int xCorrect;
-            if(tile.isFixed) xCorrect = (levelData.notchCount + 1) / 2;
-            else xCorrect = Random.Range(1, levelData.notchCount + 1) - 1;
+            int startNotch;
+            if(tile.isFixed) startNotch = (levelData.notchCount + 1) / 2;
+            else startNotch = Random.Range(0, levelData.notchCount);
 
-            float posCorrectX = -levelData.towerWidth / 2 + xCorrect * notchSpacing;
-
-            float posX = posCorrectX;
-            int startNotch = xCorrect;
-
-            if (!tile.isFixed) 
-            {
-                while (posX == posCorrectX)
-                {
-                    startNotch = Random.Range(1, levelData.notchCount + 1) - 1;
-                    posX = -levelData.towerWidth / 2 + startNotch * notchSpacing;
-                }
-            }
+            float posX = -levelData.towerWidth / 2 + startNotch * notchSpacing;
 
             //Debug.Log("tile " + i + " fixed: " + tile.isFixed + " x correct " + xCorrect + " pos correct " + posCorrectX + " pos final " + posX);
 
@@ -124,7 +112,6 @@ public class LevelManager : MonoBehaviour
         bottomY = playerStartPosition.y;
 
         float totalHeight = groundOffsetY + tileOffsetY * (levelData.tiles.Count) + tileOffsetY * nrBreaks;
-        topY = totalHeight;
 
         GameObject wallLeft = Instantiate(wallPrefab, tilesParent);
         wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth*3/2, bottomY, 0);
@@ -141,11 +128,13 @@ public class LevelManager : MonoBehaviour
         endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
         endTile.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
 
-        Instantiate(bgWallEndPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent);
+        currChunk.AppendPlatform(Instantiate(bgWallEndPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent));
 
         extendableBG.size = new Vector2(extendableBG.size.x, totalHeight*2);
 
         currChunk.FinishChunk(totalHeight, true);
+
+        topY = totalHeight + justOneMoreOffsetBroISwear;
 
         chunkTracker.CreateChunks(Chunks);
 
@@ -163,6 +152,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadFromManager(LevelData levelData)
     {
+        Debug.Log("loading level " + levelData);
         this.levelData = levelData;
 
         ClearLoadedLevel();

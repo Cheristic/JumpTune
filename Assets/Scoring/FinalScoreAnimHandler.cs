@@ -18,6 +18,7 @@ public class FinalScoreCounter : MonoBehaviour
 
     [Header("Anim Valls")]
     [SerializeField] float MoveSpeed;
+    [SerializeField] float ExtraBufferTimeToPlayChunk = 0.5f;
 
     private void OnEnable()
     {
@@ -42,11 +43,13 @@ public class FinalScoreCounter : MonoBehaviour
         {
             if (!plat.isFixed) bestPossibleScore += _Conversions.ErrorToScore[0].Score;
         }
+        Debug.Log(scoreGotten + " " + bestPossibleScore + " " + 1.0f * scoreGotten / bestPossibleScore);
         foreach (var i in _Conversions.ScorePercentToRank)
         {
-            if ((float)scoreGotten / bestPossibleScore >= i.ScorePercentThreshold)
+            if (1.0f * scoreGotten / bestPossibleScore >= i.ScorePercentThreshold)
             {
                 rankGotten = i.Rank;
+                break;
             }
         }
         GameManager.Instance.SaveManager.CompleteLevel(rankGotten, scoreGotten, ChunkTracker.Instance.LevelTimer);

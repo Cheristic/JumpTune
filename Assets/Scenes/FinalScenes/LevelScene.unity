@@ -1758,6 +1758,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1792997356}
   trigger: {fileID: 1556170550}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -2701,6 +2702,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1004776214}
   trigger: {fileID: 544083262}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -2853,6 +2855,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1613611060}
   trigger: {fileID: 2106214603}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -4308,7 +4311,6 @@ Transform:
   m_Children:
   - {fileID: 619394802}
   - {fileID: 3629900845693609826}
-  - {fileID: 913597805}
   - {fileID: 350228341}
   - {fileID: 8603741186093791149}
   m_Father: {fileID: 0}
@@ -5584,6 +5586,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1168873000}
   trigger: {fileID: 2059097490}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -7054,6 +7057,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 575395566}
   trigger: {fileID: 537114109}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -7717,6 +7721,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 416915060}
   trigger: {fileID: 1984669959}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -8575,6 +8580,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1596038876}
   trigger: {fileID: 2064418133}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -9499,6 +9505,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 107148353}
   trigger: {fileID: 16618075}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -12363,6 +12370,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1649117798}
   trigger: {fileID: 1844725765}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -15258,6 +15266,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1913725084}
   trigger: {fileID: 2066640735}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -16401,6 +16410,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 2060865411}
   trigger: {fileID: 1005394604}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -16505,7 +16515,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 253134233}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 5497623831985302923, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_Name
@@ -16513,11 +16523,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.71349
+      value: -0.76819
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 11.92961
+      value: 11.92444
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -16529,15 +16539,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16556,11 +16566,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
---- !u!4 &913597805 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
-  m_PrefabInstance: {fileID: 913597804}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &928074620
 GameObject:
   m_ObjectHideFlags: 0
@@ -17581,6 +17586,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 2115670251}
   trigger: {fileID: 1965666161}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -17913,6 +17919,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 344883574}
   trigger: {fileID: 1620669724}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -19297,6 +19304,7 @@ MonoBehaviour:
   _Score: {fileID: 1206955653}
   _Time: {fileID: 249209129}
   MoveSpeed: 8
+  ExtraBufferTimeToPlayChunk: 0.5
 --- !u!1 &1099719282
 GameObject:
   m_ObjectHideFlags: 0
@@ -19510,6 +19518,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1504479367}
   trigger: {fileID: 1061114494}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -20073,6 +20082,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 624150151}
   trigger: {fileID: 1185219726}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -20361,6 +20371,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1799777760}
   trigger: {fileID: 1401236397}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -22012,6 +22023,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 563493805}
   trigger: {fileID: 340422802}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -22568,6 +22580,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1748078487}
   trigger: {fileID: 33487065}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -22899,6 +22912,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 871930795}
   trigger: {fileID: 1200363900}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -24601,6 +24615,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1338874469}
   trigger: {fileID: 702422383}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -25351,6 +25366,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1738994838}
   trigger: {fileID: 835694537}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -25503,6 +25519,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1817463163}
   trigger: {fileID: 795971118}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -26953,6 +26970,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 425805989}
   trigger: {fileID: 1826855736}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -27669,6 +27687,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1072795698}
   trigger: {fileID: 2049628312}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -28145,6 +28164,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 892206961}
   trigger: {fileID: 346822135}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -28677,6 +28697,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1624404046}
   trigger: {fileID: 1763746831}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -29587,6 +29608,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1602713257}
   trigger: {fileID: 2069627421}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -31522,6 +31544,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1194685938}
   trigger: {fileID: 1357559601}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -33024,6 +33047,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 338831647}
   trigger: {fileID: 1818568104}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -34726,6 +34750,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 1889027775}
   trigger: {fileID: 932860755}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -34957,6 +34982,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 459955504}
   trigger: {fileID: 1739804448}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -36425,6 +36451,7 @@ MonoBehaviour:
   fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
   errorAnim: {fileID: 146319773}
   trigger: {fileID: 1497669511}
+  _Conversions: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -39847,6 +39874,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 913597804}
   - {fileID: 253134233}
   - {fileID: 2115981863}
   - {fileID: 698877586}

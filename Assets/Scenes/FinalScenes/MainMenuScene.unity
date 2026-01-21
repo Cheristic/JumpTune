@@ -755,8 +755,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -1024,8 +1024,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -1429,8 +1429,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -2583,8 +2583,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -2716,8 +2716,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -3465,8 +3465,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -4531,8 +4531,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -4664,8 +4664,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -4789,17 +4789,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357595889}
   m_CullTransparentMesh: 1
---- !u!114 &1391529594 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4519685319013911717, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
-  m_PrefabInstance: {fileID: 983520010}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7962df21abed694695822901b3fbf09, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SceneManager
 --- !u!1 &1394091430
 GameObject:
   m_ObjectHideFlags: 0
@@ -5019,8 +5008,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -5392,8 +5381,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -5525,8 +5514,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -5803,8 +5792,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -6208,8 +6197,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -6955,8 +6944,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:
@@ -7641,8 +7630,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1391529594}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1846402909}
+        m_TargetAssemblyTypeName: LevelSelectMenu, Assembly-CSharp
         m_MethodName: SwapToLevel
         m_Mode: 3
         m_Arguments:

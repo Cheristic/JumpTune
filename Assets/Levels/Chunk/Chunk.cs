@@ -56,8 +56,7 @@ public class Chunk : MonoBehaviour
             if (platform.TryGetComponent<TonePlatform>(out var tp))
             { 
                 if (tp.isFixed) continue;
-                int error = (int)tp.Error();
-                score += System.Math.Max(10 - error, 0);
+                score +=(int)tp.Score();
             }
         }
         return score;
@@ -65,6 +64,7 @@ public class Chunk : MonoBehaviour
 
     public void PlayChunkTones(bool showError = false)
     {
+        StopAllCoroutines();
         StartCoroutine(Player());
 
         IEnumerator Player() 

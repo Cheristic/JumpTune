@@ -66,6 +66,9 @@ public class ChunkTracker : MonoBehaviour
             UpdateChunkShakes(currChunkIndex);
 
         }
+
+        yield return new WaitUntil(() => PlayerManager.Instance.ChunkCheckerPoint.position.y > LevelManager.Instance.topY);
+
         LevelTimer = Time.time - LevelTimer;
         GameManager.Instance.TriggerEndGame();
     }

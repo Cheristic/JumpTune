@@ -30,4 +30,15 @@ public class ScoreConversions : ScriptableObject
             }
         return "";
     }
+    public int ScoreFromError(int error)
+    {
+        foreach (var i in ErrorToScore)
+        {
+            if (error <= i.MaxError)
+            {
+                return i.Score;
+            }
+        }
+        return 0;
+    }
 }
