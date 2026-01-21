@@ -2113,6 +2113,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1751834473}
     m_Modifications:
+    - target: {fileID: 1597075983236475590, guid: 32885f7765bf294409b9930d20b9439c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 933b193c6744e4045a176d5a879e438a, type: 2}
     - target: {fileID: 1736231108211692164, guid: 32885f7765bf294409b9930d20b9439c, type: 3}
       propertyPath: m_Name
       value: TutorialKeys
