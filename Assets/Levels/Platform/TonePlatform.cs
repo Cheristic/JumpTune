@@ -8,6 +8,10 @@ public class TonePlatform : MonoBehaviour
     internal int notchCount;
     internal float notchSpacingInWorldCoords;
 
+    [Header("Links")]
+    [SerializeField] Sprite fixedTileSprite;
+    [SerializeField] TonePlatformErrorAnim errorAnim;
+
     [Header("Movement")]
     [SerializeField] float InitialHoldLagTime;
     [SerializeField] float HoldLagSpeedUp;
@@ -21,7 +25,6 @@ public class TonePlatform : MonoBehaviour
 
     internal float centSpacing;
 
-    [SerializeField] Sprite fixedTileSprite;
 
     Animator playerAnimator;
 
@@ -58,12 +61,12 @@ public class TonePlatform : MonoBehaviour
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
-    public double Error()
+    public int Error()
     {
-        if (isFixed) return 0.0f;
+        if (isFixed) return 0;
 
-        double notchDiff = Math.Round(1200 * Math.Log(CurrFrequency / correctFrequency, 2) / centSpacing);
-        return notchDiff * notchDiff;
+        int notchDiff = Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing);
+        return notchDiff;
     }
 
     private void OnDisable() => DisableMovement();
@@ -77,10 +80,12 @@ public class TonePlatform : MonoBehaviour
         StopAllCoroutines();
     }
 
+    public void PlayPlatformTone() => ToneManager.Instance.PlayNote(CurrFrequency);
+
     IEnumerator HandleMoveInput()
     { 
         yield return new WaitUntil(() => PlayerManager.Instance.controls.isGrounded);
-        ToneManager.Instance.PlayNote(CurrFrequency);
+        PlayPlatformTone();
         float currLagTime = InitialHoldLagTime;
         while (true)
         {
@@ -94,9 +99,9 @@ public class TonePlatform : MonoBehaviour
                 int currDir = dir;
                 do
                 {
-                    ToneManager.Instance.PlayNote(CurrFrequency);
+                    PlayPlatformTone();
 
-                    if(!isFixed) {
+                    if (!isFixed) {
                         transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
                         PlayerManager.Instance.TryMoveByPlatform(currDir * notchSpacingInWorldCoords);    
                         currNotch += currDir;
@@ -142,4 +147,10 @@ public class TonePlatform : MonoBehaviour
 
     private void SetOutline() { rend.material = outlineMaterial; }
     private void SetNoOutline() { rend.material = noOutlineMaterial; }
+
+    public void ShowError()
+    {
+        StartCoroutine(errorAnim.ErrorAnim(Error()));
+    }
+
 }

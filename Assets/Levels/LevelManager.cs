@@ -4,6 +4,7 @@ using System.Collections.Generic;
 
 public class LevelManager : MonoBehaviour
 {
+    public static LevelManager Instance { get; private set; }
     public LevelData levelData;
 
     [SerializeField] GameObject tilePrefab;
@@ -30,6 +31,12 @@ public class LevelManager : MonoBehaviour
     [SerializeField] float sizeFactor;
     [SerializeField] Vector2 playerStartPosition;
     [SerializeField] Color tileDisabledColor;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+    }
 
     public void LoadLevel()
     {
@@ -87,7 +94,7 @@ public class LevelManager : MonoBehaviour
 
             if (tile.endsChunk || tile.hasBreak)
             {
-                float divideLine = tile.hasBreak ? groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks + tileHeight / 2 : //  touches bottom of break
+                float divideLine = tile.hasBreak ? groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks : //  touches bottom of break
                     groundOffsetY + tileOffsetY * (i+1) + tileOffsetY * nrBreaks; // halfway between this tile and next
 
                 currChunk.FinishChunk(divideLine, tile.hasBreak); 
@@ -132,7 +139,7 @@ public class LevelManager : MonoBehaviour
 
         Instantiate(bgWallFixedPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent);
 
-        currChunk.FinishChunk(totalHeight + tileHeight/2, true);
+        currChunk.FinishChunk(totalHeight, true);
 
         chunkTracker.CreateChunks(Chunks);
 

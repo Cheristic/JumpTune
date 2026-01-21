@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,8 +8,10 @@ public class GameManager : MonoBehaviour
 
     internal SaveManager SaveManager;
     public LevelData[] levels;
-    int selectedLevel = -1;
+    internal int selectedLevel = 0;
     public int levelProgress = 1;
+
+    public static event Action EndGame;
 
     private void Awake()
     {
@@ -20,6 +23,7 @@ public class GameManager : MonoBehaviour
 
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
+
     public void SwapToLevel(int selected)
     {
         selectedLevel = selected-1;
@@ -33,11 +37,9 @@ public class GameManager : MonoBehaviour
 
         if (selectedLevel < 0 || selectedLevel > levels.Length - 1) return;
 
-        LevelManager levelManager = FindFirstObjectByType<LevelManager>();
-
-        if (levelManager != null)
+        if (LevelManager.Instance != null)
         {
-            levelManager.LoadFromManager(levels[selectedLevel]);
+            LevelManager.Instance.LoadFromManager(levels[selectedLevel]);
         }
     }
 
@@ -54,5 +56,10 @@ public class GameManager : MonoBehaviour
     public void ResetSaveData()
     {
         SaveManager.ResetData();
+    }
+
+    public void TriggerEndGame()
+    {
+        EndGame?.Invoke();
     }
 }

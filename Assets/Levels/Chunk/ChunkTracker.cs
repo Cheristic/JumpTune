@@ -1,14 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 public class ChunkTracker : MonoBehaviour
 {
     public static ChunkTracker Instance { get; private set; }
     List<Chunk> Chunks;
+    internal float LevelTimer = 0;
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
+    }
+    private void Start()
+    {
+       PlayerManager.Instance.Input.Player.StrumChunk.started += StrumCurrentChunk;
+    }
+    private void OnDisable()
+    {
+        PlayerManager.Instance.Input.Player.StrumChunk.started -= StrumCurrentChunk;
     }
     public void CreateChunks(List<Chunk> chunks)
     {
@@ -36,9 +46,13 @@ public class ChunkTracker : MonoBehaviour
     int currChunkIndex = 0;
     IEnumerator TrackChunksLoop()
     {
+        LevelTimer = Time.time;
         while (true)
         {
+            //Debug.Log(currChunkIndex);
             Vector2 currBounds = Chunks[currChunkIndex].ChunkBounds;
+
+            //Debug.Log(Chunks[currChunkIndex].ChunkBounds.x + " " + PlayerManager.Instance.ChunkCheckerPoint.position.y + " " + Chunks[currChunkIndex].ChunkBounds.y);
             // wait until outside curr chunk bounds
             yield return new WaitUntil(() => (PlayerManager.Instance.ChunkCheckerPoint.position.y < currBounds.x ||
                 PlayerManager.Instance.ChunkCheckerPoint.position.y >= currBounds.y) &&
@@ -52,9 +66,13 @@ public class ChunkTracker : MonoBehaviour
             UpdateChunkShakes(currChunkIndex);
 
         }
+        LevelTimer = Time.time - LevelTimer;
+        GameManager.Instance.TriggerEndGame();
+    }
 
-
-        // TRIGGER ENDING
+    public void StrumCurrentChunk(InputAction.CallbackContext ctx)
+    {
+        if (currChunkIndex < Chunks.Count) Chunks[currChunkIndex].PlayChunkTones();
     }
 
     public float GetChunkXChange()
@@ -62,5 +80,14 @@ public class ChunkTracker : MonoBehaviour
         if (currChunkIndex >= Chunks.Count) return 0;
 
         return Chunks[currChunkIndex].framePosXChange;
+    }
+
+    public Chunk GetChunkByYPos(float pos)
+    {
+        foreach (var chunk in Chunks)
+        {
+            if (pos >= chunk.ChunkBounds.x && pos < chunk.ChunkBounds.y) return chunk;
+        }
+        return null;
     }
 }

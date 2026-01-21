@@ -21,4 +21,13 @@ public class ScoreConversions : ScriptableObject
         public string RankText;
     }
     public List<ScoreToRankEntry> ScorePercentToRank;
+
+    public string GetRankTextFromRank(int rankVal)
+    {
+        foreach (var s in ScorePercentToRank) if (rankVal == s.Rank)
+            {
+                return s.RankText;
+            }
+        return "";
+    }
 }

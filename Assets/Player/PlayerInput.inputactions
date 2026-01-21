@@ -25,18 +25,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MoveToneLeft",
+                    "name": "StrumChunk",
                     "type": "Button",
-                    "id": "ea18d7bf-91a5-4396-b768-2c22d7613e8c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "MoveToneRight",
-                    "type": "Button",
-                    "id": "02305ce4-28ac-4e5c-a4cc-29fa4bb7c113",
+                    "id": "9f384385-432b-4c12-a2cb-facb6d71e3b8",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -228,28 +219,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "",
-                    "id": "3b878cb7-c539-41f3-a64f-01f6fb5684d3",
-                    "path": "<Keyboard>/j",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveToneLeft",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "56dac656-33bd-4536-98af-7e6afbec9e19",
-                    "path": "<Keyboard>/k",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "MoveToneRight",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
                     "name": "1D Axis",
                     "id": "6245ae42-6dc5-46bb-9557-42c6b59cb50d",
                     "path": "1DAxis",
@@ -274,7 +243,7 @@
                 {
                     "name": "Positive",
                     "id": "408b7f33-30d7-4d7f-813c-ab15131de182",
-                    "path": "<Keyboard>/k",
+                    "path": "<Keyboard>/l",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -301,6 +270,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Drop",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "bc9af06d-12a5-4a94-9f49-e77b20d90fb0",
+                    "path": "<Keyboard>/k",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "StrumChunk",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

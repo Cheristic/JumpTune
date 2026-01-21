@@ -350,6 +350,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &53735769
 GameObject:
@@ -740,6 +741,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &135215831
 GameObject:
@@ -1319,6 +1321,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &178041983
 GameObject:
@@ -1460,11 +1463,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &203797439
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -1730,6 +1736,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &248342754
 GameObject:
@@ -1852,6 +1859,7 @@ Transform:
   m_Children:
   - {fileID: 619394802}
   - {fileID: 3629900845693609826}
+  - {fileID: 913597805}
   - {fileID: 350228341}
   - {fileID: 8603741186093791149}
   m_Father: {fileID: 0}
@@ -1996,11 +2004,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &281378128
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -2415,11 +2426,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &286949660
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -2902,6 +2916,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &312976761
 GameObject:
@@ -4077,6 +4092,7 @@ Transform:
   - {fileID: 4555340949432550570}
   - {fileID: 488334074}
   - {fileID: 8415940455855324626}
+  - {fileID: 693026682}
   - {fileID: 1858947013}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4347,11 +4363,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &417801645
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -4617,6 +4636,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &432876740
 GameObject:
@@ -5028,11 +5048,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &466210354
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5420,11 +5443,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &493896445
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -6826,11 +6852,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &597809048
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -7301,11 +7330,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &646425231
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -7902,11 +7934,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &690471933
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -7999,6 +8034,144 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &693026681
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 380139480}
+    m_Modifications:
+    - target: {fileID: 3256654932445831280, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256654932445831280, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256654932445831280, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3256654932445831280, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5087063468050748084, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6317646064767031723, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_text
+      value: u
+      objectReference: {fileID: 0}
+    - target: {fileID: 6509996666650786450, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_Name
+      value: TonePlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825153684264810374, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825153684264810374, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825153684264810374, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825153684264810374, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7825153684264810374, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849361232186614897, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_fontColor.a
+      value: 0.99607843
+      objectReference: {fileID: 0}
+    - target: {fileID: 8849361232186614897, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190079
+      objectReference: {fileID: 0}
+    - target: {fileID: 8998610178202888929, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.43586
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 6317646064767031723, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9063214022608975689, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+--- !u!4 &693026682 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+  m_PrefabInstance: {fileID: 693026681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &697198865
 GameObject:
   m_ObjectHideFlags: 0
@@ -8049,11 +8222,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &697198868
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -8146,6 +8322,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &698877585
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 698877586}
+  m_Layer: 0
+  m_Name: ~~~~ MISC ~~~~
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &698877586
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698877585}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0547, y: -0.00517, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1089301633}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &710494116
 GameObject:
   m_ObjectHideFlags: 0
@@ -8286,11 +8494,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &720499944
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -8825,11 +9036,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &787133336
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -9903,11 +10117,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &866132336
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -10580,6 +10797,68 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 0.15031254}
   m_EdgeRadius: 0
+--- !u!1001 &913597804
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 253134233}
+    m_Modifications:
+    - target: {fileID: 5497623831985302923, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_Name
+      value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.71349
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 11.92961
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+--- !u!4 &913597805 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5663164568030136573, guid: ed8d6cd53bc3582448a18ea4f10a9c7c, type: 3}
+  m_PrefabInstance: {fileID: 913597804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &918272279
 GameObject:
   m_ObjectHideFlags: 0
@@ -10752,11 +11031,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &928883942
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -10990,6 +11272,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &977160824
 GameObject:
@@ -11899,11 +12182,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1065487891
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -12190,6 +12476,52 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1089301632
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1089301633}
+  - component: {fileID: 1089301634}
+  m_Layer: 0
+  m_Name: EndSequenceAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1089301633
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089301632}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 698877586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1089301634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089301632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12a7ee4f42675ac46a3ff5daef585b7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FinalScoreCounter
+  _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  MoveSpeed: 0.1
 --- !u!1 &1089446646
 GameObject:
   m_ObjectHideFlags: 0
@@ -12240,11 +12572,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1089446649
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -13389,6 +13724,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &1178958547
 GameObject:
@@ -13530,11 +13866,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1180266958
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -13984,11 +14323,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1192616404
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -14131,11 +14473,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1204704057
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -14368,11 +14713,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1220660104
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -14579,11 +14927,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1236854373
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -14726,11 +15077,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1245006161
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -15873,11 +16227,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1320430933
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -16427,6 +16784,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &1379432405
 GameObject:
@@ -16478,11 +16836,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1379432408
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -17478,11 +17839,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1535281970
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -17869,11 +18233,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1560858744
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -19089,11 +19456,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1715537936
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -19823,11 +20193,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1788410662
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -19970,11 +20343,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1794570391
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -20150,6 +20526,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!1 &1817188434
 GameObject:
@@ -21243,11 +21620,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1901959703
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -21390,11 +21770,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &1910502222
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -22823,11 +23206,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cfd277d165afaf49a8b3b503231d754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatform
+  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  errorAnim: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
-  fixedTileSprite: {fileID: 21300000, guid: 669686176a01c76d6b87afc36b3a9a7c, type: 3}
+  outlineMaterial: {fileID: 0}
+  noOutlineMaterial: {fileID: 0}
 --- !u!251 &2056434625
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -23882,6 +24268,7 @@ MonoBehaviour:
   shakeExp: 0.43
   finalSpeedMult: 1.96
   shakeChangeRate: 0.108333334
+  timeBetweenNotes: 0
   currShakeSpeed: 0
 --- !u!50 &1632590279751266344
 Rigidbody2D:
@@ -24299,4 +24686,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 253134233}
   - {fileID: 2115981863}
+  - {fileID: 698877586}
   - {fileID: 380139480}

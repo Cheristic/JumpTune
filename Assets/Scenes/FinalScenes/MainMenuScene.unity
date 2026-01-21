@@ -1720,7 +1720,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9748427, g: 0.95261824, b: 0.30348867, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8445983, b: 0.1992404, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6846,6 +6846,7 @@ MonoBehaviour:
   _Score: {fileID: 1082892836}
   _Time: {fileID: 1688335398}
   ButtonsHolder: {fileID: 1725362369}
+  _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
   FadeCurve:
     serializedVersion: 2
     m_Curve:

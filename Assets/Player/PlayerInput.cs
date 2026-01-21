@@ -111,18 +111,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""MoveToneLeft"",
+                    ""name"": ""StrumChunk"",
                     ""type"": ""Button"",
-                    ""id"": ""ea18d7bf-91a5-4396-b768-2c22d7613e8c"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""MoveToneRight"",
-                    ""type"": ""Button"",
-                    ""id"": ""02305ce4-28ac-4e5c-a4cc-29fa4bb7c113"",
+                    ""id"": ""9f384385-432b-4c12-a2cb-facb6d71e3b8"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -314,28 +305,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""3b878cb7-c539-41f3-a64f-01f6fb5684d3"",
-                    ""path"": ""<Keyboard>/j"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveToneLeft"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""56dac656-33bd-4536-98af-7e6afbec9e19"",
-                    ""path"": ""<Keyboard>/k"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MoveToneRight"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""1D Axis"",
                     ""id"": ""6245ae42-6dc5-46bb-9557-42c6b59cb50d"",
                     ""path"": ""1DAxis"",
@@ -360,7 +329,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""Positive"",
                     ""id"": ""408b7f33-30d7-4d7f-813c-ab15131de182"",
-                    ""path"": ""<Keyboard>/k"",
+                    ""path"": ""<Keyboard>/l"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -387,6 +356,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bc9af06d-12a5-4a94-9f49-e77b20d90fb0"",
+                    ""path"": ""<Keyboard>/k"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""StrumChunk"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -976,8 +956,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_MoveToneLeft = m_Player.FindAction("MoveToneLeft", throwIfNotFound: true);
-        m_Player_MoveToneRight = m_Player.FindAction("MoveToneRight", throwIfNotFound: true);
+        m_Player_StrumChunk = m_Player.FindAction("StrumChunk", throwIfNotFound: true);
         m_Player_MoveTone = m_Player.FindAction("MoveTone", throwIfNotFound: true);
         m_Player_Drop = m_Player.FindAction("Drop", throwIfNotFound: true);
         // UI
@@ -1075,8 +1054,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_MoveToneLeft;
-    private readonly InputAction m_Player_MoveToneRight;
+    private readonly InputAction m_Player_StrumChunk;
     private readonly InputAction m_Player_MoveTone;
     private readonly InputAction m_Player_Drop;
     /// <summary>
@@ -1099,13 +1077,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         /// <summary>
-        /// Provides access to the underlying input action "Player/MoveToneLeft".
+        /// Provides access to the underlying input action "Player/StrumChunk".
         /// </summary>
-        public InputAction @MoveToneLeft => m_Wrapper.m_Player_MoveToneLeft;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/MoveToneRight".
-        /// </summary>
-        public InputAction @MoveToneRight => m_Wrapper.m_Player_MoveToneRight;
+        public InputAction @StrumChunk => m_Wrapper.m_Player_StrumChunk;
         /// <summary>
         /// Provides access to the underlying input action "Player/MoveTone".
         /// </summary>
@@ -1146,12 +1120,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @MoveToneLeft.started += instance.OnMoveToneLeft;
-            @MoveToneLeft.performed += instance.OnMoveToneLeft;
-            @MoveToneLeft.canceled += instance.OnMoveToneLeft;
-            @MoveToneRight.started += instance.OnMoveToneRight;
-            @MoveToneRight.performed += instance.OnMoveToneRight;
-            @MoveToneRight.canceled += instance.OnMoveToneRight;
+            @StrumChunk.started += instance.OnStrumChunk;
+            @StrumChunk.performed += instance.OnStrumChunk;
+            @StrumChunk.canceled += instance.OnStrumChunk;
             @MoveTone.started += instance.OnMoveTone;
             @MoveTone.performed += instance.OnMoveTone;
             @MoveTone.canceled += instance.OnMoveTone;
@@ -1175,12 +1146,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @MoveToneLeft.started -= instance.OnMoveToneLeft;
-            @MoveToneLeft.performed -= instance.OnMoveToneLeft;
-            @MoveToneLeft.canceled -= instance.OnMoveToneLeft;
-            @MoveToneRight.started -= instance.OnMoveToneRight;
-            @MoveToneRight.performed -= instance.OnMoveToneRight;
-            @MoveToneRight.canceled -= instance.OnMoveToneRight;
+            @StrumChunk.started -= instance.OnStrumChunk;
+            @StrumChunk.performed -= instance.OnStrumChunk;
+            @StrumChunk.canceled -= instance.OnStrumChunk;
             @MoveTone.started -= instance.OnMoveTone;
             @MoveTone.performed -= instance.OnMoveTone;
             @MoveTone.canceled -= instance.OnMoveTone;
@@ -1502,19 +1470,12 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "MoveToneLeft" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "StrumChunk" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMoveToneLeft(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "MoveToneRight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMoveToneRight(InputAction.CallbackContext context);
+        void OnStrumChunk(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "MoveTone" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
