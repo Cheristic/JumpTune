@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -48,6 +49,9 @@ public class Chunk : MonoBehaviour
         foreach (var platform in platforms) platform.transform.parent = Shaker;
     }
 
+    public int ChunkError() =>
+        platforms.Sum(p => {p.TryGetComponent<TonePlatform>(out var tp); return tp.Error();});
+
     public int ChunkScore()
     {
         int score = 0;
@@ -56,7 +60,7 @@ public class Chunk : MonoBehaviour
             if (platform.TryGetComponent<TonePlatform>(out var tp))
             { 
                 if (tp.isFixed) continue;
-                score +=(int)tp.Score();
+                score += tp.Score();
             }
         }
         return score;
