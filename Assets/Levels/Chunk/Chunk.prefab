@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Chunk
   Shaker: {fileID: 7609297753458646061}
-  shakeFrequency: 0.5
+  shakeFrequency: 0.75
   shakeMult: 0.2
   shakeExp: 0.43
-  finalSpeedMult: 1.96
+  finalSpeedMult: 2.5
   shakeChangeRate: 0.108333334
+  noiseStrength: 0.2
   timeBetweenNotes: 0.15
   currShakeSpeed: 0
 --- !u!1 &9151766152212698601

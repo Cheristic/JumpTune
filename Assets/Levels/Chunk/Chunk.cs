@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using Random = UnityEngine.Random;
 
 public class Chunk : MonoBehaviour
 {
@@ -14,6 +16,11 @@ public class Chunk : MonoBehaviour
     [SerializeField] float shakeExp;
     [SerializeField] float finalSpeedMult;
     [SerializeField] float shakeChangeRate;
+    [SerializeField] float noiseStrength;
+
+    private RandomWalk walk1;
+    private RandomWalk walk2;
+    private RandomWalk walk3;
 
     [Header("Chunk Playing")]
     [SerializeField] float timeBetweenNotes;
@@ -31,6 +38,10 @@ public class Chunk : MonoBehaviour
         platforms = new();
         chunkIndex = index;
         currShakeSpeed = 0;
+
+        walk1 = new RandomWalk(noiseStrength);
+        walk2 = new RandomWalk(noiseStrength);
+        walk3 = new RandomWalk(noiseStrength);
     }
 
     public void AppendPlatform(GameObject platform)
@@ -50,7 +61,9 @@ public class Chunk : MonoBehaviour
     }
 
     public int ChunkError() =>
-        platforms.Sum(p => {p.TryGetComponent<TonePlatform>(out var tp); return tp.Error();});
+        platforms.Sum(p => {
+            p.TryGetComponent<TonePlatform>(out var tp);
+            return tp == null ? 0 : tp.Error();});
 
     public int ChunkScore()
     {
@@ -103,12 +116,36 @@ public class Chunk : MonoBehaviour
                 : Mathf.Clamp(currShakeSpeed + shakeChangeRate, currShakeSpeed, targetShakeSpeed);
         }
 
+        float maxX = (_man.levelData.levelWidth - _man.levelData.towerWidth)/2;
+        float minX = (-_man.levelData.levelWidth + _man.levelData.towerWidth)/2;
+
+        float ShakeWave(float frequency, float strength, float offset)
+            => Mathf.Sin(2f * Mathf.PI * frequency * Time.time + offset)
+                * Mathf.Clamp(shakeMult * Mathf.Pow(currShakeSpeed, shakeExp), minX, maxX)
+                * finalSpeedMult
+                * strength;
+
         float prevX = Shaker.position.x;
-        float newX = Mathf.Sin(2f * Mathf.PI * shakeFrequency * Time.time) *
-            Mathf.Clamp(shakeMult * Mathf.Pow(currShakeSpeed, shakeExp),
-            (-_man.levelData.levelWidth + _man.levelData.towerWidth)/2, (_man.levelData.levelWidth - _man.levelData.towerWidth)/2) * finalSpeedMult;
+        float newX = ShakeWave(shakeFrequency, 1.0f, walk1.val)
+                    + ShakeWave(shakeFrequency * 2.71828f, 0.33f, walk2.val)
+                    + ShakeWave(shakeFrequency * 6.28318f, 0.2f, walk3.val);
+        // add noise
+        // newX += Random.Range(-1, 1) * noiseMult * targetShakeSpeed;
             
         Shaker.position = new Vector2(newX, Shaker.position.y);
         framePosXChange = Shaker.position.x - prevX;
+    }
+
+    private class RandomWalk
+    {
+        public readonly float noiseStrength;
+        public float val;
+
+        public RandomWalk(float noiseStrength)
+        {
+            this.noiseStrength = noiseStrength;
+        }
+
+        public void Update() => val += Random.Range(-noiseStrength, noiseStrength);
     }
 }
