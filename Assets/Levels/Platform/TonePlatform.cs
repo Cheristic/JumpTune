@@ -28,6 +28,8 @@ public class TonePlatform : MonoBehaviour
 
     internal float centSpacing;
 
+    internal bool hasPlayer = false;
+
 
     Animator playerAnimator;
 
@@ -85,10 +87,12 @@ public class TonePlatform : MonoBehaviour
 
     public void EnableMovement()
     {
+        hasPlayer = true;
         StartCoroutine(HandleMoveInput());
     }
     public void DisableMovement()
     {
+        hasPlayer = false;
         StopAllCoroutines();
     }
 

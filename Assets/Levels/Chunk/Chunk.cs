@@ -92,6 +92,7 @@ public class Chunk : MonoBehaviour
                 {
                     if (showError && !tp.isFixed) tp.ShowError();
                     tp.PlayPlatformTone();
+                    if (tp.hasPlayer) yield break;
                     yield return new WaitForSeconds(timeBetweenNotes);
                 }
             }
