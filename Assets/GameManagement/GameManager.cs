@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -48,6 +49,12 @@ public class GameManager : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
+    [ContextMenu("Delete Save Data")]
+    public void DeleteSaveDataInternal()
+    {
+        SaveManager = new(levels);
+        SaveManager.DeleteSaveData();
+    }
     public void ResetSaveData()
     {
         SaveManager.ResetData();

@@ -18,7 +18,6 @@ public class FinalScoreCounter : MonoBehaviour
 
     [Header("Anim Valls")]
     [SerializeField] float MoveSpeed;
-    [SerializeField] float ExtraBufferTimeToPlayChunk = 0.5f;
 
     private void OnEnable()
     {

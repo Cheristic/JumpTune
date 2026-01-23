@@ -18,13 +18,13 @@ MonoBehaviour:
     Color: {r: 0.37643012, g: 0.8553459, b: 0.28242543, a: 0}
   - MaxError: 2
     Score: 8
-    Color: {r: 0.1628692, g: 0.4630932, b: 0.8490566, a: 0}
+    Color: {r: 0.45955455, g: 0.66421735, b: 0.9308176, a: 0}
   - MaxError: 3
     Score: 5
     Color: {r: 0.8490566, g: 0.83687496, b: 0.1628692, a: 0}
   - MaxError: 4
     Score: 3
-    Color: {r: 0.8509804, g: 0.59889317, b: 0.16470587, a: 0}
+    Color: {r: 0.91823894, g: 0.6630974, b: 0.49954504, a: 0}
   - MaxError: 200
     Score: 0
     Color: {r: 1, g: 1, b: 1, a: 0}
