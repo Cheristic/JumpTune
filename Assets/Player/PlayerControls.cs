@@ -106,7 +106,7 @@ public class PlayerControls : MonoBehaviour
 
     void StartDrop(InputAction.CallbackContext ctx)
     {
-        if (isGrounded && playerCollider.enabled)
+        if (isGrounded && lastGroundType == GroundType.Moving && playerCollider.enabled)
         {
             StartCoroutine(DisableCollision(0.25f));
         }

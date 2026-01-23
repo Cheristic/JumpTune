@@ -49,7 +49,7 @@ public class LevelManager : MonoBehaviour
 
         GameObject startTile = Instantiate(startTilePrefab, tilesParent);
         startTile.transform.position = new Vector3(0, -tileOffsetY, 0);
-        startTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+        startTile.transform.localScale = new Vector3(levelData.levelWidth*2, 1, 1);
         //startTile.GetComponent<SpriteRenderer>().size = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
 
         Chunk currChunk = Instantiate(chunkPrefab, new Vector2(0, .65f), Quaternion.identity, tilesParent).GetComponent<Chunk>();
