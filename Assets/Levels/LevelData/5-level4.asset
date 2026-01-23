@@ -28,7 +28,7 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 10
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 12
     hasBreak: 0
@@ -56,7 +56,7 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 14
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 16
     hasBreak: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 5
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 7
     hasBreak: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 6
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 7
     hasBreak: 0
@@ -129,4 +129,5 @@ MonoBehaviour:
   levelWidth: 20
   towerWidth: 12
   centSpacing: 24
+  Title: 
   tuningSystem: 5
