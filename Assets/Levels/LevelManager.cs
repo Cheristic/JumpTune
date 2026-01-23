@@ -170,8 +170,9 @@ public class LevelManager : MonoBehaviour
         for (int i = tilesParent.childCount - 1; i >= 0; i--) DestroyImmediate(tilesParent.GetChild(i).gameObject);
     }
 
-    public float FindFrequency(int n, int N, float refFrequency=130.81f) {
-        // ref note is C3
-        return refFrequency * Mathf.Pow(2f, n * 1.0f / N);
+    public float FindFrequency(int n, int N, float refFrequency=440f) {
+        // ref note is A4; pos is relative in each system
+        int aPos = N == 12 ? 21 : N == 5 ? 14 : 33;
+        return refFrequency * Mathf.Pow(2f, (n - aPos) * 1.0f / N);
     }
 }
