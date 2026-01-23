@@ -49,9 +49,13 @@ MonoBehaviour:
   shakeFrequency: 0.75
   shakeMult: 0.2
   shakeExp: 0.43
-  finalSpeedMult: 2.5
+  finalSpeedMult: 3
   shakeChangeRate: 0.108333334
-  noiseStrength: 0.2
+  noiseStrength: 0
+  noiseShake1Frequency: 2.71828
+  noiseShake1Strength: 0.055
+  noiseShake2Frequency: 22.61945
+  noiseShake2Strength: 0.025
   timeBetweenNotes: 0.15
   currShakeSpeed: 0
 --- !u!1 &9151766152212698601

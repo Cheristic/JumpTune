@@ -17,6 +17,10 @@ public class Chunk : MonoBehaviour
     [SerializeField] float finalSpeedMult;
     [SerializeField] float shakeChangeRate;
     [SerializeField] float noiseStrength;
+    [SerializeField] float noiseShake1Frequency = 2.71828f;
+    [SerializeField] float noiseShake1Strength = 0.33f;
+    [SerializeField] float noiseShake2Frequency = 6.28318f;
+    [SerializeField] float noiseShake2Strength = .2f;
 
     private RandomWalk walk1;
     private RandomWalk walk2;
@@ -128,8 +132,8 @@ public class Chunk : MonoBehaviour
 
         float prevX = Shaker.position.x;
         float newX = ShakeWave(shakeFrequency, 1.0f, walk1.val)
-                    + ShakeWave(shakeFrequency * 2.71828f, 0.33f, walk2.val)
-                    + ShakeWave(shakeFrequency * 6.28318f, 0.2f, walk3.val);
+                    + ShakeWave(noiseShake1Frequency,  noiseShake1Strength, walk2.val)
+                    + ShakeWave(noiseShake2Frequency, noiseShake2Strength, walk3.val);
         // add noise
         // newX += Random.Range(-1, 1) * noiseMult * targetShakeSpeed;
             
