@@ -102,7 +102,7 @@ MonoBehaviour:
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 12
+    correctFrequencyIdx: 24
     hasBreak: 1
     endsChunk: 1
   - isFixed: 0
@@ -154,35 +154,36 @@ MonoBehaviour:
     hasBreak: 1
     endsChunk: 1
   - isFixed: 0
-    correctFrequencyIdx: 0
+    correctFrequencyIdx: 22
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 0
+    correctFrequencyIdx: 21
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 0
+    correctFrequencyIdx: 22
+    hasBreak: 1
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 22
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 24
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 0
+    correctFrequencyIdx: 22
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 0
+    correctFrequencyIdx: 17
     hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 0
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 0
-    hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   notchCount: 10
   levelWidth: 20
   towerWidth: 12
   centSpacing: 10
+  Title: 
   tuningSystem: 12

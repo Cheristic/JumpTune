@@ -10,116 +10,152 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a667b1475732604cabeb33d790f3ddc, type: 3}
-  m_Name: 12-level3
+  m_Name: 19-level4
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   tiles:
   - isFixed: 1
-    correctFrequencyIdx: 18
+    correctFrequencyIdx: 28
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 16
+    correctFrequencyIdx: 33
     hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 18
-    hasBreak: 1
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 18
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
     correctFrequencyIdx: 20
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 21
+    correctFrequencyIdx: 47
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 16
+    correctFrequencyIdx: 44
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 39
     hasBreak: 1
     endsChunk: 1
   - isFixed: 1
-    correctFrequencyIdx: 21
+    correctFrequencyIdx: 36
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 20
+    correctFrequencyIdx: 42
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 47
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 21
+    correctFrequencyIdx: 55
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 52
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 50
     hasBreak: 1
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 1
-    correctFrequencyIdx: 21
+    correctFrequencyIdx: 31
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 36
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 23
+    correctFrequencyIdx: 42
     hasBreak: 0
     endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 47
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 50
+    hasBreak: 1
+    endsChunk: 1
+  - isFixed: 1
+    correctFrequencyIdx: 28
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 33
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 37
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 45
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 47
+    hasBreak: 1
+    endsChunk: 1
+  - isFixed: 0
+    correctFrequencyIdx: 26
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 27
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 22
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 33
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 36
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 45
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 46
+    hasBreak: 1
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 25
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 20
-    hasBreak: 1
-    endsChunk: 1
-  - isFixed: 0
-    correctFrequencyIdx: 18
+    correctFrequencyIdx: 36
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 20
+    correctFrequencyIdx: 41
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 21
+    correctFrequencyIdx: 46
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 16
-    hasBreak: 1
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 16
+    correctFrequencyIdx: 54
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 11
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 10
-    hasBreak: 1
-    endsChunk: 1
-  - isFixed: 1
-    correctFrequencyIdx: 11
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 14
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 15
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 18
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 16
+    correctFrequencyIdx: 55
     hasBreak: 0
     endsChunk: 1
-  notchCount: 10
+  notchCount: 8
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 10
+  centSpacing: 7.895
   Title: 
-  tuningSystem: 12
+  tuningSystem: 19

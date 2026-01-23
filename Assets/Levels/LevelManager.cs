@@ -46,7 +46,6 @@ public class LevelManager : MonoBehaviour
         int nrBreaks = 0;
 
         float notchSpacing = levelData.towerWidth / levelData.notchCount;
-        float offset = notchSpacing / 2;
 
         GameObject startTile = Instantiate(startTilePrefab, tilesParent);
         startTile.transform.position = new Vector3(0, -tileOffsetY, 0);
@@ -60,18 +59,30 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < levelData.tiles.Count; i++)
         {
             TileData tile = levelData.tiles[i];
+            
+            float posX = 0;
+            int startNotch = 0;
+            float offset = 0;
 
-            int startNotch;
-            if(tile.isFixed) startNotch = (levelData.notchCount + 1) / 2;
-            else startNotch = Random.Range(0, levelData.notchCount);
+            if(!tile.isFixed)
+            {
+                int xCorrect = Random.Range(1, levelData.notchCount + 1) - 1;
+                float posCorrectX = -levelData.towerWidth / 2 + xCorrect * notchSpacing;
 
-            float posX = -levelData.towerWidth / 2 + startNotch * notchSpacing;
+                posX = posCorrectX;
+                startNotch = xCorrect;
 
-            //Debug.Log(startNotch + " " + posX + " " + FindFrequency(tile.correctFrequencyIdx, levelData.tuningSystem));
-            //Debug.Log("tile " + i + " fixed: " + tile.isFixed + " x correct " + xCorrect + " pos correct " + posCorrectX + " pos final " + posX);
+                offset = notchSpacing / 2;
+
+                while (posX == posCorrectX)
+                {
+                    startNotch = Random.Range(1, levelData.notchCount + 1) - 1;
+                    posX = -levelData.towerWidth / 2 + startNotch * notchSpacing;
+                }
+            }
 
             TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear),
-                 Quaternion.identity, tilesParent).GetComponent<TonePlatform>();
+                    Quaternion.identity, tilesParent).GetComponent<TonePlatform>();
 
             tileObj.transform.localScale = new Vector3(tileWidth, tileHeight,  1);
 
@@ -165,8 +176,9 @@ public class LevelManager : MonoBehaviour
         for (int i = tilesParent.childCount - 1; i >= 0; i--) DestroyImmediate(tilesParent.GetChild(i).gameObject);
     }
 
-    public float FindFrequency(int n, int N, float refFrequency=130.81f) {
-        // ref note is C3
-        return refFrequency * Mathf.Pow(2f, n * 1.0f / N);
+    public float FindFrequency(int n, int N, float refFrequency=440f) {
+        // ref note is A4; pos is relative in each system
+        int aPos = N == 12 ? 21 : N == 5 ? 14 : 33;
+        return refFrequency * Mathf.Pow(2f, (n - aPos) * 1.0f / N);
     }
 }

@@ -10,84 +10,92 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a667b1475732604cabeb33d790f3ddc, type: 3}
-  m_Name: 5-level2
+  m_Name: 19-level3
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   tiles:
   - isFixed: 1
-    correctFrequencyIdx: 8
+    correctFrequencyIdx: 30
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 31
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 9
+    correctFrequencyIdx: 32
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 11
+    correctFrequencyIdx: 34
+    hasBreak: 0
+    endsChunk: 1
+  - isFixed: 1
+    correctFrequencyIdx: 34
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 12
+    correctFrequencyIdx: 51
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 13
+    correctFrequencyIdx: 47
     hasBreak: 1
     endsChunk: 1
   - isFixed: 1
-    correctFrequencyIdx: 13
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 12
+    correctFrequencyIdx: 47
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 11
+    correctFrequencyIdx: 36
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 10
-    hasBreak: 0
-    endsChunk: 1
-  - isFixed: 1
-    correctFrequencyIdx: 9
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 11
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 9
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 8
+    correctFrequencyIdx: 37
     hasBreak: 1
     endsChunk: 1
-  - isFixed: 0
-    correctFrequencyIdx: 7
+  - isFixed: 1
+    correctFrequencyIdx: 47
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 11
+    correctFrequencyIdx: 42
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 10
+    correctFrequencyIdx: 43
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 44
+    hasBreak: 1
+    endsChunk: 1
+  - isFixed: 1
+    correctFrequencyIdx: 25
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 30
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 37
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 29
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 7
+    correctFrequencyIdx: 25
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 8
+    correctFrequencyIdx: 26
     hasBreak: 0
     endsChunk: 1
-  notchCount: 5
+  notchCount: 8
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 24
+  centSpacing: 7.895
   Title: 
-  tuningSystem: 5
+  tuningSystem: 19
