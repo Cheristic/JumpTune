@@ -43,7 +43,6 @@ public class LevelManager : MonoBehaviour
         int nrBreaks = 0;
 
         float notchSpacing = levelData.towerWidth / levelData.notchCount;
-        float offset = notchSpacing / 2;
 
         GameObject startTile = Instantiate(startTilePrefab, tilesParent);
         startTile.transform.position = new Vector3(0, -tileOffsetY, 0);
@@ -57,18 +56,21 @@ public class LevelManager : MonoBehaviour
         for (int i = 0; i < levelData.tiles.Count; i++)
         {
             TileData tile = levelData.tiles[i];
+            
+            float posX = 0;
+            int startNotch = 0;
+            float offset = 0;
 
-            int xCorrect;
-            if(tile.isFixed) xCorrect = (levelData.notchCount + 1) / 2;
-            else xCorrect = Random.Range(1, levelData.notchCount + 1) - 1;
-
-            float posCorrectX = -levelData.towerWidth / 2 + xCorrect * notchSpacing;
-
-            float posX = posCorrectX;
-            int startNotch = xCorrect;
-
-            if (!tile.isFixed) 
+            if(!tile.isFixed)
             {
+                int xCorrect = Random.Range(1, levelData.notchCount + 1) - 1;
+                float posCorrectX = -levelData.towerWidth / 2 + xCorrect * notchSpacing;
+
+                posX = posCorrectX;
+                startNotch = xCorrect;
+
+                offset = notchSpacing / 2;
+
                 while (posX == posCorrectX)
                 {
                     startNotch = Random.Range(1, levelData.notchCount + 1) - 1;
@@ -76,10 +78,8 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            //Debug.Log("tile " + i + " fixed: " + tile.isFixed + " x correct " + xCorrect + " pos correct " + posCorrectX + " pos final " + posX);
-
             TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear),
-                 Quaternion.identity, tilesParent).GetComponent<TonePlatform>();
+                    Quaternion.identity, tilesParent).GetComponent<TonePlatform>();
 
             tileObj.transform.localScale = new Vector3(tileWidth, tileHeight,  1);
 
