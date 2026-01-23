@@ -83,7 +83,7 @@ public class SaveManager
                 using (StreamWriter writer = new StreamWriter(stream))
                 {
 #if UNITY_WEBGL
-                    JS_FileSystem_Sync();
+                    if (!Application.isEditor) JS_FileSystem_Sync();
 #endif
                     writer.Write(gameDataJSON);
                 }
@@ -95,6 +95,17 @@ public class SaveManager
         }
     }
 
+    public void DeleteSaveData()
+    {
+        try
+        {
+            File.Delete(Path.Combine(Application.persistentDataPath, dataFileName));
+        }
+        catch (Exception e)
+        {
+            Debug.LogError("Game data delete error: " + e);
+        }
+    }
     public void ResetData()
     {
         CurrData.Reset();

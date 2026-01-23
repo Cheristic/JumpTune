@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class TonePlatform : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class TonePlatform : MonoBehaviour
     [Header("Links")]
     [SerializeField] Sprite fixedTileSprite;
     [SerializeField] TonePlatformErrorAnim errorAnim;
+    [SerializeField] TonePlatformTrigger trigger;
+    [SerializeField] ScoreConversions _Conversions;
 
     [Header("Movement")]
     [SerializeField] float InitialHoldLagTime;
@@ -25,6 +28,8 @@ public class TonePlatform : MonoBehaviour
 
     internal float centSpacing;
 
+    internal bool hasPlayer = false;
+
 
     Animator playerAnimator;
 
@@ -35,29 +40,38 @@ public class TonePlatform : MonoBehaviour
 
     public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor) 
     { 
-        currNotch = _StartingNotch;
         isFixed = _Fixed;
         notchCount = _NotchCount;
         notchSpacingInWorldCoords = _NotchSpacingWorld;
+        currNotch = _StartingNotch;
 
         centSpacing = _CentSpacing;
 
         correctFrequency = _CorrectFrequency;
-        leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
+
 
         if(isFixed)
         {
+            leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * _StartingNotch / 1200f);
+
             transform.localScale *= new Vector2(2, 2);
             SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
             sr.sprite = fixedTileSprite;
-            GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 0.1f); // top ten moments in coding history
+            var col = GetComponent<BoxCollider2D>();
+            col.size = new Vector2(1.5f, 0.04f); // top ten moments in coding history
+            col.offset = new Vector2(0, -.008f);
+            trigger.GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 0.1f); // but wait, it gets worse
 
             foreach (SpriteRenderer s in this.transform.GetComponentsInChildren<SpriteRenderer>())
             {
                 s.color = _tileDisabledColor;
             }
         }
-
+        else
+        {
+            int correctPos = Random.Range(0, notchCount);
+            leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * correctPos / 1200f);
+        }
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
@@ -65,22 +79,30 @@ public class TonePlatform : MonoBehaviour
     {
         if (isFixed) return 0;
 
-        int notchDiff = Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing);
-        return notchDiff;
+        return Mathf.Abs(Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing));
     }
+
+    public int Score() => _Conversions.ScoreFromError(Error());
 
     private void OnDisable() => DisableMovement();
 
     public void EnableMovement()
     {
+        hasPlayer = true;
         StartCoroutine(HandleMoveInput());
     }
     public void DisableMovement()
     {
+        hasPlayer = false;
         StopAllCoroutines();
     }
 
-    public void PlayPlatformTone() => ToneManager.Instance.PlayNote(CurrFrequency);
+    public void PlayPlatformTone()
+    {
+        //Debug.Log("curr = " + CurrFrequency + ", correct = " + correctFrequency);
+        //Debug.Log(Score() + " " + currNotch);
+        ToneManager.Instance.PlayNote(CurrFrequency);
+    }
 
     IEnumerator HandleMoveInput()
     { 
@@ -99,14 +121,13 @@ public class TonePlatform : MonoBehaviour
                 int currDir = dir;
                 do
                 {
-                    PlayPlatformTone();
 
                     if (!isFixed) {
                         transform.position = new Vector2(transform.position.x + currDir * notchSpacingInWorldCoords, transform.position.y);
                         PlayerManager.Instance.TryMoveByPlatform(currDir * notchSpacingInWorldCoords);    
                         currNotch += currDir;
                     }
-                
+                    PlayPlatformTone();
                     yield return new WaitForSeconds(currLagTime);
                     currLagTime = Mathf.Max(currLagTime * HoldLagSpeedUp, MinLagTime);
                     currDir = Math.Sign(PlayerManager.Instance.Input.Player.MoveTone.ReadValue<float>());
@@ -150,7 +171,7 @@ public class TonePlatform : MonoBehaviour
 
     public void ShowError()
     {
-        StartCoroutine(errorAnim.ErrorAnim(Error()));
+        StartCoroutine(errorAnim.ErrorAnim(Score()));
     }
 
 }

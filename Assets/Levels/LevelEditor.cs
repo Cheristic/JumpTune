@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEditor;
-
+#if UNITY_EDITOR
 [CustomEditor(typeof(LevelManager))]
 public class LevelEditor : Editor
 {
@@ -22,3 +22,4 @@ public class LevelEditor : Editor
         }
     }
 }
+#endif

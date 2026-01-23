@@ -19,11 +19,11 @@ public class TonePlatformErrorAnim : MonoBehaviour
     }
 
     float timeProgressed;
-    public IEnumerator ErrorAnim(int error)
+    public IEnumerator ErrorAnim(int score)
     {
         foreach (var i in _Conversions.ErrorToScore)
         {
-            if (error <= i.MaxError)
+            if (score == i.Score)
             {
                 text.text = i.Score.ToString();
                 text.color = i.Color;

@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (Instance != null && Instance != this) Destroy(this);
+        if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         else Instance = this;
         DontDestroyOnLoad(this);
 
@@ -43,16 +44,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void OnDisable()
-    {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
-    }
-
     public void SwapToMainMenu()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene(0);
     }
 
+    [ContextMenu("Delete Save Data")]
+    public void DeleteSaveDataInternal()
+    {
+        SaveManager = new(levels);
+        SaveManager.DeleteSaveData();
+    }
     public void ResetSaveData()
     {
         SaveManager.ResetData();

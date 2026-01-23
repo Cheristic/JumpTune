@@ -1,10 +1,20 @@
+using System;
 using System.Collections;
+using TMPro;
+using Unity.Cinemachine;
 using UnityEngine;
 
 public class FinalScoreCounter : MonoBehaviour
 {
+    public static event Action CompletedEndSequence;
     [Header("Links")]
     [SerializeField] ScoreConversions _Conversions;
+    [SerializeField] CinemachineCamera _cam;
+    [SerializeField] GameObject EndScoreHolder;
+    [SerializeField] TMP_Text _Rank;
+    [SerializeField] TMP_Text _Score;
+    [SerializeField] TMP_Text _Time;
+
 
     [Header("Anim Valls")]
     [SerializeField] float MoveSpeed;
@@ -12,6 +22,7 @@ public class FinalScoreCounter : MonoBehaviour
     private void OnEnable()
     {
         GameManager.EndGame += OnEndGame;
+        EndScoreHolder.SetActive(false);
     }
 
     private void OnDisable()
@@ -31,13 +42,16 @@ public class FinalScoreCounter : MonoBehaviour
         {
             if (!plat.isFixed) bestPossibleScore += _Conversions.ErrorToScore[0].Score;
         }
+        Debug.Log(scoreGotten + " " + bestPossibleScore + " " + 1.0f * scoreGotten / bestPossibleScore);
         foreach (var i in _Conversions.ScorePercentToRank)
         {
-            if ((float)scoreGotten / bestPossibleScore >= i.ScorePercentThreshold)
+            if (1.0f * scoreGotten / bestPossibleScore >= i.ScorePercentThreshold)
             {
                 rankGotten = i.Rank;
+                break;
             }
         }
+        Debug.Log(rankGotten + " " + _Conversions.GetRankTextFromRank(rankGotten));
         GameManager.Instance.SaveManager.CompleteLevel(rankGotten, scoreGotten, ChunkTracker.Instance.LevelTimer);
         StartCoroutine(EndSequence());
     }
@@ -45,6 +59,10 @@ public class FinalScoreCounter : MonoBehaviour
     IEnumerator EndSequence()
     {
         transform.position = new Vector2(0, LevelManager.Instance.bottomY);
+
+        _cam.Follow = transform;
+
+        yield return new WaitUntil(() => _cam.transform.position.y < 2f);
 
         // yield return wait until camera reaches target point
 
@@ -60,5 +78,16 @@ public class FinalScoreCounter : MonoBehaviour
             yield return null;
             transform.position = new Vector2(0, transform.position.y + MoveSpeed * Time.deltaTime);
         }
+
+        _Rank.text = _Conversions.GetRankTextFromRank(rankGotten);
+        _Score.text = scoreGotten.ToString();
+        TimeSpan t = TimeSpan.FromSeconds(ChunkTracker.Instance.LevelTimer);
+        _Time.text = t.ToString("mm':'ss'.'ff");
+        EndScoreHolder.SetActive(true);
+    }
+
+    public void ContinueToMainMenu()
+    {
+        GameManager.Instance.SwapToMainMenu();
     }
 }

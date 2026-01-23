@@ -35,11 +35,11 @@ public class ChunkTracker : MonoBehaviour
 
     public void UpdateChunkShakes(int fromChunk)
     {
-        int prevScore = 0;
+        int prevError = 0;
         for (int i = 1; i < Chunks.Count; i++)
         {
-            if (i <= fromChunk) prevScore += Chunks[i - 1].ChunkScore();
-            Chunks[i].SetChunkShake(prevScore);
+            if (i <= fromChunk) prevError += Chunks[i - 1].ChunkError();
+            Chunks[i].SetChunkShake(prevError);
         }
     }
 
@@ -66,6 +66,9 @@ public class ChunkTracker : MonoBehaviour
             UpdateChunkShakes(currChunkIndex);
 
         }
+
+        yield return new WaitUntil(() => PlayerManager.Instance.ChunkCheckerPoint.position.y > LevelManager.Instance.topY);
+
         LevelTimer = Time.time - LevelTimer;
         GameManager.Instance.TriggerEndGame();
     }
