@@ -69,7 +69,8 @@ public class TonePlatform : MonoBehaviour
         }
         else
         {
-            leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * Random.Range(0, notchCount) / 1200f);
+            int correctPos = Random.Range(0, notchCount);
+            leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * correctPos / 1200f);
         }
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
@@ -98,6 +99,7 @@ public class TonePlatform : MonoBehaviour
 
     public void PlayPlatformTone()
     {
+        //Debug.Log("curr = " + CurrFrequency + ", correct = " + correctFrequency);
         //Debug.Log(Score() + " " + currNotch);
         ToneManager.Instance.PlayNote(CurrFrequency);
     }
