@@ -28,6 +28,8 @@ public class TonePlatform : MonoBehaviour
 
     internal float centSpacing;
 
+    internal bool hasPlayer = false;
+
 
     Animator playerAnimator;
 
@@ -72,22 +74,25 @@ public class TonePlatform : MonoBehaviour
         playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
-    public int Score()
+    public int Error()
     {
         if (isFixed) return 0;
 
-        int notchDiff = Mathf.Abs(Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing));
-        return _Conversions.ScoreFromError(notchDiff);
+        return Mathf.Abs(Mathf.RoundToInt(1200 * Mathf.Log(CurrFrequency / correctFrequency, 2) / centSpacing));
     }
+
+    public int Score() => _Conversions.ScoreFromError(Error());
 
     private void OnDisable() => DisableMovement();
 
     public void EnableMovement()
     {
+        hasPlayer = true;
         StartCoroutine(HandleMoveInput());
     }
     public void DisableMovement()
     {
+        hasPlayer = false;
         StopAllCoroutines();
     }
 
