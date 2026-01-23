@@ -49,4 +49,7 @@ MonoBehaviour:
     RankText: C
   - ScorePercentThreshold: 0.5
     Rank: 7
+    RankText: D
+  - ScorePercentThreshold: 0
+    Rank: 8
     RankText: F

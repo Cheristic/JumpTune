@@ -52,6 +52,7 @@ public class FinalScoreCounter : MonoBehaviour
                 break;
             }
         }
+        Debug.Log(rankGotten + " " + _Conversions.GetRankTextFromRank(rankGotten));
         GameManager.Instance.SaveManager.CompleteLevel(rankGotten, scoreGotten, ChunkTracker.Instance.LevelTimer);
         StartCoroutine(EndSequence());
     }
