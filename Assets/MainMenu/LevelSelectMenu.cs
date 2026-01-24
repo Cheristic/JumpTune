@@ -34,7 +34,7 @@ public class LevelSelectMenu : MonoBehaviour
         StartCoroutine(CheckForHover());
     }
 
-    public void SwapToLevel(int level) => GameManager.Instance.SwapToLevel(level);
+    public void SwapToLevel(int level) => GameManager.Instance.SwapToLevelPreview(level);
 
     int buttonHovering;
     IEnumerator CheckForHover()

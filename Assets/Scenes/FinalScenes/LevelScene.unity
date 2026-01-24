@@ -39070,6 +39070,10 @@ PrefabInstance:
       propertyPath: extendableBG
       value: 
       objectReference: {fileID: 137285039}
+    - target: {fileID: 5541999623512060742, guid: ce19f1cf6d6b02e4682148df21238326, type: 3}
+      propertyPath: FirstPlatform
+      value: 
+      objectReference: {fileID: 7746839262089118497}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

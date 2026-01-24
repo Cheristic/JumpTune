@@ -25,12 +25,14 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void SwapToLevel(int selected)
+    public void SwapToLevelPreview(int selected)
     {
         selectedLevel = selected-1;
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
+
+    public void SwapToLevel() => SceneManager.LoadScene(2);
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

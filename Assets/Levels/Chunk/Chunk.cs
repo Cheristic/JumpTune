@@ -27,9 +27,9 @@ public class Chunk : MonoBehaviour
     private RandomWalk walk3;
 
     [Header("Chunk Playing")]
-    [SerializeField] float timeBetweenNotes;
+    public float timeBetweenNotes;
 
-    List<GameObject> platforms;
+    internal List<GameObject> platforms;
 
     LevelManager _man;
     internal int chunkIndex;
@@ -46,6 +46,25 @@ public class Chunk : MonoBehaviour
         walk1 = new RandomWalk(noiseStrength);
         walk2 = new RandomWalk(noiseStrength);
         walk3 = new RandomWalk(noiseStrength);
+    }
+
+    public List<TonePlatform> PrepForPreviewScene()
+    {
+        int i = platforms.Count;
+        List<TonePlatform> newPlats = new();
+        foreach (var plat in platforms)
+        {
+            if (plat.TryGetComponent<TonePlatform>(out var tp))
+            {
+                newPlats.Add(tp);            
+            }
+            else
+            {
+                plat.transform.GetChild(0).GetComponent<SpriteRenderer>().sortingOrder = i;
+                i--;
+            }
+        }
+        return newPlats;
     }
 
     public void AppendPlatform(GameObject platform)
@@ -83,20 +102,19 @@ public class Chunk : MonoBehaviour
         return score;
     }
 
-    public void PlayChunkTones(bool showError = false)
+    public Coroutine PlayChunkTones(bool showError = false)
     {
         StopAllCoroutines();
-        StartCoroutine(Player());
+        return StartCoroutine(Player());
 
-        IEnumerator Player() 
-        {
+        IEnumerator Player() {
+
             foreach (var platform in platforms)
             {
                 if (platform.TryGetComponent<TonePlatform>(out var tp))
                 {
                     if (showError && !tp.isFixed) tp.ShowError();
                     tp.PlayPlatformTone();
-                    if (tp.hasPlayer) yield break;
                     yield return new WaitForSeconds(timeBetweenNotes);
                 }
             }

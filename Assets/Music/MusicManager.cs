@@ -55,6 +55,12 @@ public class MusicManager : MonoBehaviour
     {
         if (playedEnd) return;
 
+        if (LevelManager.Instance.IsPreviewScene)
+        {
+            CalculateProgress(0);
+            return;
+        }
+
         if (!playedEnd && PlayerManager.Instance.ChunkCheckerPoint.position.y >= LevelManager.Instance.topY)
         {
             // play end sound
@@ -74,8 +80,14 @@ public class MusicManager : MonoBehaviour
             return;
         }
 
+        CalculateProgress(PlayerManager.Instance.ChunkCheckerPoint.position.y);
+
+    }
+
+    void CalculateProgress(float checkPoint)
+    {
         // progress is between 0 and 1
-        float progress = Mathf.InverseLerp(LevelManager.Instance.bottomY, LevelManager.Instance.topY, PlayerManager.Instance.ChunkCheckerPoint.position.y);
+        float progress = Mathf.InverseLerp(LevelManager.Instance.bottomY, LevelManager.Instance.topY, checkPoint);
 
         // map progress to index
         int progressIdx = Mathf.Clamp(Mathf.FloorToInt(progress * stems.Length), 0, stems.Length - 1);

@@ -38,7 +38,7 @@ public class TonePlatform : MonoBehaviour
     [SerializeField] Material noOutlineMaterial;
     Renderer rend;
 
-    public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor) 
+    public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor, bool isPreviewScene) 
     { 
         isFixed = _Fixed;
         notchCount = _NotchCount;
@@ -58,7 +58,7 @@ public class TonePlatform : MonoBehaviour
             SpriteRenderer sr = GetComponentInChildren<SpriteRenderer>();
             sr.sprite = fixedTileSprite;
             var col = GetComponent<BoxCollider2D>();
-            col.size = new Vector2(1.5f, 0.04f); // top ten moments in coding history
+            col.size = new Vector2(1.5f, isPreviewScene ? 0.08f : 0.04f); // top ten moments in coding history
             col.offset = new Vector2(0, -.008f);
             trigger.GetComponent<BoxCollider2D>().size = new Vector2(1.5f, 0.1f); // but wait, it gets worse
 
@@ -72,7 +72,8 @@ public class TonePlatform : MonoBehaviour
             int correctPos = Random.Range(0, notchCount);
             leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * correctPos / 1200f);
         }
-        playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
+
+        if (!isPreviewScene) playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
     public int Error()
@@ -166,8 +167,8 @@ public class TonePlatform : MonoBehaviour
         SetNoOutline(); 
     }
 
-    private void SetOutline() { rend.material = outlineMaterial; }
-    private void SetNoOutline() { rend.material = noOutlineMaterial; }
+    public void SetOutline() { rend.material = outlineMaterial; }
+    public void SetNoOutline() { rend.material = noOutlineMaterial; }
 
     public void ShowError()
     {

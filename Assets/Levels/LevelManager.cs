@@ -35,22 +35,38 @@ public class LevelManager : MonoBehaviour
     [SerializeField] Vector2 playerStartPosition;
     [SerializeField] Color tileDisabledColor;
 
+    [Header("Preview Scene")]
+    public bool IsPreviewScene;
+    [SerializeField] float tileOffsetYMult = 12;
+    [SerializeField] PreviewManager previewManager;
+    [SerializeField] GameObject FirstPlatform;
+
     private void Awake()
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
     }
 
-    public void LoadLevel()
+    public List<Chunk> LoadLevel()
     {
         int nrBreaks = 0;
 
         float notchSpacing = levelData.towerWidth / levelData.notchCount;
 
-        GameObject startTile = Instantiate(startTilePrefab, tilesParent);
-        startTile.transform.position = new Vector3(0, -tileOffsetY, 0);
-        startTile.transform.localScale = new Vector3(levelData.levelWidth*2, 1, 1);
-        //startTile.GetComponent<SpriteRenderer>().size = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+        FirstPlatform.SetActive(!IsPreviewScene);
+
+        float _tileOffsetY = tileOffsetY;
+        if (IsPreviewScene)
+        {
+            _tileOffsetY *= tileOffsetYMult / levelData.tuningSystem;
+            _tileOffsetY *= levelData.tuningSystem == 5 ? 0.5f : 1; // bad programming bad bad bad
+        }
+        else
+        {
+            GameObject startTile = Instantiate(startTilePrefab, tilesParent);
+            startTile.transform.position = new Vector3(0, -tileOffsetY, 0);
+            startTile.transform.localScale = new Vector3(levelData.levelWidth * 2, 1, 1);
+        }
 
         Chunk currChunk = Instantiate(chunkPrefab, new Vector2(0, .65f), Quaternion.identity, tilesParent).GetComponent<Chunk>();
         currChunk.Init(this, 0);
@@ -81,24 +97,24 @@ public class LevelManager : MonoBehaviour
                 }
             }
 
-            TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear),
+            TonePlatform tileObj = Instantiate(tilePrefab, new Vector2(posX + offset, groundOffsetY + _tileOffsetY * i + _tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear),
                     Quaternion.identity, tilesParent).GetComponent<TonePlatform>();
 
             tileObj.transform.localScale = new Vector3(tileWidth, tileHeight,  1);
 
-            tileObj.Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, FindFrequency(tile.correctFrequencyIdx, levelData.tuningSystem), levelData.centSpacing, tileDisabledColor);
+            tileObj.Init(tile.isFixed, startNotch, levelData.notchCount, notchSpacing, FindFrequency(tile.correctFrequencyIdx, levelData.tuningSystem), levelData.centSpacing, tileDisabledColor, IsPreviewScene);
 
             GameObject bgWall;
-            if(tile.isFixed) bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
-            else bgWall = Instantiate(bgWallPrefab, new Vector2(0, groundOffsetY + tileOffsetY * i + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+            if(tile.isFixed) bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + _tileOffsetY * i + _tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+            else bgWall = Instantiate(bgWallPrefab, new Vector2(0, groundOffsetY + _tileOffsetY * i + _tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
 
             currChunk.AppendPlatform(tileObj.gameObject);
             currChunk.AppendPlatform(bgWall);
 
             if (tile.endsChunk || tile.hasBreak)
             {
-                float divideLine = tile.hasBreak ? groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks : //  touches bottom of break
-                    groundOffsetY + tileOffsetY * (i+1) + tileOffsetY * nrBreaks; // halfway between this tile and next
+                float divideLine = tile.hasBreak ? groundOffsetY + _tileOffsetY * (i + 1) + _tileOffsetY * nrBreaks : //  touches bottom of break
+                    groundOffsetY + tileOffsetY * (i+1) + _tileOffsetY * nrBreaks; // halfway between this tile and next
 
                 currChunk.FinishChunk(divideLine, tile.hasBreak); 
 
@@ -110,11 +126,11 @@ public class LevelManager : MonoBehaviour
             if (tile.hasBreak)
             {
                 GameObject breakObj = Instantiate(breakTilePrefab, tilesParent);
-                breakObj.transform.position = new Vector3(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear/2, 0);
+                breakObj.transform.position = new Vector3(0, groundOffsetY + _tileOffsetY * (i + 1) + _tileOffsetY * nrBreaks + justOneMoreOffsetBroISwear/2, 0);
                 breakObj.transform.localScale = new Vector3(levelData.levelWidth-4, 1, 1);
                 breakObj.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
 
-                bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + tileOffsetY * (i + 1) + tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
+                bgWall = Instantiate(bgWallFixedPrefab, new Vector2(0, groundOffsetY + _tileOffsetY * (i + 1) + _tileOffsetY * nrBreaks), Quaternion.identity, tilesParent);
                 currChunk.AppendPlatform(bgWall);
 
                 nrBreaks++;
@@ -123,7 +139,7 @@ public class LevelManager : MonoBehaviour
 
         bottomY = playerStartPosition.y;
 
-        float totalHeight = groundOffsetY + tileOffsetY * (levelData.tiles.Count) + tileOffsetY * nrBreaks;
+        float totalHeight = groundOffsetY + _tileOffsetY * (levelData.tiles.Count) + _tileOffsetY * nrBreaks;
 
         GameObject wallLeft = Instantiate(wallPrefab, tilesParent);
         wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth*3/2, bottomY, 0);
@@ -135,11 +151,6 @@ public class LevelManager : MonoBehaviour
         wallRight.transform.GetChild(0).localScale = new Vector3(4, totalHeight * 2, 1);
         wallRight.GetComponent<SpriteRenderer>().size = new Vector3(4, totalHeight*2, 1);
 
-        GameObject endTile = Instantiate(endTilePrefab, tilesParent);
-        endTile.transform.position = new Vector3(0, totalHeight + justOneMoreOffsetBroISwear/2, 0);
-        endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
-        endTile.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
-
         currChunk.AppendPlatform(Instantiate(bgWallEndPrefab, new Vector2(0, totalHeight), Quaternion.identity, tilesParent));
 
         extendableBG.size = new Vector2(extendableBG.size.x, totalHeight*2);
@@ -148,12 +159,20 @@ public class LevelManager : MonoBehaviour
 
         topY = totalHeight + justOneMoreOffsetBroISwear;
 
+        if (IsPreviewScene) return Chunks;
+
+        GameObject endTile = Instantiate(endTilePrefab, tilesParent);
+        endTile.transform.position = new Vector3(0, totalHeight + justOneMoreOffsetBroISwear / 2, 0);
+        endTile.transform.localScale = new Vector3(levelData.levelWidth + tileWidth, 1, 1);
+        endTile.transform.GetChild(0).transform.localScale = new Vector3(1, sizeFactor, 1);
+
         chunkTracker.CreateChunks(Chunks);
 
         if (PlayerManager.Instance)
             PlayerManager.Instance.controls.transform.position = new Vector3(playerStartPosition.x, playerStartPosition.y, 0);
         else FindFirstObjectByType<PlayerControls>().transform.position = new Vector3(playerStartPosition.x, playerStartPosition.y, 0);
 
+        return Chunks;
     }
 
     public void LoadFromEditor()
@@ -162,13 +181,13 @@ public class LevelManager : MonoBehaviour
         LoadLevel();
     }
 
-    public void LoadFromManager(LevelData levelData)
+    public List<Chunk> LoadFromManager(LevelData levelData)
     {
         Debug.Log("loading level " + levelData);
         this.levelData = levelData;
 
         ClearLoadedLevel();
-        LoadLevel();
+        return LoadLevel();
     }
 
     public void ClearLoadedLevel()
