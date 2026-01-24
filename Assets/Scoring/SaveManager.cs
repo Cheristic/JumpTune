@@ -14,6 +14,11 @@ public class SaveManager
         public int rank;
         public int score;
         public float time;
+        public bool isUnlocked = false;
+        public LevelScore(bool isUnlocked)
+        {
+            this.isUnlocked = isUnlocked;
+        }
     }
     [Serializable]
     public class SaveData
@@ -25,15 +30,14 @@ public class SaveManager
             if (count > 0 )
             {
                 levels = new List<LevelScore>();
-                for (int i = 0; i < count; i++) { levels.Add(new LevelScore()); }
+                for (int i = 0; i < count; i++) { levels.Add(new LevelScore(i % 5 == 0)); }
             }
-
         }
         public void Reset()
         {
             int count = levels.Count;
             levels = new List<LevelScore>();
-            for (int i = 0; i < count; i++) { levels.Add(new LevelScore()); }
+            for (int i = 0; i < count; i++) { levels.Add(new LevelScore(i % 5 == 0)); }
         }
 
     }
@@ -119,6 +123,13 @@ public class SaveManager
             CurrData.levels[GameManager.Instance.selectedLevel].rank = rank;
             CurrData.levels[GameManager.Instance.selectedLevel].score = score;
             CurrData.levels[GameManager.Instance.selectedLevel].time = time;
+        }
+
+        int unlockedLevel = GameManager.Instance.selectedLevel+1;
+        // need at least a C
+        if (rank <= 6 && unlockedLevel < CurrData.levels.Count && unlockedLevel % 5 != 0)
+        {
+            CurrData.levels[unlockedLevel].isUnlocked = true;
         }
 
         Save();

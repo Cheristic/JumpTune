@@ -32,22 +32,22 @@ MonoBehaviour:
   - ScorePercentThreshold: 1
     Rank: 1
     RankText: SSS
-  - ScorePercentThreshold: 0.99
+  - ScorePercentThreshold: 0.95
     Rank: 2
     RankText: SS
-  - ScorePercentThreshold: 0.95
+  - ScorePercentThreshold: 0.9
     Rank: 3
     RankText: S
-  - ScorePercentThreshold: 0.9
+  - ScorePercentThreshold: 0.85
     Rank: 4
     RankText: A
-  - ScorePercentThreshold: 0.8
+  - ScorePercentThreshold: 0.75
     Rank: 5
     RankText: B
-  - ScorePercentThreshold: 0.7
+  - ScorePercentThreshold: 0.5
     Rank: 6
     RankText: C
-  - ScorePercentThreshold: 0.5
+  - ScorePercentThreshold: 0.3
     Rank: 7
     RankText: D
   - ScorePercentThreshold: 0

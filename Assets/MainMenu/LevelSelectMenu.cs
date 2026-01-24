@@ -3,6 +3,7 @@ using TMPro;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using UnityEngine.UI;
 public class LevelSelectMenu : MonoBehaviour
 {
     [Header("Links")]
@@ -12,6 +13,9 @@ public class LevelSelectMenu : MonoBehaviour
     [SerializeField] TMP_Text _Time;
     [SerializeField] Transform ButtonsHolder;
     [SerializeField] ScoreConversions _Conversions;
+    [SerializeField] TMP_Text _Title;
+    [SerializeField] TMP_Text _CentDifference;
+    [SerializeField] TMP_Text _Notches;
 
     [Header("Anim Vals")]
     [SerializeField] AnimationCurve FadeCurve;
@@ -27,6 +31,7 @@ public class LevelSelectMenu : MonoBehaviour
             for (int i = 0; i < ButtonsHolder.childCount; i++)
             {
                 buttons.Add(ButtonsHolder.GetChild(i).GetComponent<RectTransform>());
+                ButtonsHolder.GetChild(i).GetComponent<Button>().interactable = GameManager.Instance.SaveManager.CurrData.levels[i].isUnlocked;
             }
         }
         canvas.alpha = 0;
@@ -110,5 +115,15 @@ public class LevelSelectMenu : MonoBehaviour
             TimeSpan t = TimeSpan.FromSeconds(data.time);
             _Time.text = t.ToString("mm':'ss'.'ff");
         }
+
+        int tuning = GameManager.Instance.levels[buttonHovering].tuningSystem;
+        _Title.text = tuning switch
+        {
+            5 => "5-Tone Equal Temperament",
+            12 => "12-Tone Equal Temperament",
+            _ => "19-Tone Equal Temperament"
+        };
+        _CentDifference.text = "Cent Interval: " + GameManager.Instance.levels[buttonHovering].centSpacing.ToString("0");
+        _Notches.text = "Notches: " + GameManager.Instance.levels[buttonHovering].notchCount.ToString();
     }
 }

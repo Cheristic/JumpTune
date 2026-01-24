@@ -14,6 +14,7 @@ public class FinalScoreCounter : MonoBehaviour
     [SerializeField] TMP_Text _Rank;
     [SerializeField] TMP_Text _Score;
     [SerializeField] TMP_Text _Time;
+    [SerializeField] TMP_Text _Cleared;
 
 
     [Header("Anim Valls")]
@@ -42,7 +43,7 @@ public class FinalScoreCounter : MonoBehaviour
         {
             if (!plat.isFixed) bestPossibleScore += _Conversions.ErrorToScore[0].Score;
         }
-        Debug.Log(scoreGotten + " " + bestPossibleScore + " " + 1.0f * scoreGotten / bestPossibleScore);
+        //Debug.Log(scoreGotten + " " + bestPossibleScore + " " + 1.0f * scoreGotten / bestPossibleScore);
         foreach (var i in _Conversions.ScorePercentToRank)
         {
             if (1.0f * scoreGotten / bestPossibleScore >= i.ScorePercentThreshold)
@@ -51,7 +52,6 @@ public class FinalScoreCounter : MonoBehaviour
                 break;
             }
         }
-        Debug.Log(rankGotten + " " + _Conversions.GetRankTextFromRank(rankGotten));
         GameManager.Instance.SaveManager.CompleteLevel(rankGotten, scoreGotten, ChunkTracker.Instance.LevelTimer);
         StartCoroutine(EndSequence());
     }
@@ -84,6 +84,7 @@ public class FinalScoreCounter : MonoBehaviour
         TimeSpan t = TimeSpan.FromSeconds(ChunkTracker.Instance.LevelTimer);
         _Time.text = t.ToString("mm':'ss'.'ff");
         EndScoreHolder.SetActive(true);
+        _Cleared.text = rankGotten == 1 ? "Perfect!" : rankGotten <= 6 ? "Nice job!" : "Try again!";
     }
 
     public void ContinueToMainMenu()

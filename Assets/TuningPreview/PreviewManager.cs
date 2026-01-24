@@ -68,8 +68,8 @@ public class PreviewManager : MonoBehaviour
 
     public Coroutine PlayChunkTones(bool reverse = false)
     {
-        PlatformChunk.StopAllCoroutines();
-        return PlatformChunk.StartCoroutine(Player());
+        StopAllCoroutines();
+        return StartCoroutine(Player());
 
         IEnumerator Player()
         {
@@ -99,7 +99,7 @@ public class PreviewManager : MonoBehaviour
         {
             bool wasSet = false;
             RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, .001f, PlatformLayerMask);
-            Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.down*.001f, Color.green, .1f);
+            //Debug.DrawRay(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.down*.001f, Color.green, .1f);
             if (hit.collider != null)
             {
                 if (hit.collider.TryGetComponent<TonePlatform>(out var tp))
@@ -149,6 +149,7 @@ public class PreviewManager : MonoBehaviour
             isDemoing = false;
             DEMO_TEXT.gameObject.SetActive(false);
             OctaveHolder.SetActive(true);
+            foreach (var plat in Platforms) plat.SetNoOutline();
             StartCoroutine(CheckForHover());
         } else
         {
