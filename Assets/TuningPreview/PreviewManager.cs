@@ -68,8 +68,8 @@ public class PreviewManager : MonoBehaviour
 
     public Coroutine PlayChunkTones(bool reverse = false)
     {
-        StopAllCoroutines();
-        return StartCoroutine(Player());
+        PlatformChunk.StopAllCoroutines();
+        return PlatformChunk.StartCoroutine(Player());
 
         IEnumerator Player()
         {
@@ -143,6 +143,7 @@ public class PreviewManager : MonoBehaviour
     {
         if (isDemoing)
         {
+            PlatformChunk.StopAllCoroutines();
             StopAllCoroutines();
             continueButtonText.text = "CONTINUE";
             continueButton.sizeDelta = new Vector2(CONTINUE_Width, continueButton.sizeDelta.y);
