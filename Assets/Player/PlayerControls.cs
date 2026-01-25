@@ -14,6 +14,8 @@ public class PlayerControls : MonoBehaviour
     [Header("Grounding")]
     [SerializeField] float IS_GROUNDED_CHECK_DISTANCE;
     [SerializeField] LayerMask GroundLayerMask;
+    [SerializeField] float JUMP_BUFFER_TIME = 0.25f;
+    [SerializeField] float DROP_BUFFER_TIME = 0.25f;
 
     internal PlayerInput input;
     Rigidbody2D rb;
@@ -103,12 +105,31 @@ public class PlayerControls : MonoBehaviour
     {
         return Mathf.Sqrt(-2.0f * Physics2D.gravity.y * height);
     }
-
+    bool canDrop
+    {
+        get => isGrounded && lastGroundType == GroundType.Moving && playerCollider.enabled;
+    }
+    IEnumerator IBufferDrop;
     void StartDrop(InputAction.CallbackContext ctx)
     {
-        if (isGrounded && lastGroundType == GroundType.Moving && playerCollider.enabled)
+        if (canDrop)
         {
             StartCoroutine(DisableCollision(0.25f));
+        } else
+        {
+            if (IBufferDrop != null) StopCoroutine(IBufferDrop);
+            StartCoroutine(IBufferDrop = BufferDrop());
+        }
+
+        IEnumerator BufferDrop()
+        {
+            float t = 0;
+            while (t < DROP_BUFFER_TIME && input.Player.Drop.inProgress)
+            {
+                yield return null;
+                t += Time.deltaTime;
+                if (canDrop) { StartCoroutine(DisableCollision(0.25f)); break; }
+            }
         }
     }
 
@@ -118,22 +139,45 @@ public class PlayerControls : MonoBehaviour
         yield return new WaitForSeconds(disableSeconds);
         playerCollider.enabled = true;
     }
-
+    IEnumerator IBufferJump;
     void StartJump(InputAction.CallbackContext ctx)
     {
-        if (coyoteTimer <= 0) return;
+        if (coyoteTimer <= 0)
+        {
+            if (IBufferJump != null) StopCoroutine(IBufferJump);
+            StartCoroutine(IBufferJump = BufferJump());
+        }
+        else Jump();
 
-        // Set coyote timer to 0 to avoid double jumps
-        coyoteTimer = 0.0f;
+        IEnumerator BufferJump()
+        {
+            float t = 0;
+            while (t < JUMP_BUFFER_TIME)
+            {
+                yield return null;
+                t += Time.deltaTime;
+                if (coyoteTimer > 0) { Jump(); break; }
+            }
+        }
 
-        rb.linearVelocityY = CalculateJumpHeight(JUMP_HEIGHT);
-        jumpHeld = true;
+        void Jump()
+        {
+            // Set coyote timer to 0 to avoid double jumps
+            coyoteTimer = 0.0f;
 
-        animator.SetBool("isJumping", true);
+            rb.linearVelocityY = CalculateJumpHeight(JUMP_HEIGHT);
+            jumpHeld = input.Player.Jump.inProgress;
+
+            animator.SetBool("isJumping", jumpHeld);
+        }
+
+
     }
 
     void ReleasedJump(InputAction.CallbackContext ctx)
     {
+        if (!jumpHeld) return;
+
         jumpHeld = false;
 
         animator.SetBool("isJumping", false);
