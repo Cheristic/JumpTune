@@ -23,6 +23,7 @@ public class ChunkTracker : MonoBehaviour
     public void CreateChunks(List<Chunk> chunks)
     {
         Chunks = chunks;
+        currChunkIndex = 0;
         if (!Application.isPlaying) return;
         StartCoroutine(TrackChunksLoop()); // it's possible this has to be put in start or something
     }
@@ -50,6 +51,12 @@ public class ChunkTracker : MonoBehaviour
         while (true)
         {
             //Debug.Log(currChunkIndex);
+            if (currChunkIndex < 0)
+            {
+                yield return null; // purely for debugging
+                continue;
+            }
+
             Vector2 currBounds = Chunks[currChunkIndex].ChunkBounds;
 
             //Debug.Log(Chunks[currChunkIndex].ChunkBounds.x + " " + PlayerManager.Instance.ChunkCheckerPoint.position.y + " " + Chunks[currChunkIndex].ChunkBounds.y);
@@ -80,7 +87,7 @@ public class ChunkTracker : MonoBehaviour
 
     public float GetChunkXChange()
     {
-        if (currChunkIndex >= Chunks.Count) return 0;
+        if (currChunkIndex >= Chunks.Count || currChunkIndex < 0) return 0;
 
         return Chunks[currChunkIndex].framePosXChange;
     }

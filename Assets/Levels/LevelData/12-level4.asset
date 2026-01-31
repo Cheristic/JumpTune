@@ -20,7 +20,7 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 15
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 1
     correctFrequencyIdx: 19
     hasBreak: 0
@@ -37,7 +37,7 @@ MonoBehaviour:
     correctFrequencyIdx: 15
     hasBreak: 1
     endsChunk: 1
-  - isFixed: 0
+  - isFixed: 1
     correctFrequencyIdx: 11
     hasBreak: 0
     endsChunk: 0
@@ -45,15 +45,15 @@ MonoBehaviour:
     correctFrequencyIdx: 14
     hasBreak: 0
     endsChunk: 0
-  - isFixed: 1
+  - isFixed: 0
     correctFrequencyIdx: 19
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
     correctFrequencyIdx: 20
     hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
+    endsChunk: 1
+  - isFixed: 0
     correctFrequencyIdx: 19
     hasBreak: 0
     endsChunk: 0
@@ -76,36 +76,16 @@ MonoBehaviour:
   - isFixed: 0
     correctFrequencyIdx: 25
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 1
     correctFrequencyIdx: 24
     hasBreak: 0
     endsChunk: 0
   - isFixed: 1
     correctFrequencyIdx: 22
-    hasBreak: 1
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 20
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 19
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 20
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 22
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 24
     hasBreak: 1
     endsChunk: 1
-  - isFixed: 0
+  - isFixed: 1
     correctFrequencyIdx: 5
     hasBreak: 0
     endsChunk: 0
@@ -118,22 +98,10 @@ MonoBehaviour:
     hasBreak: 1
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 30
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 29
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 27
-    hasBreak: 1
-    endsChunk: 1
-  - isFixed: 0
     correctFrequencyIdx: 25
     hasBreak: 0
     endsChunk: 0
-  - isFixed: 1
+  - isFixed: 0
     correctFrequencyIdx: 24
     hasBreak: 0
     endsChunk: 0
@@ -146,25 +114,9 @@ MonoBehaviour:
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 25
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
     correctFrequencyIdx: 24
     hasBreak: 1
     endsChunk: 1
-  - isFixed: 0
-    correctFrequencyIdx: 22
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 21
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 22
-    hasBreak: 1
-    endsChunk: 0
   - isFixed: 1
     correctFrequencyIdx: 22
     hasBreak: 0
@@ -181,9 +133,9 @@ MonoBehaviour:
     correctFrequencyIdx: 17
     hasBreak: 0
     endsChunk: 1
-  notchCount: 10
+  notchCount: 7
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 10
-  Title: 
+  centSpacing: 30
   tuningSystem: 12
+  title: 12-Tone Advanced

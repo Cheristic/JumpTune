@@ -117,12 +117,7 @@ public class LevelSelectMenu : MonoBehaviour
         }
 
         int tuning = GameManager.Instance.levels[buttonHovering].tuningSystem;
-        _Title.text = tuning switch
-        {
-            5 => "5-Tone Equal Temperament",
-            12 => "12-Tone Equal Temperament",
-            _ => "19-Tone Equal Temperament"
-        };
+        _Title.text = GameManager.Instance.levels[buttonHovering].title;
         _CentDifference.text = "Cent Interval: " + GameManager.Instance.levels[buttonHovering].centSpacing.ToString("0");
         _Notches.text = "Notches: " + GameManager.Instance.levels[buttonHovering].notchCount.ToString();
     }

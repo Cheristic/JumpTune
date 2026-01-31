@@ -16,6 +16,7 @@ public class PreviewManager : MonoBehaviour
     [SerializeField] TMP_Text FREQUENCY_Text;
     [SerializeField] GameObject OctaveHolder;
     [SerializeField] TMP_Text OctaveCount;
+    [SerializeField] TMP_Text TuningPracticeText;
 
     [SerializeField] float initialWaitPeriod = 1.0f;
     [SerializeField] LayerMask PlatformLayerMask;
@@ -38,6 +39,12 @@ public class PreviewManager : MonoBehaviour
         continueButtonText.text = "SKIP";
         OctaveCount.text = "0";
         continueButton.sizeDelta = new Vector2(SKIP_Width, continueButton.sizeDelta.y);
+        TuningPracticeText.text = TuningSystem switch
+            {
+                12 => "12-TET ",
+                5 => "5-TET ",
+                _ => "19-TET "
+            } + "TUNING PRACTICE";
 
         StartCoroutine(PreviewScene());
         StartCoroutine(FlashDemo());

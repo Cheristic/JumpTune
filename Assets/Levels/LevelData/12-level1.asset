@@ -23,7 +23,7 @@ MonoBehaviour:
     endsChunk: 0
   - isFixed: 0
     correctFrequencyIdx: 19
-    hasBreak: 1
+    hasBreak: 0
     endsChunk: 1
   - isFixed: 1
     correctFrequencyIdx: 14
@@ -47,7 +47,7 @@ MonoBehaviour:
     endsChunk: 0
   - isFixed: 0
     correctFrequencyIdx: 23
-    hasBreak: 1
+    hasBreak: 0
     endsChunk: 1
   - isFixed: 1
     correctFrequencyIdx: 17
@@ -80,6 +80,6 @@ MonoBehaviour:
   notchCount: 5
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 25
-  Title: 
+  centSpacing: 40
   tuningSystem: 12
+  title: 12-Tone Beginnings

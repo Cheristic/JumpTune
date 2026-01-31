@@ -22,8 +22,10 @@ public class PlayerControls : MonoBehaviour
 
     [Header("Jump Physics")]
     [SerializeField] float JUMP_FORCE;
+    [SerializeField] float FALLING_JUMP_FORCE;
     [SerializeField] float STRONG_DAMP_FORCE;
     [SerializeField] float WEAK_DAMP_FORCE;
+    [SerializeField] float FALLING_GRAVITY = 3;
     float vy;
     float fy;
     bool jumpHeld;
@@ -41,17 +43,21 @@ public class PlayerControls : MonoBehaviour
     public void Init()
     {
         input = new();
+        input?.Enable();
         rb = GetComponent<Rigidbody2D>();
-        input.Enable();
         input.Player.Jump.started += StartJump;
         input.Player.Jump.canceled += ReleasedJump;
         input.Player.Drop.started += StartDrop;
-        rightGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.max.x, PlayerManager.Instance._collider.bounds.center.y, 0));
-        leftGroundedChecker = transform.InverseTransformPoint(new Vector3(PlayerManager.Instance._collider.bounds.min.x, PlayerManager.Instance._collider.bounds.center.y, 0));
-        animator = GetComponent<Animator>();
         playerCollider = GetComponent<BoxCollider2D>();
+        rightGroundedChecker = transform.InverseTransformPoint(new Vector3(playerCollider.bounds.max.x, playerCollider.bounds.center.y, 0));
+        leftGroundedChecker = transform.InverseTransformPoint(new Vector3(playerCollider.bounds.min.x, playerCollider.bounds.center.y, 0));
+        animator = GetComponent<Animator>();
         GameManager.EndGame += OnEndGame;
         FinalScoreCounter.CompletedEndSequence += OnCompletedEndSequence;
+    }
+    private void OnEnable()
+    {
+        input?.Enable();
     }
     void OnEndGame()
     {
@@ -73,23 +79,24 @@ public class PlayerControls : MonoBehaviour
         rb.linearVelocityX = x_dir * MOVE_SPEED;
 
         animator.SetFloat("speed", Mathf.Abs(rb.linearVelocityX));
-        if(x_dir != 0) transform.localScale = new Vector3(Mathf.Sign(x_dir), 1, 1);
+        if(x_dir != 0) transform.localScale = new Vector3(Mathf.Sign(x_dir)* transform.localScale.y, transform.localScale.y, transform.localScale.z);
 
         if (isGrounded)
         {
             fy = 0;
-            rb.gravityScale = 6;
+            rb.gravityScale = FALLING_GRAVITY*2;
             if (lastGroundType == GroundType.Moving)
             {
-                transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange() + transform.position.x, transform.position.y);
+                if (ChunkTracker.Instance != null) transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange() + transform.position.x, transform.position.y);
             }
         }
-        else if (jumpHeld) fy = JUMP_FORCE;
+        else if (jumpHeld && rb.linearVelocityY > 0) fy = JUMP_FORCE;
+        else if (jumpHeld) fy = FALLING_JUMP_FORCE;
         else if (rb.linearVelocityY > 0) fy = -STRONG_DAMP_FORCE;
         else if (coyoteTimer <= 0)
         {
             fy = -WEAK_DAMP_FORCE;
-            rb.gravityScale = 3;
+            rb.gravityScale = FALLING_GRAVITY;
         }
 
 

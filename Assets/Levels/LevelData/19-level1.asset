@@ -45,12 +45,16 @@ MonoBehaviour:
     correctFrequencyIdx: 33
     hasBreak: 0
     endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 37
+  - isFixed: 1
+    correctFrequencyIdx: 36
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
-    correctFrequencyIdx: 41
+    correctFrequencyIdx: 37
+    hasBreak: 0
+    endsChunk: 1
+  - isFixed: 1
+    correctFrequencyIdx: 38
     hasBreak: 1
     endsChunk: 1
   - isFixed: 1
@@ -84,7 +88,7 @@ MonoBehaviour:
   - isFixed: 0
     correctFrequencyIdx: 36
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 41
     hasBreak: 0
@@ -104,6 +108,6 @@ MonoBehaviour:
   notchCount: 5
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 7.895
-  Title: 
+  centSpacing: 10.52
   tuningSystem: 19
+  title: 19-Tone Beginnings

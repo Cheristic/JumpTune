@@ -20,7 +20,7 @@ MonoBehaviour:
   - isFixed: 0
     correctFrequencyIdx: 11
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 12
     hasBreak: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 13
     hasBreak: 0
-    endsChunk: 0
+    endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 12
     hasBreak: 0
@@ -52,14 +52,6 @@ MonoBehaviour:
   - isFixed: 1
     correctFrequencyIdx: 16
     hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 15
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 13
-    hasBreak: 0
     endsChunk: 1
   - isFixed: 0
     correctFrequencyIdx: 12
@@ -68,22 +60,26 @@ MonoBehaviour:
   - isFixed: 0
     correctFrequencyIdx: 14
     hasBreak: 0
+    endsChunk: 1
+  - isFixed: 0
+    correctFrequencyIdx: 12
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 14
+    hasBreak: 0
     endsChunk: 0
   - isFixed: 0
     correctFrequencyIdx: 13
     hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 11
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 14
+    endsChunk: 1
+  - isFixed: 1
+    correctFrequencyIdx: 16
     hasBreak: 0
     endsChunk: 1
-  notchCount: 10
+  notchCount: 8
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 24
-  Title: 
+  centSpacing: 30
   tuningSystem: 5
+  title: 5-Tone Intermediate

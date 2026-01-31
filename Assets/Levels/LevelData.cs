@@ -10,4 +10,5 @@ public class LevelData : ScriptableObject
     public float towerWidth;
     public float centSpacing;
     public int tuningSystem;
+    public string title;
 }

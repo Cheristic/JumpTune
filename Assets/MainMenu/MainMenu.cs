@@ -7,6 +7,7 @@ public class MainMenu : MonoBehaviour
     public GameObject menuScreen;
     public GameObject levelSelectScreen;
     public GameObject settingsScreen;
+    public GameObject tutorialScreen;
 
     public GameObject levelButtons;
 
@@ -14,6 +15,7 @@ public class MainMenu : MonoBehaviour
     {
         levelSelectScreen.SetActive(false);
         settingsScreen.SetActive(false);
+        tutorialScreen.SetActive(false);
         menuScreen.SetActive(true);
 
         DisableButtons();
@@ -66,5 +68,11 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+    public void Tutorial(bool enter)
+    {
+        if (enter) { menuScreen.SetActive(false); tutorialScreen.SetActive(true); }
+        else { menuScreen.SetActive(true); tutorialScreen.SetActive(false); }
     }
 }

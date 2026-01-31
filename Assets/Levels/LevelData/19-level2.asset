@@ -17,69 +17,65 @@ MonoBehaviour:
     correctFrequencyIdx: 19
     hasBreak: 0
     endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 26
-    hasBreak: 0
-    endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 29
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
     correctFrequencyIdx: 23
-    hasBreak: 0
-    endsChunk: 1
-  - isFixed: 1
-    correctFrequencyIdx: 19
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 33
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 1
-    correctFrequencyIdx: 36
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 37
-    hasBreak: 1
-    endsChunk: 1
-  - isFixed: 1
-    correctFrequencyIdx: 25
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
     correctFrequencyIdx: 22
     hasBreak: 0
+    endsChunk: 1
+  - isFixed: 1
+    correctFrequencyIdx: 24
+    hasBreak: 0
     endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 19
-    hasBreak: 0
-    endsChunk: 0
-  - isFixed: 0
-    correctFrequencyIdx: 33
-    hasBreak: 0
-    endsChunk: 1
-  - isFixed: 0
     correctFrequencyIdx: 29
     hasBreak: 0
     endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 28
+    hasBreak: 1
+    endsChunk: 1
   - isFixed: 1
-    correctFrequencyIdx: 33
+    correctFrequencyIdx: 35
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 30
     hasBreak: 0
     endsChunk: 0
   - isFixed: 0
+    correctFrequencyIdx: 29
+    hasBreak: 0
+    endsChunk: 1
+  - isFixed: 0
+    correctFrequencyIdx: 28
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 27
+    hasBreak: 0
+    endsChunk: 1
+  - isFixed: 1
     correctFrequencyIdx: 26
     hasBreak: 0
     endsChunk: 0
+  - isFixed: 0
+    correctFrequencyIdx: 25
+    hasBreak: 0
+    endsChunk: 0
   - isFixed: 1
-    correctFrequencyIdx: 27
+    correctFrequencyIdx: 17
+    hasBreak: 0
+    endsChunk: 0
+  - isFixed: 1
+    correctFrequencyIdx: 18
     hasBreak: 0
     endsChunk: 1
   notchCount: 5
   levelWidth: 20
   towerWidth: 12
-  centSpacing: 7.895
-  Title: 
+  centSpacing: 10.52
   tuningSystem: 19
+  title: 19-Tone Next Steps

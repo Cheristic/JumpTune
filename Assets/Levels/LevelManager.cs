@@ -142,12 +142,12 @@ public class LevelManager : MonoBehaviour
         float totalHeight = groundOffsetY + _tileOffsetY * (levelData.tiles.Count) + _tileOffsetY * nrBreaks;
 
         GameObject wallLeft = Instantiate(wallPrefab, tilesParent);
-        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth*3/2, bottomY, 0);
+        wallLeft.transform.position = new Vector3(-levelData.levelWidth / 2 - tileWidth*3/2, bottomY-10f, 0);
         wallLeft.transform.GetChild(0).localScale = new Vector3(4, totalHeight * 2, 1);
         wallLeft.GetComponent<SpriteRenderer>().size = new Vector3(4, totalHeight * 2, 1);
 
         GameObject wallRight = Instantiate(wallPrefab, tilesParent);
-        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth * 3 / 2, bottomY, 0);
+        wallRight.transform.position = new Vector3(levelData.levelWidth / 2 + tileWidth * 3 / 2, bottomY - 10f, 0);
         wallRight.transform.GetChild(0).localScale = new Vector3(4, totalHeight * 2, 1);
         wallRight.GetComponent<SpriteRenderer>().size = new Vector3(4, totalHeight*2, 1);
 
