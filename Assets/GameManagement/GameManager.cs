@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     internal SaveManager SaveManager;
     public LevelData[] levels;
+    public LevelData[] practiceLevels;
     internal int selectedLevel = 0;
     public int levelProgress = 1;
 
@@ -25,14 +26,19 @@ public class GameManager : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
-    public void SwapToLevelPreview(int selected)
+    public void SwapToPracticeLevel(int system)
     {
-        selectedLevel = selected-1;
+        selectedLevel = system; // either 5, 12, or 19
 
         UnityEngine.SceneManagement.SceneManager.LoadScene(1);
     }
 
-    public void SwapToLevel() => SceneManager.LoadScene(2);
+    public void SwapToLevel(int selected)
+    {
+        selectedLevel = selected - 1;
+
+        UnityEngine.SceneManagement.SceneManager.LoadScene(2);
+    }
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {

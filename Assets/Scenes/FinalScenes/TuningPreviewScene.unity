@@ -1440,7 +1440,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: -46.299988, y: 30.599976}
-  m_SizeDelta: {x: 200.9, y: 76.099976}
+  m_SizeDelta: {x: 207, y: 76.099976}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &175978192
 MonoBehaviour:
@@ -8979,8 +8979,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 33622e771159ddc449f60861155fd196, type: 2}
   continueButton: {fileID: 175978191}
   continueButtonText: {fileID: 1851423399}
-  CONTINUE_Width: 381.9
-  SKIP_Width: 200.9
+  BACK_Width: 230.7
+  SKIP_Width: 207
   DEMO_TEXT: {fileID: 1405079942}
   demoFlashInterval: 0.8
   FREQUENCY_Text: {fileID: 802719098}
@@ -9598,7 +9598,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TUNING PRACTICE
+  m_text: 12-Tone Tuning Practice
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d055d630a46019d49a5f0035669e02fa, type: 2}
   m_sharedMaterial: {fileID: 4234409281784545270, guid: d055d630a46019d49a5f0035669e02fa, type: 2}
@@ -12381,7 +12381,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 1
-  m_HorizontalAlignment: 4
+  m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0

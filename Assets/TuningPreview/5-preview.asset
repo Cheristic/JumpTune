@@ -61,5 +61,7 @@ MonoBehaviour:
   levelWidth: 20
   towerWidth: 12
   centSpacing: 24
-  Title: 
   tuningSystem: 5
+  title: 5-Tone Practice
+  subtitle: Practice hearing what notes sound like in <color=#D6A71F>5-Tone</color>
+    when they're in-tune

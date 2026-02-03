@@ -60,4 +60,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 66f3f869d44b8f49b88a41ef7aa316fe, type: 2}
   - {fileID: 11400000, guid: 63c7d55e81b86b582a58dbb719108d40, type: 2}
   - {fileID: 11400000, guid: 67c77e1da24d316b194afb6390250e5e, type: 2}
+  practiceLevels:
+  - {fileID: 11400000, guid: 291fdbe79fe4b2f40b44c4364a6e8e36, type: 2}
+  - {fileID: 11400000, guid: e2848217916557140aed118beeafa4ff, type: 2}
+  - {fileID: 11400000, guid: 33622e771159ddc449f60861155fd196, type: 2}
   levelProgress: 15

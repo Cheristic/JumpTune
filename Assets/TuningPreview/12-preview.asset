@@ -69,5 +69,7 @@ MonoBehaviour:
   levelWidth: 20
   towerWidth: 12
   centSpacing: 25
-  Title: 
   tuningSystem: 12
+  title: 12-Tone Practice
+  subtitle: Practice hearing what notes sound like in <color=#D6A71F>12-Tone</color>
+    when they're in-tune

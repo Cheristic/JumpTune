@@ -97,5 +97,7 @@ MonoBehaviour:
   levelWidth: 20
   towerWidth: 12
   centSpacing: 7.895
-  Title: 
   tuningSystem: 19
+  title: 19-Tone Practice
+  subtitle: Practice hearing what notes sound like in <color=#D6A71F>19-Tone</color>
+    when they're in-tune

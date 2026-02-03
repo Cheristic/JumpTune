@@ -12,10 +12,16 @@ public class LevelSelectMenu : MonoBehaviour
     [SerializeField] TMP_Text _Score;
     [SerializeField] TMP_Text _Time;
     [SerializeField] Transform ButtonsHolder;
+    [SerializeField] Transform PracticeButtons;
     [SerializeField] ScoreConversions _Conversions;
     [SerializeField] TMP_Text _Title;
     [SerializeField] TMP_Text _CentDifference;
     [SerializeField] TMP_Text _Notches;
+    [SerializeField] TMP_Text PracticeSubtitle;
+    [SerializeField]
+    GameObject[] LevelButtonObjects;
+    [SerializeField]
+    GameObject[] PracticeButtonObjects;
 
     [Header("Anim Vals")]
     [SerializeField] AnimationCurve FadeCurve;
@@ -33,13 +39,22 @@ public class LevelSelectMenu : MonoBehaviour
                 buttons.Add(ButtonsHolder.GetChild(i).GetComponent<RectTransform>());
                 ButtonsHolder.GetChild(i).GetComponent<Button>().interactable = GameManager.Instance.SaveManager.CurrData.levels[i].isUnlocked;
             }
+            for (int i = 0; i <  PracticeButtons.childCount; i++)
+            {
+                buttons.Add(PracticeButtons.GetChild(i).GetComponent<RectTransform>());
+            }
         }
         canvas.alpha = 0;
         buttonHovering = -1;
         StartCoroutine(CheckForHover());
     }
 
-    public void SwapToLevel(int level) => GameManager.Instance.SwapToLevelPreview(level);
+    public void SwapToLevel(int level) => GameManager.Instance.SwapToLevel(level);
+    public void SwapToPractice(int level) => GameManager.Instance.SwapToPracticeLevel(level);
+    bool IsHoveringLevelButton
+    {
+        get => buttonHovering < GameManager.Instance.levels.Length;
+    }
 
     int buttonHovering;
     IEnumerator CheckForHover()
@@ -101,24 +116,39 @@ public class LevelSelectMenu : MonoBehaviour
 
     void DisplayButton()
     {
-        var data = GameManager.Instance.SaveManager.CurrData.levels[buttonHovering];
+        foreach (var obj in LevelButtonObjects) obj.SetActive(IsHoveringLevelButton);
+        foreach (var obj in PracticeButtonObjects) obj.SetActive(!IsHoveringLevelButton);
 
-        if (data.rank == 0) // empty
+        if (!IsHoveringLevelButton)
         {
-            _Rank.text = "-";
-            _Score.text = "-";
-            _Time.text = "-";
-        } else
+            var data = GameManager.Instance.practiceLevels[buttonHovering-GameManager.Instance.levels.Length];
+            _Title.text = data.title;
+            PracticeSubtitle.text = data.subtitle;
+        } 
+        else
         {
-            _Rank.text = _Conversions.GetRankTextFromRank(data.rank);
-            _Score.text = data.score.ToString();
-            TimeSpan t = TimeSpan.FromSeconds(data.time);
-            _Time.text = t.ToString("mm':'ss'.'ff");
+            var data = GameManager.Instance.SaveManager.CurrData.levels[buttonHovering];
+
+            if (data.rank == 0) // empty
+            {
+                _Rank.text = "-";
+                _Score.text = "-";
+                _Time.text = "-";
+            }
+            else
+            {
+                _Rank.text = _Conversions.GetRankTextFromRank(data.rank);
+                _Score.text = data.score.ToString();
+                TimeSpan t = TimeSpan.FromSeconds(data.time);
+                _Time.text = t.ToString("mm':'ss'.'ff");
+            }
+
+            int tuning = GameManager.Instance.levels[buttonHovering].tuningSystem;
+            _Title.text = GameManager.Instance.levels[buttonHovering].title;
+            _CentDifference.text = "Cent Interval: " + GameManager.Instance.levels[buttonHovering].centSpacing.ToString("0");
+            _Notches.text = "Notches: " + GameManager.Instance.levels[buttonHovering].notchCount.ToString();
         }
 
-        int tuning = GameManager.Instance.levels[buttonHovering].tuningSystem;
-        _Title.text = GameManager.Instance.levels[buttonHovering].title;
-        _CentDifference.text = "Cent Interval: " + GameManager.Instance.levels[buttonHovering].centSpacing.ToString("0");
-        _Notches.text = "Notches: " + GameManager.Instance.levels[buttonHovering].notchCount.ToString();
+           
     }
 }

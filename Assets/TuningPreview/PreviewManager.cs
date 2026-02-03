@@ -9,7 +9,7 @@ public class PreviewManager : MonoBehaviour
     public LevelData[] previewLevels;
     [SerializeField] RectTransform continueButton;
     [SerializeField] TMP_Text continueButtonText;
-    [SerializeField] float CONTINUE_Width;
+    [SerializeField] float BACK_Width;
     [SerializeField] float SKIP_Width;
     [SerializeField] TMP_Text DEMO_TEXT;
     [SerializeField] float demoFlashInterval;
@@ -41,10 +41,10 @@ public class PreviewManager : MonoBehaviour
         continueButton.sizeDelta = new Vector2(SKIP_Width, continueButton.sizeDelta.y);
         TuningPracticeText.text = TuningSystem switch
             {
-                12 => "12-TET ",
-                5 => "5-TET ",
-                _ => "19-TET "
-            } + "TUNING PRACTICE";
+                12 => "12-Tone ",
+                5 => "5-Tone ",
+                _ => "19-Tone "
+            } + "Tuning Practice";
 
         StartCoroutine(PreviewScene());
         StartCoroutine(FlashDemo());
@@ -65,8 +65,8 @@ public class PreviewManager : MonoBehaviour
         yield return PlayChunkTones(true);
         yield return new WaitForSeconds(initialWaitPeriod);
 
-        continueButtonText.text = "CONTINUE";
-        continueButton.sizeDelta = new Vector2(CONTINUE_Width, continueButton.sizeDelta.y);
+        continueButtonText.text = "BACK";
+        continueButton.sizeDelta = new Vector2(BACK_Width, continueButton.sizeDelta.y);
         isDemoing = false;
         DEMO_TEXT.gameObject.SetActive(false);
         OctaveHolder.SetActive(true);
@@ -152,8 +152,8 @@ public class PreviewManager : MonoBehaviour
         {
             PlatformChunk.StopAllCoroutines();
             StopAllCoroutines();
-            continueButtonText.text = "CONTINUE";
-            continueButton.sizeDelta = new Vector2(CONTINUE_Width, continueButton.sizeDelta.y);
+            continueButtonText.text = "BACK";
+            continueButton.sizeDelta = new Vector2(BACK_Width, continueButton.sizeDelta.y);
             isDemoing = false;
             DEMO_TEXT.gameObject.SetActive(false);
             OctaveHolder.SetActive(true);
@@ -161,7 +161,7 @@ public class PreviewManager : MonoBehaviour
             StartCoroutine(CheckForHover());
         } else
         {
-            GameManager.Instance.SwapToLevel();
+            GameManager.Instance.SwapToMainMenu();
         }
     }
 
@@ -191,6 +191,6 @@ public class PreviewManager : MonoBehaviour
 
     int TuningSystem
     {
-        get => GameManager.Instance.levels[GameManager.Instance.selectedLevel].tuningSystem;
+        get => GameManager.Instance.selectedLevel;
     }
 }
