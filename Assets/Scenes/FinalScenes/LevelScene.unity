@@ -6116,6 +6116,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8603741186093791150}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.15
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &323208549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7022,10 +7034,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start!
+  m_text: Match what you heard!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: d055d630a46019d49a5f0035669e02fa, type: 2}
-  m_sharedMaterial: {fileID: 4234409281784545270, guid: d055d630a46019d49a5f0035669e02fa, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6e12b6f4dc6946540aa75b22fc29fa17, type: 2}
+  m_sharedMaterial: {fileID: 6172926013429040201, guid: 6e12b6f4dc6946540aa75b22fc29fa17, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -7049,8 +7061,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 98.4
-  m_fontSizeBase: 98.4
+  m_fontSize: 57.09
+  m_fontSizeBase: 57.09
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9483,8 +9495,8 @@ MonoBehaviour:
   PayAttentionInterval: 0.65
   PayAttentionBlinkTimes: 3
   ScaleSize: 1
-  ScaleInTime: 0.8
-  ScaleHoldTime: 0.6
+  ScaleInTime: 1.1
+  ScaleHoldTime: 1.7
   ScaleOutTime: 0.6
 --- !u!1 &528177931
 GameObject:
@@ -36789,6 +36801,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8603741186093791150}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.15
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1963740132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40248,6 +40272,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4313819879639690579, guid: db5cc9eecc987894dbf8be291acd1ca3, type: 3}
   m_PrefabInstance: {fileID: 8603741186093791148}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8603741186093791150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3955421039768233192, guid: db5cc9eecc987894dbf8be291acd1ca3, type: 3}
+  m_PrefabInstance: {fileID: 8603741186093791148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bc577c080e56741be09cedc6715d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXPlayer
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -75,7 +75,7 @@ public class ToneManager : MonoBehaviour
     public float VibratoFrequency;
     public float VibratoAmplitude;
     public AudioMixerGroup audioMixer;
-
+    public SFXPlayer sfxPlayer;
 
 
     void Awake()
@@ -89,6 +89,7 @@ public class ToneManager : MonoBehaviour
             notes[i].AudioSource.outputAudioMixerGroup = audioMixer;
             notes[i].phase = ADSR.ADSR_Phase.NotPlaying;
         }
+        sfxPlayer.Init();
     }
 
     private void Update()

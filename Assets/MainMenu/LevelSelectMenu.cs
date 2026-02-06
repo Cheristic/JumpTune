@@ -27,6 +27,13 @@ public class LevelSelectMenu : MonoBehaviour
     [SerializeField] AnimationCurve FadeCurve;
     [SerializeField] float AnimTime;
 
+    [Header("Notes")]
+    [SerializeField] float LeftFrequency;
+    [SerializeField] float FrequencyInterval_12;
+    [SerializeField] float FrequencyInterval_5;
+    [SerializeField] float FrequencyInterval_19;
+
+
     List<RectTransform> buttons;
 
     private void OnEnable()
@@ -124,6 +131,7 @@ public class LevelSelectMenu : MonoBehaviour
             var data = GameManager.Instance.practiceLevels[buttonHovering-GameManager.Instance.levels.Length];
             _Title.text = data.title;
             PracticeSubtitle.text = data.subtitle;
+            ToneManager.Instance.PlayNote(LeftFrequency);
         } 
         else
         {
@@ -147,6 +155,14 @@ public class LevelSelectMenu : MonoBehaviour
             _Title.text = GameManager.Instance.levels[buttonHovering].title;
             _CentDifference.text = "Cent Interval: " + GameManager.Instance.levels[buttonHovering].centSpacing.ToString("0");
             _Notches.text = "Notches: " + GameManager.Instance.levels[buttonHovering].notchCount.ToString();
+
+            int semitones = (buttonHovering % 5) + 1;
+            ToneManager.Instance.PlayNote(tuning switch
+            {
+                12 => LeftFrequency * Mathf.Pow(2, FrequencyInterval_12 * semitones / 1200.0f),
+                5 => LeftFrequency * Mathf.Pow(2, FrequencyInterval_5 * semitones / 1200.0f),
+                _ => LeftFrequency * Mathf.Pow(2, FrequencyInterval_19 * semitones / 1200.0f)
+            });
         }
 
            

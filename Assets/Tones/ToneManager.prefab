@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4313819879639690579}
+  - component: {fileID: 3955421039768233192}
   - component: {fileID: 1542688955194841949}
   m_Layer: 0
   m_Name: ToneManager
@@ -32,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3955421039768233192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6822005463059604714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bc577c080e56741be09cedc6715d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXPlayer
+  soundsToPool: 5
+  selectSFX: {fileID: 8300000, guid: fb2dc1d405cfde64696622e17ce2b0ca, type: 3}
+  startSFX: {fileID: 8300000, guid: 98a61e19f9368d74f9a053a3d439b8ef, type: 3}
 --- !u!114 &1542688955194841949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70,3 +86,4 @@ MonoBehaviour:
   VibratoFrequency: 6.53
   VibratoAmplitude: 0.05
   audioMixer: {fileID: 24300002, guid: a49533389d6a4644e90073a2e1d4fa30, type: 2}
+  sfxPlayer: {fileID: 3955421039768233192}

@@ -95,6 +95,7 @@ public class FinalScoreCounter : MonoBehaviour
         _Time.text = t.ToString("mm':'ss'.'ff");
         EndScoreHolder.SetActive(true);
         _Cleared.text = rankGotten == 1 ? "Perfect!" : rankGotten <= 6 ? "Nice job!" : "Try again!";
+        ToneManager.Instance.sfxPlayer.PlayStartSound(-.25f);
     }
 
     public void ContinueToMainMenu()

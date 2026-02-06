@@ -834,6 +834,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &154242660
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -1143,6 +1144,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8603741186093791150}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -1495,6 +1508,18 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8603741186093791150}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: -0.15
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
@@ -3349,6 +3374,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &507330845
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -3938,6 +3964,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &569862296
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -4536,6 +4563,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &685665841
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5089,6 +5117,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &733175042
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -5242,6 +5271,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &757489903
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -7953,6 +7983,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &1200911057
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -8106,6 +8137,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &1220093011
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -8747,6 +8779,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &1265813292
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -10112,6 +10145,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &1409961813
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -10475,6 +10509,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8603741186093791150}
+        m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+        m_MethodName: PlaySelectSound
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12521,6 +12567,7 @@ MonoBehaviour:
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!251 &1868009214
 PlatformEffector2D:
   m_ObjectHideFlags: 0
@@ -14640,6 +14687,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4313819879639690579, guid: db5cc9eecc987894dbf8be291acd1ca3, type: 3}
   m_PrefabInstance: {fileID: 8603741186093791148}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &8603741186093791150 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3955421039768233192, guid: db5cc9eecc987894dbf8be291acd1ca3, type: 3}
+  m_PrefabInstance: {fileID: 8603741186093791148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bc577c080e56741be09cedc6715d69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SFXPlayer
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

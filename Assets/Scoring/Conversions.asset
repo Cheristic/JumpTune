@@ -44,10 +44,10 @@ MonoBehaviour:
   - ScorePercentThreshold: 0.75
     Rank: 5
     RankText: B
-  - ScorePercentThreshold: 0.5
+  - ScorePercentThreshold: 0.65
     Rank: 6
     RankText: C
-  - ScorePercentThreshold: 0.3
+  - ScorePercentThreshold: 0.45
     Rank: 7
     RankText: D
   - ScorePercentThreshold: 0

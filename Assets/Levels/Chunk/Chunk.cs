@@ -111,6 +111,7 @@ public class Chunk : MonoBehaviour
 
             foreach (var platform in platforms)
             {
+                if (platform.transform.position.y > PlayerManager.Instance.ChunkCheckerPoint.position.y) break;
                 if (platform.TryGetComponent<TonePlatform>(out var tp))
                 {
                     if (showError && !tp.isFixed) tp.ShowError();
