@@ -47,7 +47,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SFXPlayer
   soundsToPool: 5
   selectSFX: {fileID: 8300000, guid: fb2dc1d405cfde64696622e17ce2b0ca, type: 3}
+  selectSFXPitchVariance: 0.05
   startSFX: {fileID: 8300000, guid: 98a61e19f9368d74f9a053a3d439b8ef, type: 3}
+  whistle: {fileID: 8300000, guid: 340dd43b0dcb55b488e76ea7dfb2c078, type: 3}
+  whistleSFXPitchVariance: 0.5
 --- !u!114 &1542688955194841949
 MonoBehaviour:
   m_ObjectHideFlags: 0

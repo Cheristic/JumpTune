@@ -8,6 +8,9 @@ public class SFXPlayer : MonoBehaviour
     [SerializeField] AudioClip selectSFX;
     [SerializeField] float selectSFXPitchVariance = 0.05f;
     [SerializeField] AudioClip startSFX;
+    [SerializeField] AudioClip whistle;
+    [SerializeField] float whistleSFXPitchVariance = 0.25f;
+
 
     List<AudioSource> sources;
     public void Init()
@@ -53,6 +56,15 @@ public class SFXPlayer : MonoBehaviour
         source.clip = startSFX;
         source.time = 0;
         source.pitch = 1f + pitchChange;
+        source.Play();
+    }
+
+    public void PlayWhistleSound()
+    {
+        AudioSource source = GetSource();
+        source.clip = whistle;
+        source.time = 0;
+        source.pitch = Random.Range(-whistleSFXPitchVariance, whistleSFXPitchVariance) + 1f;
         source.Play();
     }
 
