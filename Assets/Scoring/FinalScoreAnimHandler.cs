@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System;
 using System.Collections;
 using TMPro;
@@ -18,7 +19,9 @@ public class FinalScoreCounter : MonoBehaviour
 
 
     [Header("Anim Valls")]
+    [SerializeField] float ClearDelayTime = .6f;
     [SerializeField] float MoveSpeed;
+    [SerializeField] float CheckYOffset;
 
     private void OnEnable()
     {
@@ -58,23 +61,30 @@ public class FinalScoreCounter : MonoBehaviour
 
     IEnumerator EndSequence()
     {
+        yield return new WaitForSeconds(ClearDelayTime);
         transform.position = new Vector2(0, LevelManager.Instance.bottomY);
 
+        _cam.transform.position = new Vector2(0, LevelManager.Instance.bottomY);
         _cam.Follow = transform;
 
         yield return new WaitUntil(() => _cam.transform.position.y < 2f);
 
         // yield return wait until camera reaches target point
 
-        Chunk prevChunk = null;
+        List<TonePlatform> platforms = ChunkTracker.Instance.GetAllPlatforms();
+        int currPlat = 0;
         while (transform.position.y < LevelManager.Instance.topY)
         {
-            Chunk hoveredChunk = ChunkTracker.Instance.GetChunkByYPos(transform.position.y);
-            if (hoveredChunk != prevChunk && hoveredChunk != null)
+            if (currPlat < platforms.Count)
             {
-                hoveredChunk.PlayChunkTones(true);
+                if (platforms[currPlat].transform.position.y < transform.position.y + CheckYOffset)
+                {
+                    if (!platforms[currPlat].isFixed) platforms[currPlat].ShowError();
+                    platforms[currPlat].PlayPlatformTone();
+                    currPlat++;
+
+                }
             }
-            prevChunk = hoveredChunk;
             yield return null;
             transform.position = new Vector2(0, transform.position.y + MoveSpeed * Time.deltaTime);
         }

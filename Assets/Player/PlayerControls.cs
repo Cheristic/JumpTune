@@ -43,7 +43,6 @@ public class PlayerControls : MonoBehaviour
     public void Init()
     {
         input = new();
-        input?.Enable();
         rb = GetComponent<Rigidbody2D>();
         input.Player.Jump.started += StartJump;
         input.Player.Jump.canceled += ReleasedJump;
@@ -52,10 +51,11 @@ public class PlayerControls : MonoBehaviour
         rightGroundedChecker = transform.InverseTransformPoint(new Vector3(playerCollider.bounds.max.x, playerCollider.bounds.center.y, 0));
         leftGroundedChecker = transform.InverseTransformPoint(new Vector3(playerCollider.bounds.min.x, playerCollider.bounds.center.y, 0));
         animator = GetComponent<Animator>();
+        GameManager.StartGame += EnableInput;
         GameManager.EndGame += OnEndGame;
         FinalScoreCounter.CompletedEndSequence += OnCompletedEndSequence;
     }
-    private void OnEnable()
+    public void EnableInput()
     {
         input?.Enable();
     }
@@ -70,6 +70,7 @@ public class PlayerControls : MonoBehaviour
     private void OnDisable()
     {
         input?.Disable();
+        GameManager.StartGame -= EnableInput;
         GameManager.EndGame -= OnEndGame;
         FinalScoreCounter.CompletedEndSequence -= OnCompletedEndSequence;
     }

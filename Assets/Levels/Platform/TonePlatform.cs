@@ -36,6 +36,7 @@ public class TonePlatform : MonoBehaviour
     [Header("Outline")]
     [SerializeField] Material outlineMaterial;
     [SerializeField] Material noOutlineMaterial;
+    [SerializeField] float outlineHoldTime;
     Renderer rend;
 
     public void Init(bool _Fixed, int _StartingNotch, int _NotchCount, float _NotchSpacingWorld, float _CorrectFrequency, float _CentSpacing, Color _tileDisabledColor, bool isPreviewScene) 
@@ -69,10 +70,15 @@ public class TonePlatform : MonoBehaviour
         }
         else
         {
-            int correctPos = Random.Range(0, notchCount);
+            int correctPos = 0;
+            do
+            {
+                correctPos = Random.Range(0, notchCount);
+            } while (correctPos == currNotch);
+
             leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * correctPos / 1200f);
         }
-
+        outlineQueue = 0;
         if (!isPreviewScene) playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
     }
 
@@ -90,21 +96,32 @@ public class TonePlatform : MonoBehaviour
     public void EnableMovement()
     {
         hasPlayer = true;
-        StartCoroutine(HandleMoveInput());
+        StartCoroutine(IHandleMoveInput = HandleMoveInput());
     }
     public void DisableMovement()
     {
         hasPlayer = false;
-        StopAllCoroutines();
+        if (IHandleMoveInput != null) StopCoroutine(IHandleMoveInput);
     }
 
-    public void PlayPlatformTone()
+    public void PlayPlatformTone(bool correct = false, bool outline = true)
     {
         //Debug.Log("curr = " + CurrFrequency + ", correct = " + correctFrequency);
         //Debug.Log(Score() + " " + currNotch);
-        ToneManager.Instance.PlayNote(CurrFrequency);
+        if (correct) ToneManager.Instance.PlayNote(correctFrequency);
+        else ToneManager.Instance.PlayNote(CurrFrequency);
+
+        if (outline) StartCoroutine(OutlineDelay());
+
+        IEnumerator OutlineDelay()
+        {
+            SetOutline();
+            yield return new WaitForSeconds(ToneManager.Instance.ADSR.ADSR_Time);
+            SetNoOutline();
+        }
     }
 
+    IEnumerator IHandleMoveInput;
     IEnumerator HandleMoveInput()
     { 
         yield return new WaitUntil(() => PlayerManager.Instance.controls.isGrounded);
@@ -167,8 +184,11 @@ public class TonePlatform : MonoBehaviour
         SetNoOutline(); 
     }
 
-    public void SetOutline() { rend.material = outlineMaterial; }
-    public void SetNoOutline() { rend.material = noOutlineMaterial; }
+    int outlineQueue = 0;
+    public void SetOutline() { rend.material = outlineMaterial; outlineQueue++; }
+    public void SetNoOutline() {
+        outlineQueue = Mathf.Max(outlineQueue - 1, 0);
+        if (outlineQueue == 0) rend.material = noOutlineMaterial; }
 
     public void ShowError()
     {

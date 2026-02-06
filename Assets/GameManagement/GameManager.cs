@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     internal int selectedLevel = 0;
     public int levelProgress = 1;
 
+    public static event Action StartGame;
     public static event Action EndGame;
 
     private void Awake()
@@ -68,6 +69,10 @@ public class GameManager : MonoBehaviour
         SaveManager.ResetData();
     }
 
+    public void TriggerStartGame()
+    {
+        StartGame?.Invoke();
+    }
     public void TriggerEndGame()
     {
         EndGame?.Invoke();

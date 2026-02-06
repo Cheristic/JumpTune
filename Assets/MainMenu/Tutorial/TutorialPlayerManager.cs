@@ -29,6 +29,7 @@ public class TutorialPlayerManager : MonoBehaviour
     private void Awake()
     {
         controls.Init();
+        controls.EnableInput();
         baseWKey = W_Key.transform.position;
         baseSKey = S_Key.transform.position;
         basePlayerPos = transform.position;

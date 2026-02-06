@@ -86,7 +86,7 @@ public class PreviewManager : MonoBehaviour
             {
                 if (PlatformChunk.platforms[i].TryGetComponent<TonePlatform>(out var tp))
                 {
-                    tp.PlayPlatformTone();
+                    tp.PlayPlatformTone(false, false);
                     tp.SetOutline();
                     if (tp.hasPlayer) yield break;
                     yield return new WaitForSeconds(PlatformChunk.timeBetweenNotes);

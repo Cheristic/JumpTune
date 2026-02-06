@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 
@@ -73,6 +74,8 @@ public class ToneManager : MonoBehaviour
     public float VibratoBuildUpTime;
     public float VibratoFrequency;
     public float VibratoAmplitude;
+    public AudioMixerGroup audioMixer;
+
 
 
     void Awake()
@@ -83,6 +86,7 @@ public class ToneManager : MonoBehaviour
         for (int i = 0; i < notes.Length; i++)
         {
             notes[i].AudioSource = gameObject.AddComponent<AudioSource>();
+            notes[i].AudioSource.outputAudioMixerGroup = audioMixer;
             notes[i].phase = ADSR.ADSR_Phase.NotPlaying;
         }
     }

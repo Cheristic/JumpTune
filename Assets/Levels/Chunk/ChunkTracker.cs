@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using UnityEngine.InputSystem;
+using System.Linq;
 public class ChunkTracker : MonoBehaviour
 {
     public static ChunkTracker Instance { get; private set; }
@@ -11,13 +12,15 @@ public class ChunkTracker : MonoBehaviour
     {
         if (Instance != null && Instance != this) Destroy(this);
         else Instance = this;
+        GameManager.StartGame += OnStartGame;
     }
-    private void Start()
+    private void OnStartGame()
     {
        PlayerManager.Instance.Input.Player.StrumChunk.started += StrumCurrentChunk;
     }
     private void OnDisable()
     {
+        GameManager.StartGame -= OnStartGame;
         PlayerManager.Instance.Input.Player.StrumChunk.started -= StrumCurrentChunk;
     }
     public void CreateChunks(List<Chunk> chunks)
@@ -92,12 +95,12 @@ public class ChunkTracker : MonoBehaviour
         return Chunks[currChunkIndex].framePosXChange;
     }
 
-    public Chunk GetChunkByYPos(float pos)
+    public List<TonePlatform> GetAllPlatforms()
     {
+        List<TonePlatform> p = new();
         foreach (var chunk in Chunks)
-        {
-            if (pos >= chunk.ChunkBounds.x && pos < chunk.ChunkBounds.y) return chunk;
-        }
-        return null;
+            foreach (var plat in chunk.platforms)
+                if (plat.TryGetComponent<TonePlatform>(out var tp)) p.Add(tp);
+        return p;
     }
 }
