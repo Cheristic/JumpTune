@@ -4328,6 +4328,7 @@ MonoBehaviour:
   DownAcceleration: 61.5
   DownMoveSpeed: 84
   CheckYOffset: 2
+  CheckYDownOffset: -2
   PayAttentionInterval: 0.65
   PayAttentionBlinkTimes: 3
   ScaleSize: 1
@@ -4569,6 +4570,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1792108845}
   trigger: {fileID: 2028405984}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -5147,6 +5149,7 @@ MonoBehaviour:
   errorAnim: {fileID: 748395670}
   trigger: {fileID: 1525207231}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -5816,6 +5819,7 @@ MonoBehaviour:
   errorAnim: {fileID: 210665160}
   trigger: {fileID: 1384651808}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -6154,6 +6158,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1886522370}
   trigger: {fileID: 1635896546}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -6588,6 +6593,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1107849728}
   trigger: {fileID: 823998196}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -8022,6 +8028,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1639687263}
   trigger: {fileID: 2101476741}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -9286,6 +9293,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1180249173}
   trigger: {fileID: 198664265}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -9440,6 +9448,7 @@ MonoBehaviour:
   errorAnim: {fileID: 664339360}
   trigger: {fileID: 2107695902}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -12694,6 +12703,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1798781465}
   trigger: {fileID: 1285333273}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -13848,6 +13858,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1818131996}
   trigger: {fileID: 2103589181}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -14495,6 +14506,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1582441383}
   trigger: {fileID: 129431109}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -15679,6 +15691,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1883113004}
   trigger: {fileID: 1021628546}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -16197,6 +16210,7 @@ MonoBehaviour:
   errorAnim: {fileID: 826894443}
   trigger: {fileID: 1031366297}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -16296,6 +16310,79 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1001 &1716108814
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1858947013}
+    m_Modifications:
+    - target: {fileID: 6923691663616482365, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_Name
+      value: TonePlatform
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14834
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 34.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 9063214022608975689, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 0}
+  m_SourcePrefab: {fileID: 100100000, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+--- !u!4 &1716108815 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9177426608753402574, guid: 1236c08c86a6f494590047e9152956d6, type: 3}
+  m_PrefabInstance: {fileID: 1716108814}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1726521111
 GameObject:
   m_ObjectHideFlags: 0
@@ -16383,6 +16470,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1936453003}
   trigger: {fileID: 127441824}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -17299,6 +17387,7 @@ MonoBehaviour:
   errorAnim: {fileID: 1148303022}
   trigger: {fileID: 1839473171}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -17543,6 +17632,7 @@ MonoBehaviour:
   errorAnim: {fileID: 2048295506}
   trigger: {fileID: 936393237}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 0}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
@@ -17764,6 +17854,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 440783773}
+  - {fileID: 1716108815}
   - {fileID: 737389993}
   - {fileID: 1684696654}
   - {fileID: 1295603063}

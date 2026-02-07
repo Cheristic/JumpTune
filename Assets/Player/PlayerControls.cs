@@ -86,7 +86,6 @@ public class PlayerControls : MonoBehaviour
         {
             fy = 0;
             rb.gravityScale = FALLING_GRAVITY*2;
-            Debug.Log(lastGroundType);
             if (lastGroundType == GroundType.Moving || lastGroundType == GroundType.End)
             {
                 if (ChunkTracker.Instance != null) transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange(lastGroundType == GroundType.End) + transform.position.x, transform.position.y);

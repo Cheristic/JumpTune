@@ -92,6 +92,135 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TonePlatformTrigger
   TonePlatform: {fileID: 4739550068171127379}
+--- !u!1 &1017894922224080454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2245587633291694427}
+  - component: {fileID: 441601370535272895}
+  - component: {fileID: 2730630842577060506}
+  m_Layer: 6
+  m_Name: Cover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2245587633291694427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017894922224080454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.06, z: 0}
+  m_LocalScale: {x: 0.15, y: 0.11, z: 0.15}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 9177426608753402574}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &441601370535272895
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017894922224080454}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 1936247637
+  m_SortingLayer: 2
+  m_SortingOrder: 36
+  m_Sprite: {fileID: 7051095609321160371, guid: ca3d3da1091bce6429fb8cae8160f978, type: 3}
+  m_Color: {r: 1, g: 0.7452829, b: 0.7452829, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!114 &2730630842577060506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1017894922224080454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 532ec3025b3b7df479b8faa30100d5a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlatformCoverAnim
+  _sprite: {fileID: 441601370535272895}
+  FadeCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0005607605
+      value: 1
+      inSlope: -1.3644464
+      outSlope: -1.3644464
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.037705604
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.9699945
+      outSlope: -0.9699945
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.051209796
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  AnimTime: 0.4
 --- !u!1 &3460779089328009580
 GameObject:
   m_ObjectHideFlags: 0
@@ -343,6 +472,7 @@ Transform:
   m_Children:
   - {fileID: 2788150744554722377}
   - {fileID: 5782970731687300580}
+  - {fileID: 2245587633291694427}
   - {fileID: 1610276315857553789}
   - {fileID: 3128622350132214856}
   m_Father: {fileID: 0}
@@ -363,12 +493,14 @@ MonoBehaviour:
   errorAnim: {fileID: 1023990920285951850}
   trigger: {fileID: 5033367567820624105}
   _Conversions: {fileID: 11400000, guid: 057f59ea7dac5344fa6bd5576c005757, type: 2}
+  _Cover: {fileID: 2730630842577060506}
   InitialHoldLagTime: 0.2
   HoldLagSpeedUp: 0.65
   MinLagTime: 0.02
   HoldLagSlowDown: 0.9
   outlineMaterial: {fileID: 2100000, guid: 6f8209b92482bb0428aaaa53393728c5, type: 2}
   noOutlineMaterial: {fileID: 2100000, guid: 9427bf91d7758b54f8c13ecadcab039b, type: 2}
+  outlineHoldTime: 0
 --- !u!50 &2107554421607690036
 Rigidbody2D:
   serializedVersion: 5

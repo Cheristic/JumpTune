@@ -14,6 +14,7 @@ public class TonePlatform : MonoBehaviour
     [SerializeField] TonePlatformErrorAnim errorAnim;
     [SerializeField] TonePlatformTrigger trigger;
     [SerializeField] ScoreConversions _Conversions;
+    [SerializeField] PlatformCoverAnim _Cover;
 
     [Header("Movement")]
     [SerializeField] float InitialHoldLagTime;
@@ -67,6 +68,7 @@ public class TonePlatform : MonoBehaviour
             {
                 s.color = _tileDisabledColor;
             }
+            _Cover.gameObject.SetActive(false);
         }
         else
         {
@@ -77,6 +79,7 @@ public class TonePlatform : MonoBehaviour
             } while (correctPos == currNotch);
 
             leftMostFrequency = _CorrectFrequency * Mathf.Pow(2f, -centSpacing * correctPos / 1200f);
+            _Cover.Enable();
         }
         outlineQueue = 0;
         if (!isPreviewScene) playerAnimator = FindFirstObjectByType<PlayerControls>().GetComponent<Animator>();
@@ -185,14 +188,21 @@ public class TonePlatform : MonoBehaviour
     }
 
     int outlineQueue = 0;
-    public void SetOutline() { rend.material = outlineMaterial; outlineQueue++; }
+    public void SetOutline() { rend.material = outlineMaterial; _Cover.ChangeOutline(outlineMaterial);  outlineQueue++; }
     public void SetNoOutline() {
         outlineQueue = Mathf.Max(outlineQueue - 1, 0);
-        if (outlineQueue == 0) rend.material = noOutlineMaterial; }
+        if (outlineQueue == 0) { rend.material = noOutlineMaterial; _Cover.ChangeOutline(noOutlineMaterial); }
+    }
 
     public void ShowError()
     {
         StartCoroutine(errorAnim.ErrorAnim(Score()));
+    }
+
+    public void HideCover(bool instant = false)
+    {
+        if (instant) _Cover.gameObject.SetActive(false);
+        else if (!isFixed) _Cover.Fade();
     }
 
 }

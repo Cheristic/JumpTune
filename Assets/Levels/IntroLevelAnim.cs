@@ -19,6 +19,8 @@ public class IntroLevelAnim : MonoBehaviour
     [SerializeField] float DownAcceleration;
     [SerializeField] float DownMoveSpeed;
     [SerializeField] float CheckYOffset;
+    [SerializeField] float CheckYDownOffset;
+
     [SerializeField] float PayAttentionInterval;
     [SerializeField] int PayAttentionBlinkTimes;
     [SerializeField] float ScaleSize;
@@ -44,6 +46,9 @@ public class IntroLevelAnim : MonoBehaviour
         StopAllCoroutines();
         SkipButton.gameObject.SetActive(false);
         GameManager.Instance.TriggerStartGame();
+
+        List<TonePlatform> platforms = ChunkTracker.Instance.GetAllPlatforms();
+        foreach (var platform in platforms) platform.HideCover(true);
 
         _cam.Follow = PlayerManager.Instance.transform;
         _cam.transform.position = new Vector2(0, LevelManager.Instance.bottomY);
@@ -91,8 +96,18 @@ public class IntroLevelAnim : MonoBehaviour
         }
 
         float speed = DownAcceleration * Time.deltaTime;
+        currPlat = platforms.Count - 1;
         while (transform.position.y > PlayerManager.Instance.transform.position.y)
         {
+            if (currPlat >= 0)
+            {
+                if (platforms[currPlat].transform.position.y > transform.position.y + CheckYDownOffset)
+                {
+                    platforms[currPlat].HideCover();
+                    currPlat--;
+                }
+            }
+
             yield return null;
             transform.position = new Vector2(0, transform.position.y - speed * Time.deltaTime);
             speed = Mathf.Clamp(speed + DownAcceleration * Time.deltaTime, 0, DownMoveSpeed);
