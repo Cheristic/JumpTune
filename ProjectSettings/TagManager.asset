@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Tone Platform
+  - End Platform
   layers:
   - Default
   - TransparentFX

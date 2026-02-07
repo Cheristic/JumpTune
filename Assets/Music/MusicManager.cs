@@ -48,7 +48,27 @@ public class MusicManager : MonoBehaviour
         previousIdx = -1;
         playedEnd = false;
 
+        GameManager.EndGame += OnEndGame;
+
         //increment = (levelManager.topY - levelManager.bottomY) / (stems.Length-1);
+    }
+
+    private void OnDisable()
+    {
+        GameManager.EndGame -= OnEndGame;
+    }
+
+    void OnEndGame()
+    {
+        playedEnd = true;
+
+        audioSourceA.Stop();
+        audioSourceB.Stop();
+
+        endSource.loop = false;
+        endSource.volume = 1f;
+
+        endSource.PlayOneShot(finalStem.audioClip);
     }
 
     void Update()
@@ -58,25 +78,6 @@ public class MusicManager : MonoBehaviour
         if (LevelManager.Instance.IsPreviewScene)
         {
             CalculateProgress(0);
-            return;
-        }
-
-        if (!playedEnd && PlayerManager.Instance.ChunkCheckerPoint.position.y >= LevelManager.Instance.topY)
-        {
-            // play end sound
-            // could also be triggered from the scoring logic?
-            playedEnd = true;
-
-            //PlayAudio(currentA, finalStem.audioClip);
-
-            audioSourceA.Stop();
-            audioSourceB.Stop();
-
-            endSource.loop = false;
-            endSource.volume = 1f;
-
-            endSource.PlayOneShot(finalStem.audioClip);
-
             return;
         }
 

@@ -62,6 +62,7 @@ public class FinalScoreCounter : MonoBehaviour
     IEnumerator EndSequence()
     {
         yield return new WaitForSeconds(ClearDelayTime);
+        PlayerManager.Instance.controls.transform.position = new Vector2(0, LevelManager.Instance.topY + 4f);
         transform.position = new Vector2(0, LevelManager.Instance.bottomY);
 
         _cam.transform.position = new Vector2(0, LevelManager.Instance.bottomY);

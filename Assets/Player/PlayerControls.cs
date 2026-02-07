@@ -86,9 +86,10 @@ public class PlayerControls : MonoBehaviour
         {
             fy = 0;
             rb.gravityScale = FALLING_GRAVITY*2;
-            if (lastGroundType == GroundType.Moving)
+            Debug.Log(lastGroundType);
+            if (lastGroundType == GroundType.Moving || lastGroundType == GroundType.End)
             {
-                if (ChunkTracker.Instance != null) transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange() + transform.position.x, transform.position.y);
+                if (ChunkTracker.Instance != null) transform.position = new Vector2(ChunkTracker.Instance.GetChunkXChange(lastGroundType == GroundType.End) + transform.position.x, transform.position.y);
             }
         }
         else if (jumpHeld && rb.linearVelocityY > 0) fy = JUMP_FORCE;
@@ -194,7 +195,8 @@ public class PlayerControls : MonoBehaviour
     public enum GroundType 
     { 
         Stable,
-        Moving
+        Moving,
+        End
     }
     GroundType lastGroundType;
     internal bool isGrounded
@@ -207,13 +209,15 @@ public class PlayerControls : MonoBehaviour
             RaycastHit2D hit2 = Physics2D.Raycast(transform.TransformPoint(rightGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
             if (hit2.collider != null)
             {
-                lastGroundType = hit2.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving : GroundType.Stable;
+                lastGroundType = hit2.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving :
+                    hit2.collider.gameObject.CompareTag("End Platform") ? GroundType.End :GroundType.Stable;
                 return true;
             }
             RaycastHit2D hit1 = Physics2D.Raycast(transform.TransformPoint(leftGroundedChecker), Vector2.down, IS_GROUNDED_CHECK_DISTANCE, GroundLayerMask);
             if (hit1.collider != null)
             {
-                lastGroundType = hit1.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving : GroundType.Stable;
+                lastGroundType = hit1.collider.gameObject.CompareTag("Tone Platform") ? GroundType.Moving :
+                    hit1.collider.gameObject.CompareTag("End Platform") ? GroundType.End : GroundType.Stable;
                 return true;
             }
             return false;

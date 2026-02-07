@@ -63,9 +63,14 @@ MonoBehaviour:
   tileWidth: 4
   tileHeight: 4
   justOneMoreOffsetBroISwear: -1
+  topHeightOffset: -2.22
   sizeFactor: 15
   playerStartPosition: {x: 0, y: -0.3}
   tileDisabledColor: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+  IsPreviewScene: 0
+  tileOffsetYMult: 12
+  previewManager: {fileID: 0}
+  FirstPlatform: {fileID: 0}
 --- !u!114 &6550615766674888743
 MonoBehaviour:
   m_ObjectHideFlags: 0

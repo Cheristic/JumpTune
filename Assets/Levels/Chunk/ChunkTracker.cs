@@ -77,7 +77,8 @@ public class ChunkTracker : MonoBehaviour
 
         }
 
-        yield return new WaitUntil(() => PlayerManager.Instance.ChunkCheckerPoint.position.y > LevelManager.Instance.topY);
+        //Debug.Log("Here " + PlayerManager.Instance.ChunkCheckerPoint.position.y);
+        //yield return new WaitUntil(() => PlayerManager.Instance.ChunkCheckerPoint.position.y > LevelManager.Instance.topY);
 
         LevelTimer = Time.time - LevelTimer;
         GameManager.Instance.TriggerEndGame();
@@ -88,12 +89,15 @@ public class ChunkTracker : MonoBehaviour
         if (currChunkIndex < Chunks.Count) Chunks[currChunkIndex].PlayChunkTones();
     }
 
-    public float GetChunkXChange()
+    public float GetChunkXChange(bool final = false)
     {
+        if (final) return Chunks[^1].framePosXChange;
+
         if (currChunkIndex >= Chunks.Count || currChunkIndex < 0) return 0;
 
         return Chunks[currChunkIndex].framePosXChange;
     }
+
 
     public List<TonePlatform> GetAllPlatforms()
     {

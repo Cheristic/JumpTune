@@ -123,7 +123,6 @@ public class TutorialPlayerManager : MonoBehaviour
                         Platform0.position = new Vector2(Platform0.position.x + dir * MoveAmount, Platform0.position.y);
                         transform.position = new Vector2(transform.position.x + dir * MoveAmount, transform.position.y);
                         ToneManager.Instance.PlayNote(LeftFrequency * Mathf.Pow(2, Interval * currNotch / 1200.0f));
-                        Debug.Log("Playing " + LeftFrequency * Mathf.Pow(2, Interval * currNotch / 1200.0f));
                     }
                     lastDir = dir;
                     yield return null;
