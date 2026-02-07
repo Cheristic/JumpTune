@@ -44,12 +44,15 @@ public class LevelSelectMenu : MonoBehaviour
             for (int i = 0; i < ButtonsHolder.childCount; i++)
             {
                 buttons.Add(ButtonsHolder.GetChild(i).GetComponent<RectTransform>());
-                ButtonsHolder.GetChild(i).GetComponent<Button>().interactable = GameManager.Instance.SaveManager.CurrData.levels[i].isUnlocked;
             }
             for (int i = 0; i <  PracticeButtons.childCount; i++)
             {
                 buttons.Add(PracticeButtons.GetChild(i).GetComponent<RectTransform>());
             }
+        }
+        for (int i = 0; i < ButtonsHolder.childCount; i++)
+        {
+            ButtonsHolder.GetChild(i).GetComponent<Button>().interactable = GameManager.Instance.SaveManager.CurrData.levels[i].isUnlocked;
         }
         canvas.alpha = 0;
         buttonHovering = -1;

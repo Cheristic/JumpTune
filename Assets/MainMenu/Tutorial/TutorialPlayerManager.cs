@@ -38,6 +38,7 @@ public class TutorialPlayerManager : MonoBehaviour
     private void OnEnable()
     {
         hasLandedBefore = false;
+        controls.EnableInput();
         controls.input.Player.Jump.started += Jump;
         W_Key.SetActive(true);
         S_Key.SetActive(false);
